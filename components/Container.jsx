@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Nav from "./Nav";
 import metadata from "../data/metadata";
-import Image from "next/legacy/Image";
+import Image from "next/Image";
 
 const Container = (props) => {
   const meta = {
@@ -26,8 +26,7 @@ const Container = (props) => {
             alt="로고"
             width={40}
             height={40}
-            objectFit={"cover"}
-            className={`rounded-full`}
+            className={`rounded-full object-cover`}
           />
           <span className={`mx-2 font-extralight text-lg`}>
             {metadata.title}
