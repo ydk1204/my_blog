@@ -24,8 +24,7 @@ const Home = ({ posts }) => {
             width={100}
             height={45}
             layout={`responsive`}
-            objectFit="cover"
-            className={`rounded-3xl`}
+            className={`rounded-3xl object-cover`}
           />
           <span
             className={`absolute top-12 font-extrabold text-white text-5xl md:text-9xl text flex justify-center w-full drop-shadow-lg`}
