@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Nav from "./Nav";
 import metadata from "../data/metadata";
-import Image from "next/Image";
+import Image from "next/image";
 
 const Container = (props) => {
   const meta = {

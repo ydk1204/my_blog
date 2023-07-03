@@ -1,5 +1,5 @@
 import Conainer from "../components/Container";
-import Image from "next/Image";
+import Image from "next/image";
 import RecentPosts from "../components/RecentPosts";
 import metadata from "../data/metadata";
 
