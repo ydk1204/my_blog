@@ -1,10 +1,10 @@
+// contentlayer.config.js
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
-
-export const Post = defineDocumentType(() => ({
+var Post = defineDocumentType(() => ({
   name: "Post",
   contentType: "mdx",
-  filePathPattern: `**/*.mdx`, // mdx 파일경로 패턴
-
+  filePathPattern: `**/*.mdx`,
+  // mdx 파일경로 패턴
   // mdx로 작성한 글 정보에 대해 입력해야하는 필드 정의
   /*
     [필드명]: {
@@ -17,14 +17,18 @@ export const Post = defineDocumentType(() => ({
     date: { type: "string", required: true },
     description: { type: "string", required: true },
     tag: { type: "string", required: true },
-    note: { type: "string", required: false },
-  },
+    note: { type: "string", required: false }
+  }
 }));
-
-export default makeSource({
+var contentlayer_config_default = makeSource({
   // 마크다운 파일이 저장되어 있는 루트 폴더
   contentDirPath: "posts",
   // contentDirPath: '.',
   // contentDirInclude: ['posts', 'study'],
-  documentTypes: [Post],
+  documentTypes: [Post]
 });
+export {
+  Post,
+  contentlayer_config_default as default
+};
+//# sourceMappingURL=compiled-contentlayer-config-W6P5UIK3.mjs.map

@@ -4,8 +4,10 @@ const { withContentlayer } = require("next-contentlayer");
 const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
+  i18n: {
+    locales: ['ko'],
+    defaultLocale: 'ko',
+  },
 }
 
-module.exports = withContentlayer({
-  reactStrictMode: true,
-})
+module.exports = withContentlayer(nextConfig);

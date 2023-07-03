@@ -11,13 +11,6 @@ const Home = ({ posts }) => {
     <Conainer>
       <div className={`my-5 w-full`}>
         <div className={`relative`}>
-          {/* <div className={`w-full h-96 object-cover rounded-3xl`}>
-            <img
-              src={`/home.png`}
-              alt="대표 이미지"
-              className={`w-full h-full`}
-            />
-          </div> */}
           <Image
             src={`/home.png`}
             alt="대표 이미지"

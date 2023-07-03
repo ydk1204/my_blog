@@ -1,4 +1,4 @@
 module.exports = {
-  siteUrl: 'https://example.com',
+  siteUrl: 'https://ydkblog.vercel.app',
   generateRobotsTxt: true,
 }
