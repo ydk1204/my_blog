@@ -24,7 +24,7 @@ const Blog = ({ posts }) => {
         b.title === a.note ? (b.count = b.count + 1) : 0;
       });
     });
-    setList((prev) => lists);
+    setList(lists);
   }, []);
   // let list = studyList;
   // posts.forEach((a) => {
@@ -32,10 +32,6 @@ const Blog = ({ posts }) => {
   //     b.title === a.note ? (b.count = b.count + 1) : 0;
   //   });
   // });
-
-  console.log("notebook 컴포넌트", NoteBook);
-  console.log("posts", posts);
-  console.log("list", list);
   return (
     <>
       <Container>

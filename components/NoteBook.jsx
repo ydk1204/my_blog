@@ -1,8 +1,5 @@
-import dynamic from "next/dynamic";
-const Link = dynamic(import("next/link"));
-
 import { allPosts } from "contentlayer/generated";
-// import Link from "next/link";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const colors = [
@@ -28,7 +25,7 @@ const NoteBook = ({ title = "html", count = 0 }) => {
       .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 
     setSlug(slugs[0]._raw.flattenedPath);
-  }, [slug]);
+  }, [title]);
 
   return (
     <div className="w-60 h-80 bg-slate-700 rounded-md">
