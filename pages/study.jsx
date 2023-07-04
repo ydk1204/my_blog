@@ -1,7 +1,12 @@
-import Container from "../components/Container";
+import dynamic from "next/dynamic";
+
 import { allPosts } from "contentlayer/generated";
-import NoteBook from "../components/NoteBook";
+const Container = dynamic(import("../components/Container"));
+const NoteBook = dynamic(import("../components/NoteBook"));
 import studyList from "../data/studyList";
+
+// import Container from "../components/Container";
+// import NoteBook from "../components/NoteBook";
 
 const Blog = ({ posts, list }) => {
   return (
