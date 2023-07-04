@@ -1,3 +1,7 @@
+import dynamic from "next/dynamic";
+// const { allPosts } = dynamic(import("contentlayer/generated"));
+// const Link = dynamic(import("next/link"));
+
 import { allPosts } from "contentlayer/generated";
 import Link from "next/link";
 
