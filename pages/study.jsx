@@ -15,6 +15,7 @@ const Blog = ({ posts }) => {
       b.title === a.note ? (b.count = b.count + 1) : 0;
     });
   });
+  console.log(list);
   return (
     <>
       <Container>
