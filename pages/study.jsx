@@ -1,12 +1,10 @@
 import dynamic from "next/dynamic";
+const NoteBook = dynamic(import("../components/NoteBook"));
+const Container = dynamic(import("../components/Container"));
 
-import NoteBook from "../components/NoteBook";
 import { allPosts } from "contentlayer/generated";
 import { useState, useEffect } from "react";
-const Container = dynamic(import("../components/Container"));
-// const NoteBook = dynamic(import("../components/NoteBook"));
 // import studyList from "../data/studyList";
-
 // import Container from "../components/Container";
 
 const studyList = [
