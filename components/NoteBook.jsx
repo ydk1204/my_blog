@@ -2,13 +2,6 @@ import { allPosts } from "contentlayer/generated";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
-const colors = [
-  { key: "html", color: "red" },
-  { key: "css", color: "sky" },
-  { key: "js", color: "orange" },
-  { key: "react", color: "cyan" },
-];
-
 const NoteBook = ({ title = "html", count = 0 }) => {
   const getColor = colors.filter((a) => a.key === title)[0].color;
   const [slug, setSlug] = useState("html이란");
@@ -29,9 +22,9 @@ const NoteBook = ({ title = "html", count = 0 }) => {
 
   return (
     <div className="w-60 h-80 bg-slate-700 rounded-md">
-      <Link href={`/study/${title}/${slug}`} legacyBehavior key={title}>
+      {/* <Link href={`/study/${title}/${slug}`} legacyBehavior key={title}>
         <a>{title}</a>
-      </Link>
+      </Link> */}
     </div>
   );
 };
