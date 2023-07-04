@@ -1,12 +1,12 @@
 import dynamic from "next/dynamic";
 
 import { allPosts } from "contentlayer/generated";
-const Container = dynamic(import("../components/Container"));
-const NoteBook = dynamic(import("../components/NoteBook"));
+// const Container = dynamic(import("../components/Container"));
+// const NoteBook = dynamic(import("../components/NoteBook"));
 // import studyList from "../data/studyList";
 
-// import Container from "../components/Container";
-// import NoteBook from "../components/NoteBook";
+import Container from "../components/Container";
+import NoteBook from "../components/NoteBook";
 
 const studyList = [
   { title: "html", count: 0 },
