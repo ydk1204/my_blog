@@ -3,7 +3,11 @@
 import cssMdx from './css.mdx.json' assert { type: 'json' }
 import css2Mdx from './css2.mdx.json' assert { type: 'json' }
 import css3Mdx from './css3.mdx.json' assert { type: 'json' }
-import htmlMdx from './html.mdx.json' assert { type: 'json' }
+import htmlMdx from './html을 시작하며.mdx.json' assert { type: 'json' }
+import Post4 from './html의 태그들.mdx.json' assert { type: 'json' }
+import Post5 from './html이란.mdx.json' assert { type: 'json' }
 import jsMdx from './js.mdx.json' assert { type: 'json' }
+import reactMdx from './react.mdx.json' assert { type: 'json' }
+import mdx from './마무리.mdx.json' assert { type: 'json' }
 
-export const allPosts = [cssMdx, css2Mdx, css3Mdx, htmlMdx, jsMdx]
+export const allPosts = [cssMdx, css2Mdx, css3Mdx, htmlMdx, Post4, Post5, jsMdx, reactMdx, mdx]

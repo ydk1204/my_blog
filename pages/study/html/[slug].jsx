@@ -1,9 +1,10 @@
 import Container from "components/Container";
 import { allPosts } from "contentlayer/generated";
-import { InferGetStaticPropsType } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
+import BookList from "../../../components/BookList";
+import SideBar from "../../../components/SideBar";
 
-const Post = ({ post }) => {
+const Post = ({ post, posts }) => {
   const MDXComponent = useMDXComponent(post.body.code);
   const customMeta = {
     title: post.title,
@@ -13,9 +14,13 @@ const Post = ({ post }) => {
 
   return (
     <Container customMeta={customMeta}>
-      <div className="mt-10 prose">
-        <h1 className="text-sky-700">{post.title}</h1>
-        <MDXComponent />
+      <div className="w-full bg-slate-400 flex flex-row justify-between">
+        <BookList posts={posts} />
+        <div className="prose bg-white w-full">
+          <h1 className="text-white">{post.title}</h1>
+          <MDXComponent />
+        </div>
+        <SideBar />
       </div>
     </Container>
   );
@@ -30,9 +35,15 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   const post = allPosts.find((p) => p._raw.flattenedPath === params.slug);
+
+  const posts = allPosts
+    .filter((a) => a.note === post.note)
+    .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
+
   return {
     props: {
       post,
+      posts,
     },
   };
 };

@@ -5,6 +5,7 @@ const colors = [
   { key: "html", color: "red" },
   { key: "css", color: "sky" },
   { key: "js", color: "orange" },
+  { key: "react", color: "cyan" },
 ];
 
 const NoteBook = ({ title, count, posts }) => {
@@ -15,9 +16,7 @@ const NoteBook = ({ title, count, posts }) => {
     .filter((a) => a.note === title)
     .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 
-  console.log(slugs);
   const slug = slugs[0]._raw.flattenedPath;
-  console.log(slug);
 
   return (
     <Link

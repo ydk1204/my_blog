@@ -2,7 +2,6 @@ import Container from "../components/Container";
 import BlogPost from "../components/BlogPost";
 
 import { allPosts } from "contentlayer/generated";
-import { InferGetStaticPropsType } from "next";
 
 const Blog = ({ posts }) => {
   return (

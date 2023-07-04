@@ -18,7 +18,7 @@ const Container = (props) => {
         <meta property="og:site_name" content={meta.author} />
       </Head>
       <header
-        className={`w-full max-w-3xl flex flex-row justify-between items-center my-1`}
+        className={`w-full max-w-6xl flex flex-row justify-between items-center my-1 mb-10`}
       >
         <div className={`flex flex-row items-center`}>
           <Image
@@ -34,7 +34,7 @@ const Container = (props) => {
         </div>
         <Nav />
       </header>
-      <main className={`w-full max-w-3xl`}>{props.children}</main>
+      <main className={`w-full max-w-6xl`}>{props.children}</main>
     </div>
   );
 };

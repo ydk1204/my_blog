@@ -1,24 +1,9 @@
 import Container from "../components/Container";
-import BlogPost from "../components/BlogPost";
-import Link from "next/link";
 import { allPosts } from "contentlayer/generated";
-import { InferGetStaticPropsType } from "next";
-import { useState, useEffect } from "react";
 import NoteBook from "../components/NoteBook";
 import studyList from "../data/studyList";
 
 const Blog = ({ posts, list }) => {
-  const [notes, setNotes] = useState(studyList);
-
-  // useEffect(() => {
-  //   posts.forEach((post) =>
-  //     setNotes((prev) => ({
-  //       ...prev,
-  //       [post.title]: prev[post.title] === undefined ? 1 : prev[post.title] + 1,
-  //     }))
-  //   );
-  // }, []);
-
   return (
     <>
       <Container>
@@ -49,8 +34,6 @@ export const getStaticProps = async () => {
   let list = studyList;
   posts.forEach((a) => {
     list.forEach((b) => {
-      console.log("a는 ", a.note);
-      console.log("b는 ", b.title);
       b.title === a.note ? (b.count = b.count + 1) : 0;
     });
   });
