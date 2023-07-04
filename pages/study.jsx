@@ -45,14 +45,7 @@ const Blog = ({ posts }) => {
         <h2 className="text-lg mb-4 border-b-white border-b-[1px]">카테고리</h2>
         <div className="flex justify-between">
           {list.map((list, idx) => (
-            <>
-              <NoteBook
-                key={list.title}
-                title={list.title}
-                count={list.count}
-              />
-              <div key={`${list.title}${idx}`}>{list.title}</div>
-            </>
+            <NoteBook key={list.title} title={list.title} count={list.count} />
           ))}
         </div>
       </Container>

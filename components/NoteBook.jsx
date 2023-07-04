@@ -25,19 +25,21 @@ const NoteBook = ({ title, count }) => {
   getSlug(title).then((res) => setSlug(res));
 
   return (
-    <Link
-      href={`/study/${title}/${slug}`}
-      className="w-60 h-80 bg-slate-700 rounded-md"
-    >
-      <div
-        className={`w-full h-5/6 rounded-t-md flex justify-center items-center`}
+    <div>
+      <Link
+        href={`/study/${title}/${slug}`}
+        className="w-60 h-80 bg-slate-700 rounded-md"
       >
-        <p className="text-6xl">{title}</p>
-      </div>
-      <div className="w-full h-1/6 flex justify-center items-center ">
-        <p>포스팅 : {count}</p>
-      </div>
-    </Link>
+        <div
+          className={`w-full h-5/6 rounded-t-md flex justify-center items-center`}
+        >
+          <p className="text-6xl">{title}</p>
+        </div>
+        <div className="w-full h-1/6 flex justify-center items-center ">
+          <p>포스팅 : {count}</p>
+        </div>
+      </Link>
+    </div>
   );
 };
 
