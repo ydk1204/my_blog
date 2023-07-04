@@ -1,5 +1,8 @@
+import dynamic from "next/dynamic";
+const Link = dynamic(import("next/link"));
+
 import { allPosts } from "contentlayer/generated";
-import Link from "next/link";
+// import Link from "next/link";
 
 const colors = [
   { key: "html", color: "red" },
@@ -10,7 +13,7 @@ const colors = [
 
 const NoteBook = ({ title, count }) => {
   const getColor = colors.filter((a) => a.key === title)[0].color;
-  const customColor = `bg-${getColor}-500`;
+  // const customColor = `bg-${getColor}-500`;
 
   const slugs = allPosts
     .filter((a) => a.note === title)
@@ -25,7 +28,7 @@ const NoteBook = ({ title, count }) => {
       className="w-60 h-80 bg-slate-700 rounded-md"
     >
       <div
-        className={`w-full h-5/6 ${customColor} rounded-t-md flex justify-center items-center`}
+        className={`w-full h-5/6 rounded-t-md flex justify-center items-center`}
       >
         <p className="text-6xl">{title}</p>
       </div>

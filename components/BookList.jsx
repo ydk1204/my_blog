@@ -10,6 +10,7 @@ const BookList = ({ posts }) => {
               <Link
                 href={`/study/${post.note}/${post._raw.flattenedPath}`}
                 legacyBehavior
+                key={post.title}
               >
                 <a>{post.title}</a>
               </Link>
