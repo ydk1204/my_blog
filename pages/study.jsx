@@ -8,7 +8,13 @@ import studyList from "../data/studyList";
 // import Container from "../components/Container";
 // import NoteBook from "../components/NoteBook";
 
-const Blog = ({ posts, list }) => {
+const Blog = ({ posts }) => {
+  let list = studyList;
+  posts.forEach((a) => {
+    list.forEach((b) => {
+      b.title === a.note ? (b.count = b.count + 1) : 0;
+    });
+  });
   return (
     <>
       <Container>
@@ -36,17 +42,16 @@ export const getStaticProps = async () => {
     .filter((a) => a.tag === "study")
     .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 
-  let list = studyList;
-  posts.forEach((a) => {
-    list.forEach((b) => {
-      b.title === a.note ? (b.count = b.count + 1) : 0;
-    });
-  });
+  // let list = studyList;
+  // posts.forEach((a) => {
+  //   list.forEach((b) => {
+  //     b.title === a.note ? (b.count = b.count + 1) : 0;
+  //   });
+  // });
 
   return {
     props: {
       posts,
-      list,
     },
   };
 };
