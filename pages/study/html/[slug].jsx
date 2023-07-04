@@ -12,6 +12,8 @@ const Post = ({ post, posts }) => {
     date: new Date(post.date).toISOString(),
   };
 
+  console.log("버그 존재 확인 중");
+
   return (
     <Container customMeta={customMeta}>
       <div className="w-full bg-slate-400 flex flex-row justify-between">
