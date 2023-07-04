@@ -12,7 +12,7 @@ const colors = [
   { key: "react", color: "cyan" },
 ];
 
-const NoteBook = ({ title, count, posts }) => {
+const NoteBook = ({ title, count }) => {
   const getColor = colors.filter((a) => a.key === title)[0].color;
   const customColor = `bg-${getColor}-500`;
 
@@ -38,26 +38,6 @@ const NoteBook = ({ title, count, posts }) => {
       </div>
     </Link>
   );
-};
-
-const getPath = async (title) => {
-  const posts = allPosts
-    .filter((a) => a.note === title)
-    .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
-
-  return posts[0]._raw.flattenedPath;
-};
-
-export const getStaticProps = async () => {
-  const posts = allPosts
-    .filter((a) => a.note === title)
-    .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
-
-  return {
-    props: {
-      posts,
-    },
-  };
 };
 
 export default NoteBook;
