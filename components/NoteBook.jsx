@@ -12,9 +12,9 @@ const colors = [
   { key: "react", color: "cyan" },
 ];
 
-const NoteBook = ({ title, count }) => {
+const NoteBook = ({ title = "html", count = 0 }) => {
   const getColor = colors.filter((a) => a.key === title)[0].color;
-  const [slug, setSlug] = useState("");
+  const [slug, setSlug] = useState("html이란");
   // const customColor = `bg-${getColor}-500`;
 
   // const slugs = allPosts
@@ -28,21 +28,12 @@ const NoteBook = ({ title, count }) => {
       .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 
     setSlug(slugs[0]._raw.flattenedPath);
-  }, []);
+  }, [slug]);
 
   return (
     <div className="w-60 h-80 bg-slate-700 rounded-md">
       <Link href={`/study/${title}/${slug}`} legacyBehavior key={title}>
-        <a>
-          <div
-            className={`w-full h-5/6 rounded-t-md flex justify-center items-center`}
-          >
-            <p className="text-6xl">{title}</p>
-          </div>
-          <div className="w-full h-1/6 flex justify-center items-center ">
-            <p>포스팅 : {count}</p>
-          </div>
-        </a>
+        <a>{title}</a>
       </Link>
     </div>
   );
