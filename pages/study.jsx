@@ -1,12 +1,13 @@
 import dynamic from "next/dynamic";
 
 import { allPosts } from "contentlayer/generated";
-// const Container = dynamic(import("../components/Container"));
-// const NoteBook = dynamic(import("../components/NoteBook"));
+import { useState, useEffect } from "react";
+const Container = dynamic(import("../components/Container"));
+const NoteBook = dynamic(import("../components/NoteBook"));
 // import studyList from "../data/studyList";
 
-import Container from "../components/Container";
-import NoteBook from "../components/NoteBook";
+// import Container from "../components/Container";
+// import NoteBook from "../components/NoteBook";
 
 const studyList = [
   { title: "html", count: 0 },
@@ -16,13 +17,26 @@ const studyList = [
 ];
 
 const Blog = ({ posts }) => {
-  let list = studyList;
-  posts.forEach((a) => {
-    list.forEach((b) => {
-      b.title === a.note ? (b.count = b.count + 1) : 0;
+  const [list, setList] = useState(studyList);
+  useEffect(() => {
+    let lists = list;
+    posts.forEach((a) => {
+      lists.forEach((b) => {
+        b.title === a.note ? (b.count = b.count + 1) : 0;
+      });
     });
-  });
-  console.log(list);
+    setList((prev) => lists);
+  }, []);
+  // let list = studyList;
+  // posts.forEach((a) => {
+  //   list.forEach((b) => {
+  //     b.title === a.note ? (b.count = b.count + 1) : 0;
+  //   });
+  // });
+
+  console.log("notebook 컴포넌트", NoteBook);
+  console.log("posts", posts);
+  console.log("list", list);
   return (
     <>
       <Container>
