@@ -8,7 +8,7 @@ const RecentPosts = ({ posts }) => {
         {posts?.slice(0, 5).map((post) => (
           <Link
             key={post._id}
-            href={`/${post.tag}/${post._raw.flattenedPath}`}
+            href={`/${post.tag}/${post.note}/${post._raw.flattenedPath}`}
             passHref
             legacyBehavior
           >

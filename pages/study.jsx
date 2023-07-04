@@ -1,13 +1,13 @@
 import dynamic from "next/dynamic";
 
+import NoteBook from "../components/NoteBook";
 import { allPosts } from "contentlayer/generated";
 import { useState, useEffect } from "react";
 const Container = dynamic(import("../components/Container"));
-const NoteBook = dynamic(import("../components/NoteBook"));
+// const NoteBook = dynamic(import("../components/NoteBook"));
 // import studyList from "../data/studyList";
 
 // import Container from "../components/Container";
-// import NoteBook from "../components/NoteBook";
 
 const studyList = [
   { title: "html", count: 0 },
@@ -46,13 +46,9 @@ const Blog = ({ posts }) => {
         </div>
         <h2 className="text-lg mb-4 border-b-white border-b-[1px]">카테고리</h2>
         <div className="flex justify-between">
-          {posts?.length !== 0 ? (
-            list?.map((list, idx) => (
-              <NoteBook key={idx} title={list.title} count={list.count} />
-            ))
-          ) : (
-            <div>아직 포스팅이 없습니다.</div>
-          )}
+          {list.map((list, idx) => (
+            <NoteBook key={idx} title={list.title} count={list.count} />
+          ))}
         </div>
       </Container>
     </>
