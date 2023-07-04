@@ -3,11 +3,15 @@ import bookColor from "../data/bookColor";
 import { useState, useEffect } from "react";
 
 const NoteBook = ({ title = "", count, posts = [] }) => {
+  // slug = 경로(post 파일이름)
   const [slug, setSlug] = useState("");
+
+  // 전체 포스트 중에서 같은 항목(ex_html)의 포스트 선별
   useEffect(() => {
     getPath(title, posts).then((res) => setSlug(res));
   }, [title, posts]);
 
+  // 해당 컴포넌트의 항목 별 색상코드 부여
   const getColor = bookColor.filter((a) => a.key === title)[0];
   const customColor = getColor.color;
 

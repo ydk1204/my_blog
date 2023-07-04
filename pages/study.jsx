@@ -1,19 +1,9 @@
-import dynamic from "next/dynamic";
-// const NoteBook = dynamic(import("../components/NoteBook"));
-// const Container = dynamic(import("../components/Container"));
-
 import Container from "../components/Container";
 import NoteBook from "../components/NoteBook";
 import { allPosts } from "contentlayer/generated";
-import { useState, useEffect } from "react";
 import studyList from "../data/studyList";
 
 const Blog = ({ posts, lists }) => {
-  // const [list, setList] = useState(studyList);
-  // useEffect(() => {
-
-  //   setList((prev) => lists);
-  // }, [list, posts]);
   return (
     <>
       <Container>
@@ -37,6 +27,7 @@ const Blog = ({ posts, lists }) => {
   );
 };
 
+// 포스팅 항목 중 tag === study 인 경우만 filter + study 항목 별 포스팅 수 계산
 export const getStaticProps = async () => {
   const posts = allPosts
     .filter((a) => a.tag === "study")
