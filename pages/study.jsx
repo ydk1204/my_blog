@@ -42,7 +42,7 @@ const Blog = ({ posts }) => {
         <h2 className="text-lg mb-4 border-b-white border-b-[1px]">카테고리</h2>
         <div className="flex justify-between">
           {list.map((list, idx) => (
-            <NoteBook key={list.title} title={list.title} count={list.count} />
+            <NoteBook key={idx} />
           ))}
         </div>
       </Container>
@@ -54,13 +54,6 @@ export const getStaticProps = async () => {
   const posts = allPosts
     .filter((a) => a.tag === "study")
     .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
-
-  // let list = studyList;
-  // posts.forEach((a) => {
-  //   list.forEach((b) => {
-  //     b.title === a.note ? (b.count = b.count + 1) : 0;
-  //   });
-  // });
 
   return {
     props: {
