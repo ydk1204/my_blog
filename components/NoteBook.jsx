@@ -19,13 +19,13 @@ const NoteBook = ({ title = "html", count = 0 }) => {
   //   .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 
   // const slug = slugs[0]._raw.flattenedPath;
-  useEffect(() => {
-    const slugs = allPosts
-      .filter((a) => a.note === title)
-      .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
+  // useEffect(() => {
+  //   const slugs = allPosts
+  //     .filter((a) => a.note === title)
+  //     .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 
-    setSlug(slugs[0]._raw.flattenedPath);
-  }, [title]);
+  //   setSlug(slugs[0]._raw.flattenedPath);
+  // }, [title]);
 
   return (
     <div className="w-60 h-80 bg-slate-700 rounded-md">
