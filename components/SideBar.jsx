@@ -38,6 +38,8 @@ const SideBar = ({ post }) => {
     });
   }, [post, router.asPath]);
 
+  console.log(currentId);
+
   return (
     <>
       <aside className="w-52 bg-slate-600 border-white border-[1px] rounded-lg fixed inset-y-0 right-0 flex flex-col">

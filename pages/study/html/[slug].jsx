@@ -14,7 +14,7 @@ const Post = ({ post, posts }) => {
 
   return (
     <Container customMeta={customMeta}>
-      <div className="w-full bg-slate-400 flex flex-row justify-between">
+      <div className="w-full min-h-[80rem] h-full bg-slate-400 flex flex-row justify-between">
         <BookList posts={posts} title={post.title} />
         <div className="prose bg-white w-full">
           <h1 className="text-white">{post.title}</h1>
