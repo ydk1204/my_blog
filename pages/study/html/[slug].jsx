@@ -3,6 +3,7 @@ import { allPosts } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import BookList from "../../../components/BookList";
 import SideBar from "../../../components/SideBar";
+import Toc from "../../../components/Toc";
 
 const Post = ({ post, posts }) => {
   const MDXComponent = useMDXComponent(post.body.code);
@@ -20,7 +21,8 @@ const Post = ({ post, posts }) => {
           <h1 className="text-white">{post.title}</h1>
           <MDXComponent />
         </div>
-        <SideBar post={post} />
+        {/* <SideBar post={post} /> */}
+        <Toc post={post} />
       </div>
     </Container>
   );
