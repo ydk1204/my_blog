@@ -2,6 +2,7 @@ import Head from "next/head";
 import Nav from "./Nav";
 import metadata from "../data/metadata";
 import Image from "next/image";
+import Footer from "./Footer";
 
 const Container = (props) => {
   const meta = {
@@ -35,6 +36,7 @@ const Container = (props) => {
         <Nav />
       </header>
       <main className={`w-full max-w-6xl`}>{props.children}</main>
+      <Footer />
     </div>
   );
 };
