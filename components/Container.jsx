@@ -12,7 +12,10 @@ const Container = (props) => {
     ...props.customMeta,
   };
   return (
-    <div className={`w-full flex flex-col items-center p-3`}>
+    <div
+      class="scroll-smooth"
+      className={`w-full flex flex-col items-center p-3 scroll-smooth`}
+    >
       <Head>
         <title>{metadata.title}</title>
         <meta content={meta.description} name="description" />

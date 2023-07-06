@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import getObserver from "../lib/ob";
+import getObserver from "../lib/observer";
 
 const TOC = ({ post }) => {
   const router = useRouter();
@@ -19,6 +19,9 @@ const TOC = ({ post }) => {
       .querySelector("main")
       ?.querySelectorAll("h1, h2, h3");
 
+    // IntersectionObserver들이 들어갈 배열 ( 이벤트 해제를 위해 )
+    const IOList = [];
+
     // 만약 여기서 오류가 난다면 "spread opeartor"는 es6부터 지원되는 문법이라서 그 이전에 사용하기 위해서는 "downlevelIteration"에 대해서 찾아보면 된다.
     [...hNodeList].forEach((node) => {
       // 목차 내용이랑 사이즈 구해서 저장
@@ -29,9 +32,6 @@ const TOC = ({ post }) => {
         return [...prev, { index, size }];
       });
 
-      // indexList.push({ index });
-      // console.log(indexList);
-
       // 3. 각 <h*>에 id로 현재 컨텐츠 내용 추가
       node.id = index;
 
@@ -40,34 +40,42 @@ const TOC = ({ post }) => {
       observer.observe(node);
 
       // 이벤트 해제를 위해 등록
-      // IOList.push(IO);
+      IOList.push(observer);
     });
 
     // 이벤트 해제
-    // return () => IOList.forEach((IO) => IO.disconnect());
+    return () => IOList.forEach((observer) => observer.disconnect());
   }, [router.asPath]);
 
   return (
-    <aside className="fixed top-10 right-10 border-l-4 border-indigo-400 px-4 py-2 text-black bg-white z-10">
+    <aside className="fixed w-60 top-10 right-10 border-l-4 border-indigo-400 px-4 py-2 text-black bg-white z-10">
       <ul>
-        {indexList.map(({ index }) => (
+        {indexList.map(({ index, size }) => (
           <li
             key={index}
-            className={`transition-all ${`hover:text-blue-600`}
-              ${currentIndex === index && "text-indigo-400 scale-105"}
+            onClick={() => isScrollView(index)}
+            className={`cursor-pointer transition-all ${`hover:text-blue-600`}
+              ${
+                size === 0
+                  ? "text-xl"
+                  : size === 20
+                  ? "text-base ml-4"
+                  : "text-sm ml-8"
+              }
+              ${currentIndex === index && "text-indigo-400 scale-105 ml-0"}
             `}
           >
-            <Link
-              legacyBehavior
-              href={`/${post.tag}/${post.note}/${post._raw.flattenedPath}/#${index}`}
-            >
-              <a>{index}</a>
-            </Link>
+            {index}
           </li>
         ))}
       </ul>
     </aside>
   );
+};
+
+export const isScrollView = (index) => {
+  var getMeTo = document.getElementById(index);
+  getMeTo.scrollIntoView({ behavior: "smooth" }, true);
 };
 
 export default TOC;
