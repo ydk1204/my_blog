@@ -1,12 +1,18 @@
 import Link from "next/link";
+import { useContext } from "react";
+import { lightTheme } from "../styles/theme";
+import { ThemeContext } from "../pages/_app";
 
 const BookList = ({ posts, title }) => {
+  const { colorTheme } = useContext(ThemeContext);
   return (
     <>
-      <aside className="w-60 border-r-[1px] border-r-white flex flex-col items-center pl-7 pt-4 bg-slate-900">
+      <aside
+        className={`w-48 border-r-2 border-r-orange-400 flex flex-col items-center pl-7`}
+      >
         <ul>
           {posts?.map((post) => (
-            <li key={post.title}>
+            <li key={post.title} className="duration-300 transition-all ">
               <Link
                 href={`/study/${post.note}/${post._raw.flattenedPath}`}
                 legacyBehavior
@@ -14,8 +20,8 @@ const BookList = ({ posts, title }) => {
               >
                 <a
                   className={`${
-                    title === post.title && "text-green-500 duration-300"
-                  }`}
+                    title === post.title && "text-orange-400 scale-105"
+                  } `}
                 >
                   {post.title}
                 </a>

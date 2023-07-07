@@ -48,13 +48,13 @@ const TOC = ({ post }) => {
   }, [router.asPath]);
 
   return (
-    <aside className="fixed w-60 top-10 right-10 border-l-4 border-indigo-400 px-4 py-2 text-black bg-white z-10">
+    <aside className="fixed w-60 top-52 right-14 border-l-4 border-orange-400 px-4 py-2 z-10">
       <ul>
         {indexList.map(({ index, size }) => (
           <li
             key={index}
             onClick={() => isScrollView(index)}
-            className={`cursor-pointer transition-all ${`hover:text-blue-600`}
+            className={`cursor-pointer transition-all ${`hover:text-amber-600`}
               ${
                 size === 0
                   ? "text-xl"
@@ -62,7 +62,7 @@ const TOC = ({ post }) => {
                   ? "text-base ml-4"
                   : "text-sm ml-8"
               }
-              ${currentIndex === index && "text-indigo-400 scale-105 ml-0"}
+              ${currentIndex === index && "text-orange-400 scale-105 ml-0"}
             `}
           >
             {index}

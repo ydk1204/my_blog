@@ -3,8 +3,14 @@ import Nav from "./Nav";
 import metadata from "../data/metadata";
 import Image from "next/image";
 import Footer from "./Footer";
+import { useContext } from "react";
+import { lightTheme } from "../styles/theme";
+import { ThemeContext } from "../pages/_app";
+import Link from "next/link";
 
 const Container = (props) => {
+  const { colorTheme } = useContext(ThemeContext);
+
   const meta = {
     title: metadata.title,
     description: metadata.description,
@@ -13,8 +19,11 @@ const Container = (props) => {
   };
   return (
     <div
-      class="scroll-smooth"
-      className={`w-full flex flex-col items-center p-3 scroll-smooth`}
+      className={`w-full flex flex-col items-center duration-300 p-3 scroll-smooth ${
+        colorTheme === lightTheme
+          ? "bg-white text-black"
+          : "bg-zinc-900 text-white"
+      }`}
     >
       <Head>
         <title>{metadata.title}</title>
@@ -22,9 +31,14 @@ const Container = (props) => {
         <meta property="og:site_name" content={meta.author} />
       </Head>
       <header
-        className={`w-full max-w-6xl flex flex-row justify-between items-center my-1 mb-10`}
+        className={`w-full h-16 top-0 duration-300 max-w-6xl flex flex-row justify-between items-center mb-10
+        pb-2 shadow-head fixed z-[999] ${
+          colorTheme === lightTheme
+            ? "bg-white text-black"
+            : "bg-zinc-900 text-white"
+        }`}
       >
-        <div className={`flex flex-row items-center`}>
+        <Link className={`flex flex-row items-center`} href={"/"}>
           <Image
             src={"/logo.png"}
             alt="로고"
@@ -35,10 +49,10 @@ const Container = (props) => {
           <span className={`mx-2 font-extralight text-lg`}>
             {metadata.title}
           </span>
-        </div>
+        </Link>
         <Nav />
       </header>
-      <main className={`w-full max-w-6xl`}>{props.children}</main>
+      <main className={`w-full max-w-6xl mt-20`}>{props.children}</main>
       <Footer />
     </div>
   );

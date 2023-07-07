@@ -2,16 +2,32 @@ import Container from "../components/Container";
 import NoteBook from "../components/NoteBook";
 import { allPosts } from "contentlayer/generated";
 import studyList from "../data/studyList";
+import { lightTheme, ColorTheme } from "../styles/theme";
+import { useContext } from "react";
+import { ThemeContext } from "../pages/_app";
 
 const Blog = ({ posts, lists }) => {
+  const { colorTheme } = useContext(ThemeContext);
   return (
     <>
       <Container>
-        <div className="h-40 max-h-[12rem] bg-gray-500/40 flex flex-col justify-center items-center text-white rounded-md mb-10">
+        <div
+          className={`h-40 max-h-[12rem] flex flex-col duration-300 justify-center items-center rounded-md mb-10 ${
+            colorTheme === lightTheme
+              ? "text-black bg-gray-500"
+              : "text-white bg-gray-500/40"
+          }`}
+        >
           <h1 className="text-4xl mb-4">Study Room</h1>
           <p className="text-lg">공부노트, 주제별 구분</p>
         </div>
-        <h2 className="text-lg mb-4 border-b-white border-b-[1px]">카테고리</h2>
+        <h2
+          className={`text-lg mb-4  border-b-[1px] ${
+            colorTheme === lightTheme ? "border-b-black" : "border-b-white"
+          }`}
+        >
+          카테고리
+        </h2>
         <div className="flex justify-between">
           {lists?.map((list, idx) => (
             <NoteBook

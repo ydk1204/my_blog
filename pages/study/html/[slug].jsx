@@ -3,8 +3,13 @@ import { allPosts } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import BookList from "../../../components/BookList";
 import Toc from "../../../components/Toc";
+import { useContext } from "react";
+import { lightTheme, ColorTheme } from "../../../styles/theme";
+import { ThemeContext } from "../../_app";
 
 const Post = ({ post, posts }) => {
+  const { colorTheme } = useContext(ThemeContext);
+
   const MDXComponent = useMDXComponent(post.body.code);
   const customMeta = {
     title: post.title,
@@ -14,11 +19,17 @@ const Post = ({ post, posts }) => {
 
   return (
     <Container customMeta={customMeta}>
-      <div className="w-full min-h-[80rem] h-full bg-slate-400 flex flex-row justify-between">
+      <div className="w-full min-h-[80rem] h-full flex flex-row justify-start">
         <BookList posts={posts} title={post.title} />
-        <div className="prose bg-white w-full">
-          <h1 className="text-white">{post.title}</h1>
-          <MDXComponent />
+        <div
+          className={`prose w-full ml-6 ${
+            colorTheme === lightTheme ? "" : "dark:prose-invert"
+          }`}
+        >
+          <h1 className="">{post.title}</h1>
+          <div>
+            <MDXComponent />
+          </div>
         </div>
         <Toc post={post} />
       </div>
