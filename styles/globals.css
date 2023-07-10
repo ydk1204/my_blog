@@ -19,6 +19,121 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.note-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 80px;
+  margin-bottom: 2em;
+}
+
+.note-container .note-card {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  border-radius: 20px;
+  border-top-left-radius: 70px;
+  overflow: hidden;
+  background: var(--clr);
+}
+
+.note-container .note-card .note-box {
+  position: absolute;
+  inset: 10px;
+  border-radius: 10px;
+}
+
+.note-container .note-card .note-box .note-icon {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-bottom-right-radius: 50%;
+  transition: 0.5s;
+  background: var(--clr);
+}
+
+.note-container .note-card .note-box .note-icon::before {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  transition: all 0.5s ease-in-out;
+  border-top-left-radius: 30px;
+  box-shadow: -5px -5px 0 5px var(--clr);
+}
+
+.note-container .note-card .note-box .note-icon::after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  right: -30px;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border-top-left-radius: 30px;
+  box-shadow: -5px -5px 0 5px var(--clr);
+}
+
+.note-container .note-card .note-box .note-icon .note-iconBox {
+  position: absolute;
+  inset: 10px;
+  border-radius: 50%;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  display: flex;
+  transition: all 0.7s ease-in-out;
+  justify-content: center;
+  align-items: center;
+}
+
+.note-container .note-card .note-box .note-content {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+}
+
+.note-container .note-card:hover .note-box .note-content {
+  transform: translateY(-5%);
+}
+
+.note-container .note-card .note-box .note-content h3 {
+  font-size: 2.35em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.3em;
+}
+
+.note-container .note-card .note-box .note-content p {
+  font-size: 0.95em;
+  opacity: 0.75;
+  margin-bottom: 2.4em;
+}
+
+.note-container .note-card .note-box .note-content a {
+  display: inline-block;
+  padding: 10px 25px;
+  text-transform: uppercase;font-weight: 600;
+  border-radius: 30px;
+  transition: 0.5s;
+}
+
+.note-container .note-card .note-box .note-content a:hover {
+  letter-spacing: 0.2em;
+}
+
 /* 
 @media (prefers-color-scheme: dark) {
   html {

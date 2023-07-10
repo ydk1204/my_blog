@@ -28,7 +28,7 @@ const Blog = ({ posts, lists }) => {
         >
           카테고리
         </h2>
-        <div className="flex justify-between">
+        <div className="grid gap-3 xl:grid-cols-3 lg:grid-cols-2 place-items-center">
           {lists?.map((list, idx) => (
             <NoteBook
               key={idx}
