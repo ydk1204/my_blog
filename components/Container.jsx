@@ -31,8 +31,8 @@ const Container = (props) => {
         <meta property="og:site_name" content={meta.author} />
       </Head>
       <header
-        className={`w-full h-16 top-0 duration-300 max-w-6xl flex flex-row justify-between items-center mb-10
-        pb-2 shadow-head fixed z-[999] ${
+        className={`w-full h-[4.5rem] top-0 duration-300 max-w-6xl flex flex-row justify-between items-center 
+        shadow-head fixed z-[999] ${
           colorTheme === lightTheme
             ? "bg-white text-black"
             : "bg-zinc-900 text-white"

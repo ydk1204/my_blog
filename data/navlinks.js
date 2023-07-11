@@ -1,9 +1,9 @@
 const navlinks = [
-  { title: "Home", link: "/" },
-  { title: "Study", link: "/study" },
-  { title: "Projects", link: "/projects" },
-  { title: "Game", link: "/game" },
-  { title: "About Me", link: "/about" },
+  { title: "Home", link: "/", logo: '/home.svg' },
+  { title: "STUDY", link: "/study", logo: '/study.svg' },
+  { title: "PROJECTS", link: "/projects", logo: '/projects.svg' },
+  { title: "GAME", link: "/game", logo: '/game.svg' },
+  { title: "ABOUT ME", link: "/about", logo: '/about.svg' },
 ]
 
 export default navlinks;
