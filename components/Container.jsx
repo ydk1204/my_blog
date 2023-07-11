@@ -31,14 +31,14 @@ const Container = (props) => {
         <meta property="og:site_name" content={meta.author} />
       </Head>
       <header
-        className={`w-full h-[4.5rem] top-0 duration-300 max-w-6xl flex flex-row justify-between items-center 
+        className={`w-fit sm:w-full h-[4.5rem] top-0 duration-300 max-w-6xl flex flex-row justify-between items-center 
         shadow-head fixed z-[999] ${
           colorTheme === lightTheme
             ? "bg-white text-black"
             : "bg-zinc-900 text-white"
         }`}
       >
-        <Link className={`flex flex-row items-center`} href={"/"}>
+        <Link className={`hidden flex-row items-center md:flex`} href={"/"}>
           <Image
             src={"/logo.png"}
             alt="로고"
@@ -46,9 +46,7 @@ const Container = (props) => {
             height={40}
             className={`rounded-full object-cover`}
           />
-          <span className={`mx-2 font-extralight text-lg`}>
-            {metadata.title}
-          </span>
+          <span className={`mx-2 font-bold text-lg`}>{metadata.title}</span>
         </Link>
         <Nav />
       </header>
