@@ -12,6 +12,7 @@ const options = {
 };
 
 const Home = ({ posts }) => {
+  const imgRef = useRef(null);
   const [instance, setInstance] = useState(null);
 
   // 텍스트 이펙트를 주는 object가 뷰포트에서 대략 절반이상 안 보이면 정지(freeze),
@@ -44,8 +45,10 @@ const Home = ({ posts }) => {
             width={100}
             height={45}
             layout={`responsive`}
+            onLoadingComplete={() => imgRef.current.remove()}
             className={`rounded-3xl object-fill`}
           />
+          <div className="img-animation" ref={imgRef}></div>
           <div
             className={`absolute top-[3rem] md:top-[7rem] lg:top-[10rem] font-extrabold text-white text-2xl md:text-[4rem] lg:text-[5rem] text flex justify-center w-full drop-shadow-lg`}
           >

@@ -21,11 +21,13 @@ const Nav = () => {
     setAsPath((prev) =>
       currentPath === "" ? "Home" : currentPath.toUpperCase()
     );
-  }, []);
+  }, [router.asPath]);
 
   const DarkModeToggle = () => {
     toggleColorTheme();
   };
+
+  console.log(router.asPath);
 
   return (
     <nav className="navigation">
@@ -34,9 +36,7 @@ const Nav = () => {
           <>
             <li
               key={idx}
-              className={`list ${
-                nav.title.slice(0, 3) === asPath.slice(0, 3) ? "active" : ""
-              }`}
+              className={`list ${nav.title === asPath ? "active" : ""}`}
             >
               <Link href={nav.link} key={idx}>
                 <Image
@@ -58,7 +58,7 @@ const Nav = () => {
       <button onClick={DarkModeToggle}>
         <Image
           src={`/${colorTheme === lightTheme ? "sun.png" : "moon.png"}`}
-          className={`mx-0 sm:mx-4`}
+          className={`ml-1 sm:mx-4`}
           width={25}
           height={5}
           alt="theme icon"

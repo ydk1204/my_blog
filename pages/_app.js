@@ -2,6 +2,7 @@ import '../styles/globals.css';
 import { createContext } from "react";
 import { lightTheme, darkTheme, ColorTheme } from "../styles/theme";
 import { useDarkMode } from '../lib/useDarkMode';
+import AppLayout from '../components/AppLayout';
 
 export const ThemeContext = createContext({
   colorTheme: lightTheme,
@@ -15,7 +16,9 @@ function MyApp({ Component, pageProps }) {
   const { colorTheme, toggleColorTheme } = useDarkMode();
   return (
     <ThemeContext.Provider value={{ colorTheme, toggleColorTheme}} >
-      <Component {...pageProps} />
+      <AppLayout>
+        <Component {...pageProps} />
+      </AppLayout>
     </ThemeContext.Provider>
   )
 }
