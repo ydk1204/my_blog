@@ -3,7 +3,7 @@ const navlinks = [
   { title: "STUDY", link: "/study", logo: '/study.svg' },
   { title: "PROJECTS", link: "/projects", logo: '/projects.svg' },
   { title: "GAME", link: "/game", logo: '/game.svg' },
-  { title: "ABOUT ME", link: "/about", logo: '/about.svg' },
+  { title: "PROFILE", link: "/profile", logo: '/profile.svg' },
 ]
 
 export default navlinks;

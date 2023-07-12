@@ -58,7 +58,7 @@ const Nav = () => {
       <button onClick={DarkModeToggle}>
         <Image
           src={`/${colorTheme === lightTheme ? "sun.png" : "moon.png"}`}
-          className={`ml-2`}
+          className={`mx-0 sm:mx-4`}
           width={25}
           height={5}
           alt="theme icon"

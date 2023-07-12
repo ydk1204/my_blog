@@ -31,7 +31,7 @@ const Container = (props) => {
         <meta property="og:site_name" content={meta.author} />
       </Head>
       <header
-        className={`w-fit sm:w-full h-[4.5rem] top-0 duration-300 max-w-6xl flex flex-row justify-between items-center 
+        className={`w-full sm:w-full h-[4.5rem] top-0 duration-300 max-w-6xl flex flex-row justify-center items-center md:justify-between md:items-center 
         shadow-head fixed z-[999] ${
           colorTheme === lightTheme
             ? "bg-white text-black"
@@ -40,13 +40,12 @@ const Container = (props) => {
       >
         <Link className={`hidden flex-row items-center md:flex`} href={"/"}>
           <Image
-            src={"/logo.png"}
+            src={"/mainLogo.png"}
             alt="로고"
             width={40}
             height={40}
-            className={`rounded-full object-cover`}
+            className={`object-cover`}
           />
-          <span className={`mx-2 font-bold text-lg`}>{metadata.title}</span>
         </Link>
         <Nav />
       </header>
