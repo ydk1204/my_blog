@@ -36,7 +36,9 @@ const Nav = () => {
           <>
             <li
               key={idx}
-              className={`list ${nav.title === asPath ? "active" : ""}`}
+              className={`list ${
+                nav.title.slice(0, 4) === asPath.slice(0, 4) ? "active" : ""
+              }`}
             >
               <Link href={nav.link} key={idx}>
                 <Image
