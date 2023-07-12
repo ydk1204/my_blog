@@ -38,7 +38,10 @@ const Container = (props) => {
             : "bg-zinc-900 text-white"
         }`}
       >
-        <Link className={`hidden flex-row items-center md:flex`} href={"/"}>
+        <Link
+          className={`hidden flex-row items-center md:flex mx-2`}
+          href={"/"}
+        >
           <Image
             src={"/mainLogo.png"}
             alt="로고"
