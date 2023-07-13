@@ -3,6 +3,7 @@ import { createContext } from "react";
 import { lightTheme, darkTheme, ColorTheme } from "../styles/theme";
 import { useDarkMode } from '../lib/useDarkMode';
 import AppLayout from '../components/AppLayout';
+import { useClickIndex } from '../lib/useClickIndex';
 
 export const ThemeContext = createContext({
   colorTheme: lightTheme,
@@ -11,14 +12,24 @@ export const ThemeContext = createContext({
   },
 });
 
+export const ModalContext = createContext({
+  isClickIndex: false,
+  toggleModal: () => {
+    return null
+  }
+})
+
 
 function MyApp({ Component, pageProps }) {
   const { colorTheme, toggleColorTheme } = useDarkMode();
+  const { isClickIndex, toggleModal } = useClickIndex();
   return (
     <ThemeContext.Provider value={{ colorTheme, toggleColorTheme}} >
-      <AppLayout>
-        <Component {...pageProps} />
-      </AppLayout>
+      <ModalContext.Provider value={{isClickIndex, toggleModal }}>
+        <AppLayout {...pageProps}>
+          <Component {...pageProps} />
+        </AppLayout>
+      </ModalContext.Provider>
     </ThemeContext.Provider>
   )
 }

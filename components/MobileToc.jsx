@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import getObserver from "../lib/observer";
+import { ModalContext } from "../pages/_app";
 
 const TOC = ({ post }) => {
+  const { isClickIndex, toggleModal } = useContext(ModalContext);
   const router = useRouter();
   // 목차 리스트 ( index: 목차, size: 목차의 크기 ( h1~h6는 크기를 다르게 렌더링해주기 위함 ) )
   const [indexList, setIndexList] = useState([]);
@@ -48,12 +50,12 @@ const TOC = ({ post }) => {
   }, [router.asPath]);
 
   return (
-    <aside className="border-l-4 border-orange-400 px-4 py-2 z-10">
+    <aside className="border-[1px] xl:border-0 xl:border-l-4 border-orange-400 xl:px-4 xl:py-2 z-10">
       <ul>
         {indexList.map(({ index, size }) => (
           <li
             key={index}
-            onClick={() => isScrollView(index)}
+            onClick={() => isScrollView(index, toggleModal)}
             className={`cursor-pointer transition-all ${`hover:text-amber-600`}
               ${
                 size === 0
@@ -73,10 +75,13 @@ const TOC = ({ post }) => {
   );
 };
 
-export const isScrollView = (index) => {
-  console.log(index, typeof index);
+export const isScrollView = (index, toggleModal) => {
   var getMeTo = document.getElementById(index);
-  getMeTo.scrollIntoView({ behavior: "smooth" }, true);
+  // var getWidth = document.body.offsetWidth;
+  // console.log(getWidth);
+  getMeTo?.scrollIntoView({ behavior: "smooth" }, true);
+  // if (getWidth < 1280) toggleModal("mobile", "index");
+  // else toggleModal("pc", "index");
 };
 
 export default TOC;

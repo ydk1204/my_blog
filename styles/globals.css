@@ -20,6 +20,10 @@ a {
   box-sizing: border-box;
 }
 
+.menuBtn {
+  position: fixed;
+}
+
 .note-container {
   display: flex;
   justify-content: center;
@@ -137,6 +141,16 @@ a {
 /* .svg-color-filter {
   filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(108deg) brightness(104%) contrast(104%);
 } */
+
+/* menuBtn */
+.menuBtn {
+  width: 100%;
+  position: fixed;
+  bottom: 8px;
+  right: 16px;
+  background: cyan;
+}
+
 
 /* Navbar */
 

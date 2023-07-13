@@ -27,8 +27,6 @@ const Nav = () => {
     toggleColorTheme();
   };
 
-  console.log(router.asPath);
-
   return (
     <nav className="navigation">
       <ul>

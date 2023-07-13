@@ -17,12 +17,14 @@ const Post = ({ post, posts }) => {
     date: new Date(post.date).toISOString(),
   };
 
+  console.log("post", post);
+
   return (
     <Container customMeta={customMeta}>
-      <div className="w-full min-h-[80rem] h-full flex flex-row justify-start">
+      <div className="w-full min-h-[80rem] h-full flex flex-row justify-center md:justify-start">
         <BookList posts={posts} title={post.title} />
         <div
-          className={`prose w-full ml-6 ${
+          className={`mx-6 prose w-full md:ml-6 ${
             colorTheme === lightTheme ? "" : "dark:prose-invert"
           }`}
         >
@@ -31,7 +33,9 @@ const Post = ({ post, posts }) => {
             <MDXComponent />
           </div>
         </div>
-        <Toc post={post} />
+        <div className="hidden xl:block sticky w-60 h-full top-52 ml-10 ">
+          <Toc post={post} />
+        </div>
       </div>
     </Container>
   );

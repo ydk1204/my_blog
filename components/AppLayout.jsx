@@ -4,16 +4,18 @@ import { Transition, TransitionGroup } from "react-transition-group";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Nav from "./Nav";
+import Footer from "./Footer";
 import metadata from "../data/metadata";
 import Image from "next/image";
 import { useContext } from "react";
 import { lightTheme } from "../styles/theme";
 import { ThemeContext } from "../pages/_app";
+import MenuBtn from "./menuButton";
 
 const TIMEOUT = 100;
 const getTransitionStyles = {
   entering: {
-    position: `absolute`,
+    // position: `absolute`,
     opacity: 0,
     transform: `translateY(50px)`,
   },
@@ -28,17 +30,18 @@ const getTransitionStyles = {
     transform: `translateY(-50px)`,
   },
 };
-const AppLayout = ({ children }) => {
+const AppLayout = ({ children }, props) => {
   const { colorTheme } = useContext(ThemeContext);
 
   const meta = {
     title: metadata.title,
     description: metadata.description,
     author: metadata.author,
-    // ...props.customMeta,
+    ...props.customMeta,
   };
 
   const router = useRouter();
+
   return (
     <>
       <div
@@ -96,6 +99,10 @@ const AppLayout = ({ children }) => {
             )}
           </Transition>
         </TransitionGroup>
+        {/* {router.pathname.slice(-5, -1) === "slug" && (
+          <MenuBtn ability={children} />
+        )} */}
+        <Footer />
       </div>
     </>
   );
