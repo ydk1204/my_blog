@@ -10,7 +10,7 @@ import Image from "next/image";
 import { useContext } from "react";
 import { lightTheme } from "../styles/theme";
 import { ThemeContext } from "../pages/_app";
-import MenuBtn from "./menuButton";
+import MenuBtn from "./MenuBtn";
 
 const TIMEOUT = 100;
 const getTransitionStyles = {
