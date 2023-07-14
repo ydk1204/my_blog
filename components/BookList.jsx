@@ -8,7 +8,7 @@ const BookList = ({ posts, title }) => {
   return (
     <>
       <aside
-        className={`w-48 border-r-2 border-r-orange-400 flex flex-col items-center pl-7`}
+        className={`hidden xl:flex w-48 border-r-2 border-r-orange-400 flex-col items-center pl-7`}
       >
         <ul>
           {posts?.map((post) => (
