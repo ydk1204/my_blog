@@ -8,23 +8,52 @@ const BookList = ({ posts, title }) => {
   return (
     <>
       <aside
-        className={`hidden xl:flex w-48 border-r-2 border-r-orange-400 flex-col items-center pl-7`}
+        className={`flex xl:bock
+      flex-col
+      items-center 
+      shadow-modal md:shadow-none
+      justify-center 
+      bg-black/70
+      xl:bg-transparent
+      rounded-t-2xl xl:rounded-none
+      w-full xl:w-fit
+      h-96 xl:h-fit
+      z-50`}
       >
-        <ul>
+        <ul
+          className={`
+          w-full xl:w-fit
+          h-full xl:h-fit
+          flex xl:block
+          flex-col 
+          items-center 
+          justify-center
+        `}
+        >
           {posts?.map((post) => (
-            <li key={post.title} className="duration-300 transition-all ">
+            <li
+              key={post.title}
+              className={`
+              w-10/12 xl:w-fit
+              text-center xl:text-left
+              mb-2 xl:mb-0
+              text-[1.1rem]
+              font-semibold xl:font-normal
+              border-b-2 xl:border-0
+              border-orange-900
+              cursor-pointer transition-all hover:text-amber-600
+              select-none
+              duration - 300
+              `}
+            >
               <Link
                 href={`/study/${post.note}/${post._raw.flattenedPath}`}
-                legacyBehavior
                 key={post.title}
+                className={`${
+                  title === post.title && "text-orange-400 scale-105"
+                } `}
               >
-                <a
-                  className={`${
-                    title === post.title && "text-orange-400 scale-105"
-                  } `}
-                >
-                  {post.title}
-                </a>
+                {post.title}
               </Link>
             </li>
           ))}

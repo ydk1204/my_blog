@@ -17,12 +17,12 @@ const Post = ({ post, posts }) => {
     date: new Date(post.date).toISOString(),
   };
 
-  console.log("post", post);
-
   return (
     <Container customMeta={customMeta}>
       <div className="w-full min-h-[80rem] h-full flex flex-row justify-center md:justify-start">
-        <BookList posts={posts} title={post.title} />
+        <div className="hidden xl:flex w-48 border-r-2 border-r-orange-400 flex-col items-center pl-7 z-10">
+          <BookList posts={posts} title={post.title} />
+        </div>
         <div
           className={`mx-6 prose w-full md:ml-6 ${
             colorTheme === lightTheme ? "" : "dark:prose-invert"

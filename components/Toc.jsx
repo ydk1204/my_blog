@@ -4,9 +4,13 @@ import { useRouter } from "next/router";
 import getObserver from "../lib/observer";
 import { ThemeContext } from "../pages/_app";
 import { useContext } from "react";
+import { lightTheme } from "../styles/theme";
+import { ModalContext } from "../pages/_app";
 
 const TOC = () => {
   const { colorTheme } = useContext(ThemeContext);
+  const { isClickIndex, toggleModal } = useContext(ModalContext);
+
   const router = useRouter();
   // 목차 리스트 ( index: 목차, size: 목차의 크기 ( h1~h6는 크기를 다르게 렌더링해주기 위함 ) )
   const [indexList, setIndexList] = useState([]);
@@ -47,21 +51,60 @@ const TOC = () => {
 
     // 이벤트 해제
     return () => observerList.forEach((observer) => observer.disconnect());
-  }, [router.asPath, colorTheme]);
+  }, [router.asPath, colorTheme, isClickIndex]);
 
   return (
-    <aside className=" top-10 right-10 border-l-4 border-orange-400 px-4 py-2 z-10">
-      <ul>
+    <aside
+      className={`flex xl:bock
+      flex-col
+      items-center 
+      shadow-modal md:shadow-none
+      justify-center 
+      bg-black/70
+      xl:bg-transparent
+      rounded-t-2xl xl:rounded-none
+      w-full xl:w-fit
+      h-96 xl:h-fit
+      xl:top-10 xl:right-10 xl:border-l-4 xl:border-orange-400 xl:px-4 xl:py-2 z-10
+      `}
+    >
+      <ul
+        className="
+        w-full xl:w-fit
+        h-full xl:h-fit
+        flex xl:block
+        flex-col 
+        items-center 
+        justify-center
+        "
+      >
         {indexList.map(({ index, size }) => (
           <li
-            onClick={() => isScrollView(index)}
+            onClick={() => isScrollView(index, toggleModal)}
             key={index}
-            style={{
-              paddingLeft: size + "px",
-              fontSize: 17 - size / 12 + "px",
-            }}
-            className={`cursor-pointer transition-all hover:text-amber-600
-              ${currentIndex === index ? "text-orange-400 scale-105" : ""}`}
+            className={`
+              w-10/12 xl:w-fit
+              text-center xl:text-left
+              mb-2 xl:mb-0
+              text-[1.1rem]
+              font-semibold xl:font-normal
+              border-b-2 xl:border-0
+              border-orange-900
+              cursor-pointer transition-all hover:text-amber-600
+              select-none
+              ${
+                currentIndex === index
+                  ? "text-orange-400 scale-110 xl:scale-105"
+                  : ""
+              }
+              ${
+                size === 0
+                  ? "xl:pl-0 xl:text-xl"
+                  : size === 20
+                  ? "xl:pl-2 xl:text-lg"
+                  : "xl:pl-4 xl:text-sm"
+              }
+              `}
           >
             {index}
           </li>
@@ -71,9 +114,12 @@ const TOC = () => {
   );
 };
 
-export const isScrollView = (index) => {
+export const isScrollView = (index, toggleModal) => {
   var getMeTo = document.getElementById(index);
+  var getWidt = document.body?.offsetWidth;
   getMeTo.scrollIntoView({ behavior: "smooth" }, true);
+  if (getWidt > 1280) return;
+  else setTimeout(() => toggleModal("mobile", "index"), 900);
 };
 
 export default TOC;

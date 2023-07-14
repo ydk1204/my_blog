@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import Link from "next/link";
 import { Transition, TransitionGroup } from "react-transition-group";
 import { useRouter } from "next/router";
@@ -57,8 +57,8 @@ const AppLayout = ({ children }, props) => {
           <meta property="og:site_name" content={meta.author} />
         </Head>
         <header
-          className={`w-full sm:w-full h-[4.5rem] top-0 duration-300 max-w-6xl flex flex-row justify-center items-center md:justify-between md:items-center 
-          shadow-head fixed z-[999] ${
+          className={`w-full sm:w-full h-[4.5rem] bottom-0 md:top-0 xl:top-0 duration-300 max-w-6xl flex flex-row justify-center items-center md:justify-between md:items-center 
+          shadow-headDwon md:shadow-headUp fixed z-10 ${
             colorTheme === lightTheme
               ? "bg-white text-black"
               : "bg-zinc-900 text-white"
@@ -99,9 +99,12 @@ const AppLayout = ({ children }, props) => {
             )}
           </Transition>
         </TransitionGroup>
-        {/* {router.pathname.slice(-5, -1) === "slug" && (
-          <MenuBtn ability={children} />
-        )} */}
+        {router.pathname.slice(-5, -1) === "slug" && (
+          <>
+            <MenuBtn data={children} title={"list"} />
+            <MenuBtn data={children} title={"index"} />
+          </>
+        )}
         <Footer />
       </div>
     </>

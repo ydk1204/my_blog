@@ -14,6 +14,7 @@ export const ThemeContext = createContext({
 
 export const ModalContext = createContext({
   isClickIndex: false,
+  isClickList: false,
   toggleModal: () => {
     return null
   }
@@ -22,10 +23,10 @@ export const ModalContext = createContext({
 
 function MyApp({ Component, pageProps }) {
   const { colorTheme, toggleColorTheme } = useDarkMode();
-  const { isClickIndex, toggleModal } = useClickIndex();
+  const { isClickIndex, isClickList, toggleModal } = useClickIndex();
   return (
     <ThemeContext.Provider value={{ colorTheme, toggleColorTheme}} >
-      <ModalContext.Provider value={{isClickIndex, toggleModal }}>
+      <ModalContext.Provider value={{isClickIndex, isClickList, toggleModal }}>
         <AppLayout {...pageProps}>
           <Component {...pageProps} />
         </AppLayout>
