@@ -3,12 +3,15 @@ import { allPosts } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import BookList from "../../../components/BookList";
 import Toc from "../../../components/Toc";
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { lightTheme, ColorTheme } from "../../../styles/theme";
 import { ThemeContext } from "../../_app";
+import RelatedPostCard from "../../../components/RelatedPostCard";
 
 const Post = ({ post, posts }) => {
   const { colorTheme } = useContext(ThemeContext);
+  const [prevPost, setPrevPost] = useState({});
+  const [nextPost, setNextPost] = useState({});
 
   const MDXComponent = useMDXComponent(post.body.code);
   const customMeta = {
@@ -17,10 +20,28 @@ const Post = ({ post, posts }) => {
     date: new Date(post.date).toISOString(),
   };
 
+  useEffect(() => {
+    if (posts.length < 1) return;
+    const nullObj = {};
+
+    const findIndex = posts.findIndex((e) => e.title === customMeta.title);
+
+    if (findIndex === 0) {
+      setPrevPost(posts[findIndex + 1]);
+      setNextPost(nullObj);
+    } else if (findIndex === posts.length - 1) {
+      setPrevPost(nullObj);
+      setNextPost(posts[findIndex - 1]);
+    } else {
+      setPrevPost(posts[findIndex + 1]);
+      setNextPost(posts[findIndex - 1]);
+    }
+  }, [posts]);
+
   return (
     <Container customMeta={customMeta}>
-      <div className="w-full min-h-[80rem] h-full flex flex-row justify-center md:justify-start">
-        <div className="hidden xl:flex w-48 border-r-2 border-r-orange-400 flex-col items-center pl-7 z-10">
+      <div className="w-full min-h-[80rem] h-full flex flex-row justify-center xl:justify-start">
+        <div className="hidden xl:flex w-48 flex-col items-center pl-7 z-10">
           <BookList posts={posts} title={post.title} />
         </div>
         <div
@@ -32,9 +53,24 @@ const Post = ({ post, posts }) => {
           <div>
             <MDXComponent />
           </div>
+          <div
+            className={`py-10 my-10 border-b-2 ${
+              colorTheme === lightTheme ? "border-b-black" : "border-b-white"
+            }`}
+          ></div>
+          <article className="flex flex-col md:flex-row justify-between">
+            {Object.keys(prevPost).length >= 1 ? (
+              <RelatedPostCard division={"이전 글"} post={prevPost} />
+            ) : (
+              <div className="w-full md:w-[45%]"></div>
+            )}
+            {Object.keys(nextPost).length >= 1 && (
+              <RelatedPostCard division={"다음 글"} post={nextPost} />
+            )}
+          </article>
         </div>
         <div className="hidden xl:block sticky w-60 h-full top-52 ml-10 ">
-          <Toc post={post} />
+          <Toc prevPost={prevPost} />
         </div>
       </div>
     </Container>

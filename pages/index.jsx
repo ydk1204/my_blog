@@ -63,15 +63,18 @@ const Home = ({ posts }) => {
                     .move(4)
                     .pause(300)
                     .type(", 편하게")
-                    .move(null, { to: "END" })
-                    .pause(1000);
+                    .move(null, { to: "END" }) // 간단하게 생각하고, 편하게 살기|
+                    .pause(1000)
+                    .delete(5) // 간단하게 생각하고, 편
+                    .move(-1) // 간단하게 생각하고, |편
+                    .delete(10); // 간편
                   setInstance(instance);
                   return instance;
                 }}
                 options={{
                   cursor: false,
                   waitUntilVisible: true,
-                  loop: true,
+                  // loop: true,
                   speed: 100,
                 }}
               >

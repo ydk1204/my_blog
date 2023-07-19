@@ -12,10 +12,14 @@ const BookList = ({ posts, title }) => {
       flex-col
       items-center 
       shadow-modal md:shadow-none
+      md:pr-5
+      md:border-r-2 md:border-r-orange-400
       justify-center 
       bg-black/70
+      border-[1px] border-gray-500/40
       xl:bg-transparent
       rounded-t-2xl xl:rounded-none
+      md:border-0
       w-full xl:w-fit
       h-96 xl:h-fit
       z-50`}

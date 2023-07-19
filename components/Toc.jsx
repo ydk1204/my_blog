@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { lightTheme } from "../styles/theme";
 import { ModalContext } from "../pages/_app";
 
-const TOC = () => {
+const TOC = ({ prevPost }) => {
   const { colorTheme } = useContext(ThemeContext);
   const { isClickIndex, toggleModal } = useContext(ModalContext);
 
@@ -25,12 +25,11 @@ const TOC = () => {
     // 2. <h1>, <h2>, <h3> 찾기 ( h4~h6는 없기도 하고 안쓸거라서 생략 )
     const hNodeList = document
       .querySelector("main")
-      ?.querySelectorAll("h1, h2, h3");
+      ?.querySelectorAll("h2, h3");
 
     // IntersectionObserver들이 들어갈 배열 ( 이벤트 해제를 위해 )
     const observerList = [];
 
-    // 만약 여기서 오류가 난다면 "spread opeartor"는 es6부터 지원되는 문법이라서 그 이전에 사용하기 위해서는 "downlevelIteration"에 대해서 찾아보면 된다.
     [...hNodeList].forEach((node) => {
       // 목차 내용이랑 사이즈 구해서 저장
       const index = node.textContent;
@@ -51,7 +50,7 @@ const TOC = () => {
 
     // 이벤트 해제
     return () => observerList.forEach((observer) => observer.disconnect());
-  }, [router.asPath, colorTheme, isClickIndex]);
+  }, [router.asPath, colorTheme, isClickIndex, prevPost]);
 
   return (
     <aside
@@ -60,12 +59,13 @@ const TOC = () => {
       items-center 
       shadow-modal md:shadow-none
       justify-center 
-      bg-black/70
+      bg-black/40
+      border-[1px] border-gray-500/40
       xl:bg-transparent
       rounded-t-2xl xl:rounded-none
       w-full xl:w-fit
       h-96 xl:h-fit
-      xl:top-10 xl:right-10 xl:border-l-4 xl:border-orange-400 xl:px-4 xl:py-2 z-10
+      xl:top-10 xl:right-10 xl:border-0 xl:border-l-4 xl:border-orange-400 xl:px-4 xl:py-2 z-10
       `}
     >
       <ul
@@ -97,13 +97,7 @@ const TOC = () => {
                   ? "text-orange-400 scale-110 xl:scale-105"
                   : ""
               }
-              ${
-                size === 0
-                  ? "xl:pl-0 xl:text-xl"
-                  : size === 20
-                  ? "xl:pl-2 xl:text-lg"
-                  : "xl:pl-4 xl:text-sm"
-              }
+              ${size === 20 ? "xl:pl-0 xl:text-lg" : "xl:pl-4 xl:text-sm"}
               `}
           >
             {index}
@@ -118,8 +112,8 @@ export const isScrollView = (index, toggleModal) => {
   var getMeTo = document.getElementById(index);
   var getWidt = document.body?.offsetWidth;
   getMeTo.scrollIntoView({ behavior: "smooth" }, true);
-  if (getWidt > 1280) return;
-  else setTimeout(() => toggleModal("mobile", "index"), 900);
+  if (getWidt >= 1280) return;
+  setTimeout(() => toggleModal("mobile", "index"), 900);
 };
 
 export default TOC;

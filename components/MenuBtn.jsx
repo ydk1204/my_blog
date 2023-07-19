@@ -75,7 +75,7 @@ const MenuBtn = ({ data, title }) => {
               onClick={() => toggleBtn(title)}
               className={`
               fixed bottom-0 left-0 flex w-full h-screen 
-              justify-center items-end bg-black/40
+              justify-center items-end bg-[#18181b]/40 blur
               z-0
               `}
             ></div>
@@ -97,7 +97,7 @@ const MenuBtn = ({ data, title }) => {
               onClick={() => toggleBtn(title)}
               className={`
               fixed bottom-0 left-0 flex w-full h-screen 
-              justify-center items-end bg-black/40
+              justify-center items-end  bg-[black]/40 blur-2xl
               z-0
               `}
             ></div>
