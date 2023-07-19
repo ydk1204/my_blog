@@ -7,6 +7,7 @@ import { useState, useEffect, useContext } from "react";
 import { lightTheme, ColorTheme } from "../../../styles/theme";
 import { ThemeContext } from "../../_app";
 import RelatedPostCard from "../../../components/RelatedPostCard";
+import Giscus from "../../../components/Giscus";
 
 const Post = ({ post, posts }) => {
   const { colorTheme } = useContext(ThemeContext);
@@ -68,6 +69,7 @@ const Post = ({ post, posts }) => {
               <RelatedPostCard division={"다음 글"} post={nextPost} />
             )}
           </article>
+          <Giscus />
         </div>
         <div className="hidden xl:block sticky w-60 h-full top-52 ml-10 ">
           <Toc prevPost={prevPost} />
