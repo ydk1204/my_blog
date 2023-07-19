@@ -57,6 +57,10 @@ const AppLayout = ({ children }, props) => {
             name="google-site-verification"
             content="k3WhGUd5TJQD8RpSLh0VSvnQ3a03cHD5PnpPZ73aWzE"
           />
+          <meta
+            name="naver-site-verification"
+            content="6809e29010efe63bb641745db7453105c58ce312"
+          />
           <meta content={meta.description} name="description" />
           <meta property="og:site_name" content={meta.author} />
         </Head>
