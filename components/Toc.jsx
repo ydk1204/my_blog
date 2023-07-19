@@ -59,7 +59,7 @@ const TOC = ({ prevPost }) => {
       items-center 
       shadow-modal md:shadow-none
       justify-center 
-      bg-black/40
+      bg-transparent
       border-[1px] border-gray-500/40
       xl:bg-transparent
       rounded-t-2xl xl:rounded-none

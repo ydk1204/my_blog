@@ -8,7 +8,7 @@ const Footer = () => {
   const { colorTheme } = useContext(ThemeContext);
   return (
     <footer
-      className={`flex flex-col justify-center mt-[70rem] w-full max-w-6xl h-fit bg-transparent relative inset-x-0 bottom-0 ${
+      className={`flex flex-col justify-center mt-[20rem] w-full max-w-6xl h-fit bg-transparent relative inset-x-0 bottom-0 ${
         colorTheme === lightTheme ? "text-black" : "text-white"
       }`}
     >

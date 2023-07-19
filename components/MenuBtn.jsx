@@ -91,13 +91,13 @@ const MenuBtn = ({ data, title }) => {
             ${colorTheme === lightTheme ? "text-white" : "text-white"}
             `}
             >
-              <Toc post={props.post} />
+              <Toc />
             </div>
             <div
               onClick={() => toggleBtn(title)}
               className={`
-              fixed bottom-0 left-0 flex w-full h-screen 
-              justify-center items-end  bg-[black]/40 blur-2xl
+              fixed bottom-0 left-0 flex w-full h-screen
+              justify-center items-end bg-[black]/40
               z-0
               `}
             ></div>

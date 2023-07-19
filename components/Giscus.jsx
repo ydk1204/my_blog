@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 const Giscus = () => {
   const ref = useRef(null);
   const router = useRouter();
+  const { colorTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     if (!ref.current || ref.current.hasChildNodes()) return;
@@ -30,10 +31,21 @@ const Giscus = () => {
   }, []);
 
   useEffect(() => {
+    let theme =
+      colorTheme === lightTheme ? "light_tritanopia" : "preferred_color_scheme";
     const iframe = document.querySelector("iframe.giscus-frame");
-    iframe?.contentWindow?.postMessage({
-      giscus: { setConfig: { term: router.asPath } },
-    });
+    iframe?.contentWindow?.postMessage(
+      { giscus: { setConfig: { theme } } },
+      "https://giscus.app"
+    );
+  }, [router.asPath, colorTheme]);
+
+  useEffect(() => {
+    const iframe = document.querySelector("iframe.giscus-frame");
+    iframe?.contentWindow?.postMessage(
+      { giscus: { setConfig: { term: router.asPath } } },
+      "https://giscus.app"
+    );
   }, [router.asPath]);
 
   return <section ref={ref} />;

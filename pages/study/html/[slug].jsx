@@ -20,10 +20,10 @@ const Post = ({ post, posts }) => {
     description: post.description,
     date: new Date(post.date).toISOString(),
   };
+  const nullObj = { key: "value" };
 
   useEffect(() => {
     if (posts.length < 1) return;
-    const nullObj = {};
 
     const findIndex = posts.findIndex((e) => e.title === customMeta.title);
 
@@ -41,38 +41,45 @@ const Post = ({ post, posts }) => {
 
   return (
     <Container customMeta={customMeta}>
-      <div className="w-full min-h-[80rem] h-full flex flex-row justify-center xl:justify-start">
-        <div className="hidden xl:flex w-48 flex-col items-center pl-7 z-10">
-          <BookList posts={posts} title={post.title} />
-        </div>
-        <div
-          className={`mx-6 prose w-full md:ml-6 ${
-            colorTheme === lightTheme ? "" : "dark:prose-invert"
-          }`}
-        >
-          <h1 className="">{post.title}</h1>
-          <div>
-            <MDXComponent />
+      <div className="w-full min-h-[60rem] h-full flex flex-col justify-center items-center">
+        <div className="flex w-full justify-center">
+          <div className="hidden xl:flex w-48 sticky top-20 left-0 h-full flex-col items-center pl-7 z-10">
+            <BookList posts={posts} title={post.title} />
           </div>
+          <div
+            className={`mx-6 prose w-full ${
+              colorTheme === lightTheme ? "" : "dark:prose-invert"
+            }`}
+          >
+            <h1 className="">{post.title}</h1>
+            <div>
+              <MDXComponent />
+            </div>
+          </div>
+
+          <div className="hidden xl:block sticky right-0 w-60 h-fit top-52 ml-10 ">
+            <Toc prevPost={prevPost} />
+          </div>
+        </div>
+        <div className="max-w-3xl w-full mb-20">
           <div
             className={`py-10 my-10 border-b-2 ${
               colorTheme === lightTheme ? "border-b-black" : "border-b-white"
             }`}
           ></div>
           <article className="flex flex-col md:flex-row justify-between">
-            {Object.keys(prevPost).length >= 1 ? (
+            {prevPost && Object.keys(prevPost).length > 1 ? (
               <RelatedPostCard division={"이전 글"} post={prevPost} />
             ) : (
               <div className="w-full md:w-[45%]"></div>
             )}
-            {Object.keys(nextPost).length >= 1 && (
+            {nextPost && Object.keys(nextPost).length > 1 && (
               <RelatedPostCard division={"다음 글"} post={nextPost} />
             )}
           </article>
-          <Giscus />
         </div>
-        <div className="hidden xl:block sticky w-60 h-full top-52 ml-10 ">
-          <Toc prevPost={prevPost} />
+        <div className="max-w-3xl w-full">
+          <Giscus />
         </div>
       </div>
     </Container>

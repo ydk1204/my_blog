@@ -15,7 +15,7 @@ const BookList = ({ posts, title }) => {
       md:pr-5
       md:border-r-2 md:border-r-orange-400
       justify-center 
-      bg-black/70
+      bg-transparent
       border-[1px] border-gray-500/40
       xl:bg-transparent
       rounded-t-2xl xl:rounded-none

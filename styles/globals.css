@@ -437,6 +437,13 @@ a {
 .modal_obj {
   /* position: relative; */
   animation: fadeInUp 0.3s;
+  backdrop-filter: blur(12px);
+  border-top-left-radius: 1rem
+      /* 16px */
+    ;
+    border-top-right-radius: 1rem
+      /* 16px */
+    ;
 }
 
 
