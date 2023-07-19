@@ -5,6 +5,11 @@
 /.pnp
 .pnp.js
 
+# sitemap
+/public/robots.txt
+/public/sitemap*.xml
+/public/sitemap-0.xml
+
 # testing
 /coverage
 
@@ -20,7 +25,7 @@
 *.pem
 
 # debug
-npm-debug.log*
+npm-debug.log*œœœ
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
@@ -28,7 +33,7 @@ yarn-error.log*
 # local env files
 .env*.local
 
-# vercel
+# vercelœ
 .vercel
 
 # typescript
