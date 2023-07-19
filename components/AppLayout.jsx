@@ -53,6 +53,10 @@ const AppLayout = ({ children }, props) => {
       >
         <Head>
           <title>{metadata.title}</title>
+          <meta
+            name="google-site-verification"
+            content="k3WhGUd5TJQD8RpSLh0VSvnQ3a03cHD5PnpPZ73aWzE"
+          />
           <meta content={meta.description} name="description" />
           <meta property="og:site_name" content={meta.author} />
         </Head>
