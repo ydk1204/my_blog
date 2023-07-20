@@ -22,13 +22,13 @@ var Post = defineDocumentType(() => ({
 }));
 var contentlayer_config_default = makeSource({
   // 마크다운 파일이 저장되어 있는 루트 폴더
-  contentDirPath: "posts",
-  // contentDirPath: '.',
-  // contentDirInclude: ['posts', 'study'],
+  // contentDirPath: "posts",
+  contentDirPath: "./posts",
+  contentDirInclude: ["study", "html-study", "css-study", "js-study", "react-study", "game", "projects", "profile"],
   documentTypes: [Post]
 });
 export {
   Post,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-W6P5UIK3.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-3TTC3XGV.mjs.map

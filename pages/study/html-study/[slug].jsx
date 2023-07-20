@@ -41,9 +41,9 @@ const Post = ({ post, posts }) => {
 
   return (
     <Container customMeta={customMeta}>
-      <div className="w-full min-h-[60rem] h-full flex flex-col justify-center items-center">
+      <div className="w-full min-h-[60rem] h-full flex flex-col justify-start items-center">
         <div className="flex w-full justify-center">
-          <div className="hidden xl:flex w-48 sticky top-20 left-0 h-full flex-col items-center pl-7 z-10">
+          <div className="hidden xl:flex w-48 sticky top-[8.5rem] left-0 h-full flex-col items-center pl-7 z-10">
             <BookList posts={posts} title={post.title} />
           </div>
           <div
@@ -51,7 +51,7 @@ const Post = ({ post, posts }) => {
               colorTheme === lightTheme ? "" : "dark:prose-invert"
             }`}
           >
-            <h1 className="">{post.title}</h1>
+            <h1 className="mt-10">{post.title}</h1>
             <div>
               <MDXComponent />
             </div>
@@ -88,13 +88,22 @@ const Post = ({ post, posts }) => {
 
 export const getStaticPaths = async () => {
   return {
-    paths: allPosts.map((p) => ({ params: { slug: p._raw.flattenedPath } })),
+    paths: allPosts.map((p) => ({
+      params: {
+        fileDir: p._raw.sourceFileDir,
+        slug: p._raw.flattenedPath.replace(p._raw.sourceFileDir + "/", ""),
+      },
+    })),
     fallback: false,
   };
 };
 
 export const getStaticProps = async ({ params }) => {
-  const post = allPosts.find((p) => p._raw.flattenedPath === params.slug);
+  const post = allPosts.find(
+    (p) =>
+      p._raw.flattenedPath.replace(p._raw.sourceFileDir + "/", "") ===
+      params.slug
+  );
 
   const posts = allPosts
     .filter((a) => a.note === post.note)

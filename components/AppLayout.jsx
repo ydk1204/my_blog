@@ -55,7 +55,7 @@ const AppLayout = ({ children }, props) => {
           <title>{metadata.title}</title>
           <meta
             name="google-site-verification"
-            content="k3WhGUd5TJQD8RpSLh0VSvnQ3a03cHD5PnpPZ73aWzE"
+            content="-LzlU9UlbvLlY7QhvDtGywHwmgz7kppxi3hy9sW2QGE"
           />
           <meta
             name="naver-site-verification"

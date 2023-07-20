@@ -23,8 +23,8 @@ export const Post = defineDocumentType(() => ({
 
 export default makeSource({
   // 마크다운 파일이 저장되어 있는 루트 폴더
-  contentDirPath: "posts",
-  // contentDirPath: '.',
-  // contentDirInclude: ['posts', 'study'],
+  // contentDirPath: "posts",
+  contentDirPath: './posts',
+  contentDirInclude: ['study', 'html-study', 'css-study','js-study', 'react-study', 'game', 'projects', 'profile'],
   documentTypes: [Post],
 });

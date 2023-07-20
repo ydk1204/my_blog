@@ -8,7 +8,7 @@ const RelatedPostCard = ({ division, post = "" }) => {
 
   return (
     <Link
-      href={`/study/${post?.note}/${post?._raw?.flattenedPath}`}
+      href={`/${post?._raw?.flattenedPath}`}
       className={`
         w-full md:w-[45%] h-32 my-4 flex flex-col justify-center
         items-center font-bold uppercase rounded-xl

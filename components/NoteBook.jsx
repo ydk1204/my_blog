@@ -44,10 +44,7 @@ const NoteBook = ({ title = "", count, posts = [] }) => {
           <div className="note-content" style={noteColor}>
             <h3>{title}</h3>
             <p>총 {count} 개의 포스팅</p>
-            <Link
-              href={`/study/${title}/${slug}`}
-              style={{ background: customColor }}
-            >
+            <Link href={`/${slug}`} style={{ background: customColor }}>
               Read More
             </Link>
           </div>
@@ -62,6 +59,9 @@ export const getPath = async (title, posts) => {
     .filter((a) => a.note === title)
     .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 
+  console.log(posts);
+
+  // const slug = null;
   const slug = slugs[0]._raw.flattenedPath;
   return slug;
 };

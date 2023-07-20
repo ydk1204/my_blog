@@ -1,4 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<sitemap><loc>https://ydkblog.vercel.app/sitemap-0.xml</loc></sitemap>
-</sitemapindex>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+>
+  <url>
+    <loc>https://ydkblog.vercel.app/</loc>
+    <lastmod>2023-07-20T13:00:46.361Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://ydkblog.vercel.app/game</loc>
+    <lastmod>2023-07-20T13:00:46.361Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://ydkblog.vercel.app/profile</loc>
+    <lastmod>2023-07-20T13:00:46.361Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://ydkblog.vercel.app/projects</loc>
+    <lastmod>2023-07-20T13:00:46.361Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://ydkblog.vercel.app/study</loc>
+    <lastmod>2023-07-20T13:00:46.361Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://ydkblog.vercel.app/study/css-study/css초기화</loc>
+    <lastmod>2023-07-20T13:00:46.361Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://ydkblog.vercel.app/study/html-study/html초기화</loc>
+    <lastmod>2023-07-20T13:00:46.361Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://ydkblog.vercel.app/study/html-study/포스팅확인용</loc>
+    <lastmod>2023-07-20T13:00:46.361Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://ydkblog.vercel.app/study/js-study/js초기화</loc>
+    <lastmod>2023-07-20T13:00:46.361Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://ydkblog.vercel.app/study/react-study/react초기화</loc>
+    <lastmod>2023-07-20T13:00:46.361Z</lastmod>
+  </url>
+</urlset>

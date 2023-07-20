@@ -37,11 +37,7 @@ const RecentPosts = ({ posts }) => {
             <div className="recent-content">
               <h3>{post.title}</h3>
               <p>{post.description}</p>
-              <Link
-                href={`/${post.tag}/${post.note}/${post._raw.flattenedPath}`}
-              >
-                Read More...
-              </Link>
+              <Link href={`/${post._raw.flattenedPath}`}>Read More...</Link>
             </div>
           </div>
         ))}

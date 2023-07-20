@@ -13,13 +13,13 @@ const BookList = ({ posts, title }) => {
       items-center 
       shadow-modal md:shadow-none
       md:pr-5
-      md:border-r-2 md:border-r-orange-400
+      xl:border-r-2 xl:border-r-orange-400
       justify-center 
       bg-transparent
+      xl:border-0
       border-[1px] border-gray-500/40
       xl:bg-transparent
       rounded-t-2xl xl:rounded-none
-      md:border-0
       w-full xl:w-fit
       h-96 xl:h-fit
       z-50`}
@@ -51,7 +51,7 @@ const BookList = ({ posts, title }) => {
               `}
             >
               <Link
-                href={`/study/${post.note}/${post._raw.flattenedPath}`}
+                href={`/${post._raw.flattenedPath}`}
                 key={post.title}
                 className={`${
                   title === post.title && "text-orange-400 scale-105"
