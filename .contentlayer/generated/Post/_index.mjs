@@ -3,7 +3,7 @@
 import study__cssStudy__cssMdx from './study__css-study__css초기화.mdx.json' assert { type: 'json' }
 import study__htmlStudy__htmlMdx from './study__html-study__html초기화.mdx.json' assert { type: 'json' }
 import study__htmlStudy__Mdx from './study__html-study__포스팅확인용.mdx.json' assert { type: 'json' }
-import study__reactStudy__reactMdx from './study__react-study__react초기화.mdx.json' assert { type: 'json' }
 import study__jsStudy__jsMdx from './study__js-study__js초기화.mdx.json' assert { type: 'json' }
+import study__reactStudy__reactMdx from './study__react-study__react초기화.mdx.json' assert { type: 'json' }
 
-export const allPosts = [study__cssStudy__cssMdx, study__htmlStudy__htmlMdx, study__htmlStudy__Mdx, study__reactStudy__reactMdx, study__jsStudy__jsMdx]
+export const allPosts = [study__cssStudy__cssMdx, study__htmlStudy__htmlMdx, study__htmlStudy__Mdx, study__jsStudy__jsMdx, study__reactStudy__reactMdx]

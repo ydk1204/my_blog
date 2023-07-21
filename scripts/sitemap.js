@@ -4,37 +4,35 @@ const prettier = require("prettier");
 
 const getDate = new Date().toISOString();
 
-const YOUR_AWESOME_DOMAIN = "https://ydkblog.vercel.app";
+const MY_BLOG_DOMAIN = "https://ydkblog.vercel.app";
 
 const formatted = sitemap => prettier.format(sitemap, { parser: "html" });
 
 (async () => {
   const paths = await globby([
     // include
-    "./posts/**/*.mdx",
-    "./posts/*.mdx",
+    "/Users/ydk1204/Desktop/blog/posts/**/*.mdx",
+    "/Users/ydk1204/Desktop/blog/posts/*.mdx",
   ]);
 
   const pages = await globby([
     // include
-    "./pages/**/*.jsx",
-    "./pages/*.jsx",
+    "/Users/ydk1204/Desktop/blog/pages/**/*.jsx",
+    "/Users/ydk1204/Desktop/blog/pages/*.jsx",
     // exclude
-    "!./pages/_*.tsx"
+    "!/Users/ydk1204/Desktop/blog/pages/_*.jsx"
   ]);
-
-  // console.log(pages);
 
   const pageSitemap = `
   ${pages
       .map(p => {
         const page = p
-          .replace("./pages/", "")
+          .replace("/Users/ydk1204/Desktop/blog/pages/", "")
           .replace(".jsx", "");
         if (page.endsWith(`/[slug]`) || page === "index") return;
         return `
         <url>
-          <loc>${YOUR_AWESOME_DOMAIN}/${page}</loc>
+          <loc>${MY_BLOG_DOMAIN}/${page}</loc>
           <lastmod>${getDate}</lastmod>
         </url>
         `
@@ -46,12 +44,12 @@ const formatted = sitemap => prettier.format(sitemap, { parser: "html" });
     ${paths
       .map(p => {
         const path = p
-          .replace("./posts/", "")
+          .replace("/Users/ydk1204/Desktop/blog/posts/", "")
           .replace(".mdx", "");
         const routePath = path === "index" ? "" : path;
         return `
         <url>
-          <loc>${YOUR_AWESOME_DOMAIN}/${routePath}</loc>
+          <loc>${MY_BLOG_DOMAIN}/${routePath}</loc>
           <lastmod>${getDate}</lastmod>
         </url>
       `
@@ -67,7 +65,7 @@ const formatted = sitemap => prettier.format(sitemap, { parser: "html" });
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
     >
       <url>
-          <loc>${YOUR_AWESOME_DOMAIN}/</loc>
+          <loc>${MY_BLOG_DOMAIN}/</loc>
           <lastmod>${getDate}</lastmod>
         </url>
       ${pageSitemap}
@@ -75,8 +73,7 @@ const formatted = sitemap => prettier.format(sitemap, { parser: "html" });
     </urlset>
   `;
 
-  
   const formattedSitemap = await formatted(generatedSitemap);
 
-  fs.writeFileSync("./public/sitemap.xml", formattedSitemap, "utf8");
+  fs.writeFileSync("/Users/ydk1204/Desktop/blog/public/sitemap/sitemap.xml", formattedSitemap, "utf8");
 })();

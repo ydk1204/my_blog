@@ -31,27 +31,25 @@ const Nav = () => {
     <nav className="navigation">
       <ul>
         {navlinks.map((nav, idx) => (
-          <>
-            <li
-              key={idx}
-              className={`list ${
-                nav.title.slice(0, 4) === asPath.slice(0, 4) ? "active" : ""
-              }`}
-            >
-              <Link href={nav.link} key={idx}>
-                <Image
-                  width={20}
-                  height={20}
-                  alt={"네이게이션바 버튼 이미지"}
-                  src={nav.logo}
-                  className={`svg-color-filter ${
-                    colorTheme === lightTheme ? "lightSvgColor" : ""
-                  }`}
-                ></Image>
-                <span className="nav-text">{nav.title}</span>
-              </Link>
-            </li>
-          </>
+          <li
+            key={idx}
+            className={`list ${
+              nav.title.slice(0, 4) === asPath.slice(0, 4) ? "active" : ""
+            }`}
+          >
+            <Link href={nav.link} key={idx}>
+              <Image
+                width={20}
+                height={20}
+                alt={"네이게이션바 버튼 이미지"}
+                src={nav.logo}
+                className={`svg-color-filter ${
+                  colorTheme === lightTheme ? "lightSvgColor" : ""
+                }`}
+              ></Image>
+              <span className="nav-text">{nav.title}</span>
+            </Link>
+          </li>
         ))}
         <div className="indicator"></div>
       </ul>
