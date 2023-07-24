@@ -20,20 +20,18 @@ const RecentPosts = ({ posts }) => {
       <div className={`recent-container`}>
         {posts?.slice(0, 4).map((post) => (
           <div key={post._id} className="recent-card">
-            <div className="recent-imgBx" data-text={post.tag}>
-              {recentImg
-                .filter((a) => a.tag === post.tag)
-                .map((b) => (
-                  <Image
-                    key={b.tag}
-                    width={100}
-                    height={100}
-                    src={`${b.img}`}
-                    alt={"최신 포스팅 글 태그 이미지"}
-                    className="recent-img"
-                  ></Image>
-                ))}
-            </div>
+            <div
+              className="recent-imgBx"
+              style={{
+                background: `url(${
+                  post.img !== "" ? post.img : "/postImg/defaultImg.png"
+                })`,
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+              }}
+              data-text={post.tag}
+            ></div>
             <div className="recent-content">
               <h3>{post.title}</h3>
               <p>{post.description}</p>

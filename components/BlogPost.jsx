@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 const BlogPost = ({ date, title, des, slug, path }) => {
-  console.log(path);
   return (
     <Link href={`/${path}/${slug}`} passHref legacyBehavior>
       <a className={`w-full my-7 hover:-translate-x-1.5`}>

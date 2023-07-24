@@ -8,6 +8,7 @@ import { ThemeContext } from "../pages/_app";
 
 const Blog = ({ posts, lists }) => {
   const { colorTheme } = useContext(ThemeContext);
+
   return (
     <>
       <Container>

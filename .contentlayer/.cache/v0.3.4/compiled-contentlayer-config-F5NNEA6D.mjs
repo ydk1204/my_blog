@@ -16,6 +16,7 @@ var Post = defineDocumentType(() => ({
     title: { type: "string", required: true },
     date: { type: "string", required: true },
     description: { type: "string", required: true },
+    img: { type: "string", required: false },
     tag: { type: "string", required: true },
     note: { type: "string", required: false }
   }
@@ -31,4 +32,4 @@ export {
   Post,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-3TTC3XGV.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-F5NNEA6D.mjs.map

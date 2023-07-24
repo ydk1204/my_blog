@@ -59,8 +59,6 @@ export const getPath = async (title, posts) => {
     .filter((a) => a.note === title)
     .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 
-  console.log(posts);
-
   // const slug = null;
   const slug = slugs[0]._raw.flattenedPath;
   return slug;

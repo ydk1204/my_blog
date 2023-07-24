@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from "react";
-import MobileToc from "../components/MobileToc";
 import Toc from "./Toc";
 import BookList from "./BookList";
 import { ModalContext } from "../pages/_app";

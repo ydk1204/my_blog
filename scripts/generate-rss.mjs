@@ -43,8 +43,6 @@ PostJson.forEach((post) => {
 
 // feed.addCategory('study and games');
 
-console.log(feed);
-
 // Output: RSS 2.0
 // fs.writeFileSync('out/rss.xml', feed.rss2(), 'utf-8');
 // // Output: Atom 1.0

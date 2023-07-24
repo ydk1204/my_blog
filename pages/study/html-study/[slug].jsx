@@ -1,6 +1,7 @@
 import Container from "components/Container";
 import { allPosts } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
+import Image from "next/image";
 import BookList from "../../../components/BookList";
 import Toc from "../../../components/Toc";
 import { useState, useEffect, useContext } from "react";
@@ -51,6 +52,17 @@ const Post = ({ post, posts }) => {
               colorTheme === lightTheme ? "" : "dark:prose-invert"
             }`}
           >
+            {post.img !== "" && (
+              <div className="w-full h-[25rem] overflow-hidden flex justify-center items-center rounded-xl mt-10">
+                <Image
+                  src={post.img}
+                  width={1000}
+                  height={500}
+                  alt={"대표 이미지"}
+                  className="object-contain transition-all duration-300 hover:scale-105"
+                ></Image>
+              </div>
+            )}
             <h1 className="mt-10">{post.title}</h1>
             <div>
               <MDXComponent />
@@ -90,7 +102,6 @@ export const getStaticPaths = async () => {
   return {
     paths: allPosts.map((p) => ({
       params: {
-        fileDir: p._raw.sourceFileDir,
         slug: p._raw.flattenedPath.replace(p._raw.sourceFileDir + "/", ""),
       },
     })),

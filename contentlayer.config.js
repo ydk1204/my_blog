@@ -16,6 +16,7 @@ export const Post = defineDocumentType(() => ({
     title: { type: "string", required: true },
     date: { type: "string", required: true },
     description: { type: "string", required: true },
+    img: { type: "string", required: false },
     tag: { type: "string", required: true },
     note: { type: "string", required: false },
   },
