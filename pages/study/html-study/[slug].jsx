@@ -4,7 +4,7 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import Image from "next/image";
 import BookList from "../../../components/BookList";
 import Toc from "../../../components/Toc";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import { lightTheme, ColorTheme } from "../../../styles/theme";
 import { ThemeContext } from "../../_app";
 import RelatedPostCard from "../../../components/RelatedPostCard";
@@ -14,6 +14,7 @@ const Post = ({ post, posts }) => {
   const { colorTheme } = useContext(ThemeContext);
   const [prevPost, setPrevPost] = useState({});
   const [nextPost, setNextPost] = useState({});
+  const imgRef = useRef(null);
 
   const MDXComponent = useMDXComponent(post.body.code);
   const customMeta = {
@@ -48,19 +49,21 @@ const Post = ({ post, posts }) => {
             <BookList posts={posts} title={post.title} />
           </div>
           <div
-            className={`mx-6 prose w-full ${
+            className={`mx-6 prose w-full max-w-3xl ${
               colorTheme === lightTheme ? "" : "dark:prose-invert"
             }`}
           >
             {post.img !== "" && (
-              <div className="w-full h-[25rem] overflow-hidden flex justify-center items-center rounded-xl mt-10">
+              <div className="w-full h-[10rem] md:h-[20rem] xl:h-[25rem] overflow-hidden flex justify-center items-center rounded-xl xl:mt-10">
                 <Image
                   src={post.img}
                   width={1000}
                   height={500}
                   alt={"대표 이미지"}
                   className="object-contain transition-all duration-300 hover:scale-105"
-                ></Image>
+                  onLoadingComplete={() => imgRef.current.remove()}
+                />
+                <div className="img-animation" ref={imgRef}></div>
               </div>
             )}
             <h1 className="mt-10">{post.title}</h1>
@@ -69,7 +72,7 @@ const Post = ({ post, posts }) => {
             </div>
           </div>
 
-          <div className="hidden xl:block sticky right-0 w-60 h-fit top-52 ml-10 ">
+          <div className="hidden xl:block sticky right-0 w-60 h-fit top-[8.5rem] ml-10 ">
             <Toc prevPost={prevPost} />
           </div>
         </div>

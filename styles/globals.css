@@ -263,7 +263,6 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  /* background: #333; */
   background-size: cover;
   z-index: 1;
   display: flex;
@@ -300,7 +299,6 @@ a {
 }
 
 .recent-container .recent-card:hover .recent-imgBx::before {
-  font-size: 120rem;
   font-weight: 1000;
   background-color: #a2a2a238;
 }
@@ -661,4 +659,41 @@ a {
   font-weight: 500;
   text-decoration: none;
   border-radius: 8px;
+}
+
+/* Loading Page */
+
+.loading_conteiner {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading_conteiner h2 {
+  position: relative;
+  font-size: 6em;
+  color: #222;
+}
+
+.loading_conteiner h2::before {
+  content: attr(data-text);
+  position: absolute;
+  color: #fff;
+  width: 350px;
+  overflow:hidden;
+  white-space: nowrap;
+  border-right: 4px solid #fff;
+  animation: loadingAnim 0.7s linear infinite;
+  filter: drop-shadow(0 0 20px #fff) drop-shadow(0 0 50px #fff);
+}
+
+@keyframes loadingAnim {
+  0%,10%,100% {
+    width: 0;;
+  }
+  70%, 90% {
+    width: 100%;
+  }
 }

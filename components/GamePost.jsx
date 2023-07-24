@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const GamePost = ({ title = "", count, posts = [] }) => {
   const [slug, setSlug] = useState("");
+  const imgRef = useRef(null);
 
   // 전체 포스트 중에서 같은 항목(ex_maple)의 포스트 선별
   useEffect(() => {
@@ -23,7 +24,9 @@ const GamePost = ({ title = "", count, posts = [] }) => {
             width={400}
             height={400}
             alt={"메이플 썸네일"}
+            onLoadingComplete={() => imgRef.current.remove()}
           />
+          <div className="img-animation" ref={imgRef}></div>
         </div>
         <div className="game_content">
           <h2>메이플스토리</h2>

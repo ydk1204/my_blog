@@ -1,5 +1,5 @@
 import '../styles/globals.css';
-import { createContext, useEffect } from "react";
+import { createContext, useEffect, useState } from "react";
 import { lightTheme, darkTheme, ColorTheme } from "../styles/theme";
 import { useDarkMode } from '../lib/useDarkMode';
 import AppLayout from '../components/AppLayout';
@@ -7,6 +7,7 @@ import { useClickIndex } from '../lib/useClickIndex';
 import * as gtag from '../lib/gtag';
 import Script from 'next/script';
 import { useRouter } from 'next/router';
+import Loading from '../components/Loading';
 
 export const ThemeContext = createContext({
   colorTheme: lightTheme,
@@ -26,6 +27,27 @@ export const ModalContext = createContext({
 function MyApp({ Component, pageProps }) {
   const { colorTheme, toggleColorTheme } = useDarkMode();
   const { isClickIndex, isClickList, toggleModal } = useClickIndex();
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const start = () => {
+      setLoading(true);
+    }
+
+    const end = () => {
+      setLoading(false);
+    }
+
+    router.events.on("routeChangeStart", start);
+    router.events.on("routeChangeComplete", end);
+    router.events.on("routeChangeError", end);
+
+    return () => {
+      router.events.off("routeChangeStart", start);
+      router.events.off("routeChangeComplete", end);
+      router.events.off("routeChangeError", end);
+    }
+  }, []);
 
   // GA 설정 시작
   const router = useRouter();
@@ -41,6 +63,9 @@ function MyApp({ Component, pageProps }) {
     };
   }, [router.events]);
   // GA 설정 끝
+
+  if (loading) return <Loading />
+
   return (
     <>
     <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`} />
