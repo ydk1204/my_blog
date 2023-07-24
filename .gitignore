@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# sitemap
+/sitemap/*.xml
+
 # production
 /build
 

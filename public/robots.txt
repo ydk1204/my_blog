@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://ydkblog.vercel.app
-
-# Sitemaps
-Sitemap: https://ydkblog.vercel.app/sitemap.xml
