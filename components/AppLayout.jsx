@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState, useContext } from "react";
 import Link from "next/link";
 import { Transition, TransitionGroup } from "react-transition-group";
 import { useRouter } from "next/router";
@@ -7,7 +7,6 @@ import Nav from "./Nav";
 import Footer from "./Footer";
 import metadata from "../data/metadata";
 import Image from "next/image";
-import { useContext } from "react";
 import { lightTheme } from "../styles/theme";
 import { ThemeContext } from "../pages/_app";
 import MenuBtn from "./MenuBtn";
@@ -32,6 +31,7 @@ const getTransitionStyles = {
 };
 const AppLayout = ({ children }, props) => {
   const { colorTheme } = useContext(ThemeContext);
+  const [isProfile, setIsProfile] = useState(false);
 
   const meta = {
     title: metadata.title,
@@ -42,10 +42,15 @@ const AppLayout = ({ children }, props) => {
 
   const router = useRouter();
 
+  useEffect(() => {
+    if (router.asPath === "/profile") setIsProfile(true);
+    else setIsProfile(false);
+  }, [router.asPath]);
+
   return (
     <>
       <div
-        className={`w-full flex flex-col items-center duration-300 p-3 scroll-smooth ${
+        className={`w-full flex flex-col items-center duration-300 scroll-smooth ${
           colorTheme === lightTheme
             ? "bg-white text-black"
             : "bg-zinc-900 text-white"
@@ -66,11 +71,14 @@ const AppLayout = ({ children }, props) => {
         </Head>
         <header
           className={`w-full sm:w-full h-[4.5rem] bottom-0 md:top-0 xl:top-0 duration-300 max-w-6xl flex flex-row justify-center items-center md:justify-between md:items-center 
-          shadow-headDwon md:shadow-headUp fixed z-10 ${
-            colorTheme === lightTheme
-              ? "bg-white text-black"
-              : "bg-zinc-900 text-white"
-          }`}
+          fixed z-10
+            ${
+              isProfile
+                ? "bg-transparent shadow-none"
+                : colorTheme === lightTheme
+                ? "bg-white text-black shadow-headDwon md:shadow-headUp"
+                : "bg-zinc-900 text-white shadow-headDwon md:shadow-headUp"
+            }`}
         >
           <Link
             className={`hidden flex-row items-center md:flex mx-2`}
@@ -86,27 +94,31 @@ const AppLayout = ({ children }, props) => {
           </Link>
           <Nav />
         </header>
-        <TransitionGroup
-          style={{ position: "relative", width: "100%", maxWidth: "72rem" }}
-        >
-          <Transition
-            key={router.pathname}
-            timeout={{
-              enter: TIMEOUT,
-              exit: TIMEOUT,
-            }}
+        {isProfile ? (
+          <div className="w-full min-h-screen m-0 p-0">{children}</div>
+        ) : (
+          <TransitionGroup
+            style={{ position: "relative", width: "100%", maxWidth: "72rem" }}
           >
-            {(status) => (
-              <div
-                style={{
-                  ...getTransitionStyles[status],
-                }}
-              >
-                {children}
-              </div>
-            )}
-          </Transition>
-        </TransitionGroup>
+            <Transition
+              key={router.pathname}
+              timeout={{
+                enter: TIMEOUT,
+                exit: TIMEOUT,
+              }}
+            >
+              {(status) => (
+                <div
+                  style={{
+                    ...getTransitionStyles[status],
+                  }}
+                >
+                  {children}
+                </div>
+              )}
+            </Transition>
+          </TransitionGroup>
+        )}
         {router.pathname.slice(-5, -1) === "slug" && (
           <>
             <MenuBtn data={children} title={"list"} />

@@ -697,3 +697,149 @@ a {
     width: 100%;
   }
 }
+
+
+/* porfile */
+
+.profile_container {
+  background: #002A7D;
+  overflow: hidden;
+}
+
+.profile_section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  
+}
+
+.profile_section img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+.profile_section img#background {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile_section img#cloudbar2 {
+  transform: translatex(90%);
+}
+
+.profile_section img#cloud {
+  width: 30rem;
+  height: 30rem;
+  opacity: 0.8;
+  transform: translateX(-10em) translateY(-10em);
+}
+
+.profile_section img#flare {
+  transform: translateX(100%);
+}
+
+.profile_section img#airplane {
+  width: 30rem;
+  height: 30rem;
+  transform: translateX(130rem) translateY(40em);
+}
+
+.profile_section img#sun {
+  width: 40rem;
+  height: 40rem;
+  transform: translateX(-10em) translateY(-17em);
+}
+
+.profile_section .profile_text {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-200%);
+  color: #fff;
+  font-size: 10vw;
+  white-space: nowrap;
+  text-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profile_main {
+  position: relative;
+  padding: 100px;
+}
+
+.profile_main h2 {
+  position: absolute;
+  font-size: 3em;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.profile_main p {
+  font-size: 1em;
+  color: #fff;
+  font-weight: 300;
+}
+
+@media (max-width: 1610px) {
+  .profile_section img#airplane {
+    transform: translateX(100rem) translateY(35em);
+  }
+}
+
+@media (max-width: 1200px) {
+  .profile_section img#airplane {
+    transform: translateX(60rem) translateY(35em);
+  }
+}
+
+@media (max-width: 992px) {
+  .profile_section img#sun {
+    width: 30rem;
+    height: 30rem;
+  }
+
+  .profile_section img#flare {
+    width: 200%;
+    height: 30vh;
+    top: 20em;
+    left: 13em;
+  }
+
+  .profile_section img#airplane {
+    transform: translateX(40rem) translateY(28.5em);
+  }
+}
+
+@media (max-width: 600px) {
+  .profile_section img#sun {
+      width: 80rem;
+      height: 35rem;
+    }
+
+  .profile_section img#flare {
+    width: 200%;
+    height: 30vh;
+    top: 20em;
+    left: 13em;
+  }
+}
+
+
+@media (max-width: 500px) {
+  .profile_section img#sun {
+    width: 100rem;
+    height: 31rem;
+  }
+
+  .profile_section img#airplane {
+    transform: translateX(20rem) translateY(28em);
+  }
+}
