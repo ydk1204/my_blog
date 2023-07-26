@@ -70,14 +70,14 @@ const AppLayout = ({ children }, props) => {
           <meta property="og:site_name" content={meta.author} />
         </Head>
         <header
-          className={`w-full sm:w-full h-[4.5rem] bottom-0 md:top-0 xl:top-0 duration-300 max-w-6xl flex flex-row justify-center items-center md:justify-between md:items-center 
+          className={`w-full sm:w-full h-[4.5rem] bottom-0 md:top-0 xl:top-0 duration-300  flex flex-row justify-center items-center md:justify-between md:items-center 
           fixed z-10
             ${
               isProfile
-                ? "bg-transparent shadow-none"
+                ? "bg-white/30 backdrop-blur-lg shadow-none border-t-[1px] border-t-gray-300/50 md:px-10 md:border-b-[1px] md:border-b-gray-300/10"
                 : colorTheme === lightTheme
-                ? "bg-white text-black shadow-headDwon md:shadow-headUp"
-                : "bg-zinc-900 text-white shadow-headDwon md:shadow-headUp"
+                ? "bg-white text-black shadow-headDwon md:shadow-headUp max-w-6xl"
+                : "bg-zinc-900 text-white shadow-headDwon md:shadow-headUp max-w-6xl"
             }`}
         >
           <Link
