@@ -77,7 +77,7 @@ const Post = ({ post, posts }) => {
             <Toc prevPost={prevPost} />
           </div>
         </div>
-        <div className="max-w-3xl w-full mb-20">
+        <div className="max-w-[52rem] w-full mb-20">
           <div
             className={`py-10 my-10 border-b-2 ${
               colorTheme === lightTheme ? "border-b-black" : "border-b-white"
@@ -94,7 +94,7 @@ const Post = ({ post, posts }) => {
             )}
           </article>
         </div>
-        <div className="max-w-3xl w-full">
+        <div className="max-w-[52rem] w-full">
           <Giscus />
         </div>
       </div>
