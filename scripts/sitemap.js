@@ -75,5 +75,5 @@ const formatted = sitemap => prettier.format(sitemap, { parser: "html" });
 
   const formattedSitemap = await formatted(generatedSitemap);
 
-  fs.writeFileSync("/Users/ydk1204/Desktop/blog/public/sitemap/sitemap.xml", formattedSitemap, "utf8");
+  fs.writeFileSync("/Users/ydk1204/Desktop/blog/public/sitemap.xml", formattedSitemap, "utf8");
 })();

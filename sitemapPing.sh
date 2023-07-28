@@ -2,8 +2,7 @@
 
 #yarn sitemap
 cd public
-rm -rf sitemap 
-mkdir sitemap
+rm -rf sitemap.xml 
 cd .. 
 cd scripts
 node ./sitemap.js
