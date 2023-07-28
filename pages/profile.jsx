@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import ProfileCard from "../components/ProfileCard";
 import ProfileCardSkill from "../components/ProfileCardSkill";
 import profileTexts from "../data/profileTexts";
+import Link from "next/link";
 
 const observerOption = { threshold: [0, 0.5, 1] };
 
@@ -109,6 +110,70 @@ const Blog = () => {
             ))}
           <ProfileCardSkill />
         </div>
+      </div>
+      <div className="copyright">
+        <Link
+          target="_blank"
+          href={
+            "https://pixabay.com/ko/illustrations/%EB%A0%8C%EC%A6%88-%ED%94%8C%EB%A0%88%EC%96%B4-%EC%82%AC%EC%A7%84-%ED%9A%A8%EA%B3%BC-3254468/"
+          }
+        >
+          &#91; Pixabay - 렌즈 플레어 | &nbsp;
+        </Link>
+        <Link
+          target="_blank"
+          href={
+            "https://pixabay.com/ko/vectors/%ED%95%98%EB%8A%98-%EA%B5%AC%EB%A6%84-%EC%82%B0-%ED%8C%8C%EB%9E%80%EC%83%89-34536/"
+          }
+        >
+          하늘 | &nbsp;
+        </Link>
+        <Link
+          target="_blank"
+          href={
+            "https://pixabay.com/ko/vectors/%EA%B7%B8%EB%9E%98%ED%94%BD-%EC%A2%85%EC%9D%B4-%EB%B9%84%ED%96%89%EA%B8%B0-%EC%A2%85%EC%9D%B4-4141628/"
+          }
+        >
+          종이 비행기 | &nbsp;
+        </Link>
+        <Link
+          target="_blank"
+          href={
+            "https://pixabay.com/de/illustrations/sonne-sonnenlicht-sonnenuntergang-7115270/"
+          }
+        >
+          태양 &#93; | &nbsp;
+        </Link>
+        <Link
+          target="_blank"
+          href={
+            "https://kr.freepik.com/free-vector/beautiful-cartoon-cloud-collection_18094033.htm#page=7&query=%EA%B5%AC%EB%A6%84&position=25&from_view=search&track=sph#position=25&page=7&query=%EA%B5%AC%EB%A6%84"
+          }
+        >
+          Freepik - 구름 | &nbsp;
+        </Link>
+        <Link
+          target="_blank"
+          href={"https://www.flaticon.com/free-icon/cursor_770477"}
+        >
+          &#91; flaticon - 커서 | &nbsp;
+        </Link>
+        <Link
+          target="_blank"
+          href={
+            "https://www.flaticon.com/free-icon/puzzle_227704?term=puzzle&page=1&position=28&origin=search&related_id=227704"
+          }
+        >
+          flaticon - 퍼즐 | &nbsp;
+        </Link>
+        <Link
+          target="_blank"
+          href={
+            "https://www.flaticon.com/kr/free-icon/edit_747825?term=%EC%97%B0%ED%95%84&page=1&position=84&origin=search&related_id=747825"
+          }
+        >
+          flaticon - 연필 &#93;
+        </Link>
       </div>
     </>
   );

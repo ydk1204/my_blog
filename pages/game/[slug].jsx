@@ -9,6 +9,7 @@ import { lightTheme, ColorTheme } from "../../styles/theme";
 import { ThemeContext } from "../_app";
 import RelatedPostCard from "../../components/RelatedPostCard";
 import Giscus from "../../components/Giscus";
+import Link from "next/link";
 
 const Post = ({ post, posts }) => {
   const { colorTheme } = useContext(ThemeContext);
@@ -96,6 +97,11 @@ const Post = ({ post, posts }) => {
         <div className="max-w-3xl w-full">
           <Giscus />
         </div>
+      </div>
+      <div className="copyright">
+        <Link target="_blank" href={post.copyright}>
+          이미지 제공
+        </Link>
       </div>
     </Container>
   );

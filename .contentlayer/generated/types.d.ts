@@ -19,6 +19,7 @@ export type Post = {
   img?: string | undefined
   tag: string
   note?: string | undefined
+  copyright?: string | undefined
   /** MDX file body */
   body: MDX
 

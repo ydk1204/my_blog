@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../pages/_app";
 import GamePost from "../components/GamePost";
 import gameList from "../data/gameList";
+import Link from "next/link";
 
 const Blog = ({ posts, lists }) => {
   const { colorTheme } = useContext(ThemeContext);
@@ -35,6 +36,14 @@ const Blog = ({ posts, lists }) => {
           ) : (
             <div>아직 포스팅이 없습니다.</div>
           )}
+        </div>
+        <div className="copyright">
+          <Link
+            target="_blank"
+            href={"https://maplestory.nexon.com/Media/ArtWork?page=1"}
+          >
+            이미지 제공 MapleStory
+          </Link>
         </div>
       </Container>
     </>

@@ -5,6 +5,7 @@ import studyList from "../data/studyList";
 import { lightTheme, ColorTheme } from "../styles/theme";
 import { useContext } from "react";
 import { ThemeContext } from "../pages/_app";
+import Link from "next/link";
 
 const Blog = ({ posts, lists }) => {
   const { colorTheme } = useContext(ThemeContext);
@@ -38,6 +39,41 @@ const Blog = ({ posts, lists }) => {
               posts={posts}
             />
           ))}
+        </div>
+
+        <div className="copyright">
+          <Link
+            target="_blank"
+            href={
+              "https://kr.freepik.com/icon/html_1051277#position=1&page=1&term=html&fromView=search"
+            }
+          >
+            이미지 제공 Freepik - Freepik | &nbsp;
+          </Link>
+          <Link
+            target="_blank"
+            href={
+              "https://kr.freepik.com/icon/css-3_732190#position=0&page=1&term=css&fromView=search"
+            }
+          >
+            이미지 제공 Freepik - Pixel perfect | &nbsp;
+          </Link>
+          <Link
+            target="_blank"
+            href={
+              "https://kr.freepik.com/icon/js_5968292#position=0&page=1&term=javascript&fromView=search"
+            }
+          >
+            이미지 제공 Freepik - Brands Color | &nbsp;
+          </Link>
+          <Link
+            target="_blank"
+            href={
+              "https://kr.freepik.com/icon/%EB%AC%BC%EB%A6%AC%ED%95%99_1126012#position=1&page=1&term=react&fromView=search"
+            }
+          >
+            이미지 제공 Freepik - Kiranshastry
+          </Link>
         </div>
       </Container>
     </>

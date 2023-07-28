@@ -26,7 +26,7 @@ const Footer = () => {
             <h3 className="font-bold text-base mb-3">블로그 제작</h3>
             <p className="text-sm mb-2">YDK</p>
             <p className="text-sm">
-              © 2022-2023 YDK blog Powered by{" "}
+              © 2023 YDK blog Powered by{" "}
               <Link className="text-rose-200" href={"https://nextjs.org/"}>
                 Next.js
               </Link>

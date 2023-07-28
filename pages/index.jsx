@@ -4,6 +4,7 @@ import RecentPosts from "../components/RecentPosts";
 import metadata from "../data/metadata";
 import TypeIt from "typeit-react";
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 
 import { allPosts } from "contentlayer/generated";
 
@@ -84,6 +85,16 @@ const Home = ({ posts }) => {
           </div>
         </div>
         <RecentPosts posts={posts} />
+      </div>
+      <div className="copyright">
+        <Link
+          target="_blank"
+          href={
+            "https://pixabay.com/ko/users/cromaconceptovisual-4595909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=6022003"
+          }
+        >
+          이미지 제공 Pixabay - cromaconceptovisual
+        </Link>
       </div>
     </Conainer>
   );

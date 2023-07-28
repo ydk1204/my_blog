@@ -859,6 +859,13 @@ a {
   position: relative;
 }
 
+.copyright {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: rgba(128, 128, 128, 0.484);
+}
+
 @media (max-width: 1610px) {
   .profile_section img#airplane {
     transform: translateX(100rem) translateY(35em);
