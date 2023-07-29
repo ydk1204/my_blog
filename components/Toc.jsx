@@ -65,6 +65,7 @@ const TOC = ({ prevPost }) => {
       rounded-t-2xl xl:rounded-none
       w-full xl:w-fit
       h-96 xl:h-fit
+      
       xl:top-10 xl:right-10 xl:border-0 xl:border-l-4 xl:border-orange-400 xl:px-4 xl:py-2 z-10
       `}
     >
@@ -74,8 +75,10 @@ const TOC = ({ prevPost }) => {
         h-full xl:h-fit
         flex xl:block
         flex-col 
-        items-center 
-        justify-center
+        items-center
+        py-10
+        overflow-y-scroll
+        toc-scroll
         "
       >
         {indexList.map(({ index, size }) => (
@@ -85,7 +88,7 @@ const TOC = ({ prevPost }) => {
             className={`
               w-10/12 xl:w-fit
               text-center xl:text-left
-              mb-2 xl:mb-0
+              mb-3 xl:mb-0
               text-[1.1rem]
               font-semibold xl:font-normal
               border-b-2 xl:border-0

@@ -454,6 +454,18 @@ a {
     ;
 }
 
+.toc-scroll {
+  -ms-overflow-style: none;
+  /* 인터넷 익스플로러 */
+  scrollbar-width: none;
+  /* 파이어폭스 */
+}
+
+.toc-scroll::-webkit-scrollbar {
+  display: none;
+  /* 크롬, 사파리, 오페라, 엣지 */
+}
+
 /* projects */
 
 .projects_card {
@@ -677,6 +689,12 @@ a {
   color: #222;
 }
 
+@media (max-width: 600px) {
+  .loading_conteiner h2 {
+    font-size: 4em;
+  }
+}
+
 .loading_conteiner h2::before {
   content: attr(data-text);
   position: absolute;
@@ -877,7 +895,7 @@ a {
     transform: translateX(60rem) translateY(35em);
   }
   .profile_section .profile_text {
-    transform: translateX(-50%) translateY(-300%);
+    transform: translateX(-50%) translateY(-50vh);
   }
 
   .profile_section img#flare {
@@ -930,7 +948,7 @@ a {
 @media (max-width: 900px) {
   .profile_section img#flare {
     width: 200%;
-    height: 25vh;
+    height: 40vh;
     top: 40vh;
     left: 8vw;
   }
@@ -941,6 +959,11 @@ a {
 
   .profile_main p {
     font-size: 0.9em;
+  }
+
+  .profile_section .profile_text {
+    font-size: 20vw;
+    transform: translateX(-50%) translateY(-50vh);
   }
 }
 
@@ -969,8 +992,8 @@ a {
 
   .profile_section img#flare {
     width: 200%;
-    height: 20em;
-    top: 20vh;
+    height: 15em;
+    top: 25vh;
     left: 25vw;
   }
 }
@@ -979,18 +1002,14 @@ a {
 @media (max-width: 500px) {
   .profile_section img#sun {
     width: 100rem;
-    height: 31rem;
+    height: 25rem;
   }
 
   .profile_section img#flare {
     width: 200%;
-    height: 15em;
-    top: 26vh;
-    left: 7em;
-  }
-
-  .profile_section .profile_text {
-    transform: translateX(-50%) translateY(-500%);
+    height: 10em;
+    top: 35vh;
+    left: 4em;
   }
 
   .profile_section img#airplane {

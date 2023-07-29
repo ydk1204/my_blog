@@ -67,13 +67,13 @@ const Post = ({ post, posts }) => {
                 <div className="img-animation" ref={imgRef}></div>
               </div>
             )}
-            <h1 className="mt-10">{post.title}</h1>
-            <div>
+            <h1 className="mt-10 px-2 md:px-0">{post.title}</h1>
+            <div className="px-2 md:px-0">
               <MDXComponent />
             </div>
           </div>
 
-          <div className="hidden xl:block sticky right-0 w-60 h-fit top-[8.5rem] ml-10 ">
+          <div className="hidden xl:block sticky right-0 w-60 h-fit top-[7.5rem] ml-0 ">
             <Toc prevPost={prevPost} />
           </div>
         </div>
