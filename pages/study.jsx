@@ -74,6 +74,14 @@ const Blog = ({ posts, lists }) => {
           >
             이미지 제공 Freepik - Kiranshastry
           </Link>
+          <Link
+            target="_blank"
+            href={
+              "https://www.freepik.com/icon/neural_2103633#fromView=search&term=algorithm&page=1"
+            }
+          >
+            이미지 제공 Freepik - Becris
+          </Link>
         </div>
       </Container>
     </>
