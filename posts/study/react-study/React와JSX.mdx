@@ -1,0 +1,225 @@
+---
+title: JSX의 기본을 살펴보자
+date: 2023-08-10
+description: 리액트 기반의 프로젝트를 만들 때 중요한 JSX의 기본을 알아보자
+img: /postImg/study/plant.svg
+tag: study
+note: react
+copyright: https://pixabay.com/ko/vectors/%EC%8B%9D%EB%AC%BC-%EC%8B%A4%EB%A3%A8%EC%97%A3-%ED%9A%8C%EC%83%89-%EB%82%98%EB%AC%B4-312737/
+---
+
+## 리액트는 JSX 형식으로
+
+### JSX는 반드시 1개를 리턴한다.
+
+리액트로 웹페이지를 만들 때 JSX형식의 파일을 만들어 페이지를 구성한다.
+
+JSX 문법으로 HTML 요소들을 반환할 때 최상위 요소는 반드시 1개가 존재해야 한다.
+
+```
+// 가능
+<div>
+  <span>hello, world!</span>
+</div>
+
+// 불가능, 최상위 요소가 두개
+<span>hello,</span>
+<span>world!</span>
+
+```
+
+### 나는 여러 요소를 리턴하고 싶다.
+
+여러 요소들을 리턴하고 싶다면 그 요소들을 감싸는 최상위 요소를 만들어 감싸주면 된다.
+
+```
+<div>
+  <span>hello, world!</span>
+</div>
+```
+
+최상위 요소는 어떤 요소든지 상관 없다. 현재 프로젝트 흐름상 가장 어울리는 요소로 감싸주면 된다.
+
+---
+
+## 왜 JSX는 하나의 요소를 리턴해야 할까
+
+### react도 JavaScript였어..!
+
+구글에 리액트 공식 홈페이지 검색만 해도 바로 나오지만 리액트는 자바스크립트 라이브러리이다.
+
+따라서 자바스크립트 문법을 알고 있다면 이해하고 배우기 쉬운데 해당 파트도 마찬가지다.
+
+이유는 간단한데 다음 코드를 살펴보자
+
+```
+index.js
+
+ReactDOM.render(
+  <App />
+  document.getElementById('root')
+)
+```
+
+위 코드는 우리가 react 프로젝트를 만들었을 때 기본으로 만들어지는 파일 중 index.js의 일부이다.
+보면 맨 처음에 ReactDOM.render라는 함수가 있고, 두번째로 그 안에 우리가 향후 만들게 될 코드들이
+담겨져 있는 App 컴포넌트, 마지막으로 getElementById를 이용해 root라는 id를 가진 요소를 찾는 것을 알 수 있다.
+
+여기서 간단하게 보면
+
+1. ReactDOM.render
+2. App => 우리가 만든(만들게 될) 코드들이 담겨져 있는 컴포넌트
+3. document.getElementById('root') => index.html에서 root라는 id를 가진 요소를 찾는 것이다.
+
+이 코드를 정리하면 App컴포넌트를 root요소에 render 시킨다고 보면 되는데, 이것이 우리가 사용하는
+리액트가 기본적으로 우리에게 제공해주는 방식이다.
+
+### 조금 더 자세히 들여다 보자
+
+위의 간단한 3줄의 코드를 다른 방식으로 살펴 볼 수 있다.
+
+먼저 같은 리액트 방식이지만 약간 다르게 보자
+
+```
+const rootElement = document.getElementById("root");
+const element = react.createElement("span", null, "hello, world!");
+rootElement.render(element);
+
+```
+
+뭔가 익숙하면서도 다른 점이 있을 것이다.
+
+1. rootElement => 위에서 본 것과 같다, root 요소를 찾는 문장이다.
+2. element => 처음 보는 것일 수 있다. 아래에서 설명한다.
+3. rootElement.render => 모양이 좀 다르긴 하지만 render라고 적혀있는 것을 보아 위의 render와 같은 결과를 기대할 수 있을 것이다.
+
+2번의 element를 자세히 살펴보면 react에서 제공해주는 문법 중 createElement를 이용하는 것을 볼 수 있는데,
+createElement라는 단어를 살펴보면 대충 느낌이 올 것이다. 이는 해당 페이지의 맨 위의 코드에서
+
+```
+<span>hello, world!</span>
+```
+
+와 같다.
+
+즉 HTML 태그(요소)를 리액트의 다른 방식으로 사용했을 뿐이다.
+이 코드를 적은 이유는 다음을 보기 위해서이다.
+
+우리는 리액트가 자바스크립트 라이브러리라는 것을 안다.
+그렇기에 순수 자바스크립트로 똑같은 코드를 작성할 수 있다.
+
+```
+const rootElement = document.getElementById("root");
+const element = document.createElement("span");
+element.textContent = "hello, world!";
+rootElement.appendChild(element);
+```
+
+이제는 익숙할 것이다.
+
+1. rootElement => 위의 리액트 코드와 완전 같다.
+2. element => document와 react라는 단어만 다를 뿐 createElement를 호출해 사용하는 점은 같다.
+3. element.textContent => 어려울 것 없다, 위 리액트에서는 요소의 생성과 함께 바로 내용(contents)를 적었듯이 js에서는
+   해당 코드를 통해 내용을 추가한다.
+4. rootElement.appendChild => 다르지만 이해가 가능할 것이다. render와 같다.
+
+여기서 appendChild를 한번쯤 사용해 본적이 있을 것인데, 간단하게 설명하면
+부모 노드(rootElement)에 새로운 자식(element)을 추가하는 것이다.
+
+단, 이때 주의할 점이 있는데 자식 노드를 추가할 때 한번에 하나의 자식만 추가할 수 있다는 점이다.
+
+이것으로 장황하게 설명한 모든 것이 끝났다.
+
+그렇다 바로 이점 때문에 리액트에서도 똑같이 한번에 하나의 자식만 추가할 수 있어 JSX에서 HTML 태그(요소)들을
+반환할 때 반드시 최상위 요소는 하나 요소로 감싸 전달해줘야 한다.
+
+---
+
+## 혹시 다른 방법은 없을까?
+
+이유는 알겠다, 사용 방법도 알겠다.
+하지만 다른 방식은 혹시 없을까 궁금하다. 당연히 존재한다.
+
+### 배열 사용
+
+배열을 사용한다니 뭔가 특이해 보이는데 매우 심플하다.
+
+```
+return [
+  <span>Hello,</span>
+  <span>World!</span>
+]
+```
+
+위와 같이 사용하면 된다.
+
+단, 이때도 주의할 점이 있는데 우리가 리액트를 사용할 때 map 함수를 이용해 요소를 추가해 봤다면 알겠지만
+리액트에서는 리스트 형태의 요소는 반드시 key 속성을 부여한다는 것이다.
+
+리액트에서 가상의 DOM과 현재 DOM의 변화를 보면서 변화된 부분만 변경하는데 리스트 형태의 요소들은 혹시 모를
+버그를 방지하기 위해 각 리스트마다 key속성과 값을 부여해 구분이 쉽게 만들어 관리한다.
+
+따라서 배열에 감싸 요소들을 반환한다면 똑같이 각 요소마다 반드시 key 속성을 부여해 줘야한다는 번거로움이 있다.
+
+```
+return [
+  <span key=1>Hello,</span>
+  <span key=2>World!</span>
+]
+```
+
+위와 같이 사용할 수 있다.
+
+### 컴포넌트 사용
+
+별도의 컴포넌트를 만들어 props로 반환하고 싶은 요소들을 전달받아 반환할 때는 해당 컴포넌트만 반환하는 방식이다.
+
+```
+Components
+
+const Components = props => {
+  return props.children
+}
+
+export default Components
+```
+
+위와 같은 컴포넌트를 만들고
+
+```
+<Components>
+  <span>Hello,</span>
+  <span>World!</span>
+</Components>
+```
+
+위와 같이 사용하면 Components라는 컴포넌트는 props로 span 요소들을 전달 받아 반환한다.
+
+props.children를 사용할 경우 여는 태그와 닫는 태그 사이에 존재하는 요소들을 전부 받아올 수 있기 때문에
+위와 같은 코드 사용이 가능하다.
+
+위 코드를 브라우저에서 살펴볼 경우 별도의 추가되는 태그(요소) 없이 span요소들만 화면에 보여지는 것을 볼 수 있다.
+
+### 프래그먼트(Fragments)
+
+사실 위의 컴포넌트를 사용하는 방식보다 더 편한 방식이 이 방식이다.
+
+```
+<>
+  <span>Hello,</span>
+  <span>World!</span>
+</>
+```
+
+위와 같이 사용하면 된다. 아주 간단하고 좋다.
+
+실제 브라우저에서 작동하는 것을 보면 위의 컴포넌트 방식과 똑같이 작동하는데, 간단하기 때문에 자주 사용한다.
+
+나는 프래그먼트를 사용한다. 좋다.
+
+---
+
+이것으로 JSX문법의 기본 중의 기본을 알아 봤다.
+
+자신이 사용하기 편한 방식으로 사용하는 것이 가장 좋기 때문에 그냥 이런 방식이 있구나라는 정도로
+알아두고 실제로 사용할 때는 그냥 편한 방식으로 하는 것이 몸도 마음도 편할 것 같다.
