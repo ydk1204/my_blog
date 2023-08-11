@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "rss": "node jsconfig.node.json ./script/generate-rss.js",
-    "sitemap" : "sh ./sitemapPing.sh"
+    "sitemap": "sh ./sitemapPing.sh"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",

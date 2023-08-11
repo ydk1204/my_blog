@@ -64,8 +64,6 @@ function MyApp({ Component, pageProps }) {
   }, [router.events]);
   // GA 설정 끝
 
-  if (loading) return <Loading />
-
   return (
     <>
     <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`} />
@@ -87,7 +85,8 @@ function MyApp({ Component, pageProps }) {
 
     <ThemeContext.Provider value={{ colorTheme, toggleColorTheme}} >
       <ModalContext.Provider value={{isClickIndex, isClickList, toggleModal }}>
-        <AppLayout {...pageProps}>
+          <AppLayout {...pageProps}>
+            {loading && <Loading />}
           <Component {...pageProps} />
         </AppLayout>
       </ModalContext.Provider>
