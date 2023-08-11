@@ -44,7 +44,7 @@ const Post = ({ post, posts }) => {
 
   return (
     <Container customMeta={customMeta}>
-      <div className="w-full min-h-[60rem] h-full flex flex-col justify-start items-center">
+      <div className="w-full min-h-[60rem] h-full flex flex-col justify-center items-center">
         <div className="flex w-full justify-center">
           <div className="hidden xl:flex w-48 sticky top-[8.5rem] left-0 h-full flex-col items-center pl-7 z-10">
             <BookList posts={posts} title={post.title} />
@@ -72,29 +72,29 @@ const Post = ({ post, posts }) => {
               <MDXComponent />
             </div>
           </div>
-
           <div className="hidden xl:block sticky right-0 w-60 h-fit top-[7.5rem] ml-0 ">
             <Toc prevPost={prevPost} />
           </div>
         </div>
-        <div className="max-w-3xl w-full mb-20">
-          <div
-            className={`py-10 my-10 border-b-2 ${
-              colorTheme === lightTheme ? "border-b-black" : "border-b-white"
-            }`}
-          ></div>
-          <article className="flex flex-col md:flex-row justify-between">
-            {prevPost && Object.keys(prevPost).length > 1 ? (
-              <RelatedPostCard division={"이전 글"} post={prevPost} />
-            ) : (
-              <div className="w-full md:w-[45%]"></div>
-            )}
-            {nextPost && Object.keys(nextPost).length > 1 && (
-              <RelatedPostCard division={"다음 글"} post={nextPost} />
-            )}
-          </article>
-        </div>
-        <div className="max-w-3xl w-full">
+
+        <div className="max-w-[50rem] w-full mb-20">
+          <div className="mb-20">
+            <div
+              className={`py-10 my-10 border-b-2 ${
+                colorTheme === lightTheme ? "border-b-black" : "border-b-white"
+              }`}
+            ></div>
+            <article className="flex flex-col md:flex-row justify-between">
+              {prevPost && Object.keys(prevPost).length > 1 ? (
+                <RelatedPostCard division={"이전 글"} post={prevPost} />
+              ) : (
+                <div className="w-full md:w-[45%]"></div>
+              )}
+              {nextPost && Object.keys(nextPost).length > 1 && (
+                <RelatedPostCard division={"다음 글"} post={nextPost} />
+              )}
+            </article>
+          </div>
           <Giscus />
         </div>
       </div>

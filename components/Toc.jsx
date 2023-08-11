@@ -66,7 +66,7 @@ const TOC = ({ prevPost }) => {
       w-full xl:w-fit
       h-96 xl:h-fit
       
-      xl:top-10 xl:right-10 xl:border-0 xl:border-l-4 xl:border-orange-400 xl:px-4 xl:py-2 z-10
+      xl:top-10 xl:right-10 xl:border-0 xl:border-l-4 xl:border-orange-400 xl:px-2 xl:py-2 z-10
       `}
     >
       <ul
@@ -79,6 +79,7 @@ const TOC = ({ prevPost }) => {
         py-10
         overflow-y-scroll
         toc-scroll
+        xl:pl-2
         "
       >
         {indexList.map(({ index, size }) => (
@@ -100,7 +101,7 @@ const TOC = ({ prevPost }) => {
                   ? "text-orange-400 scale-110 xl:scale-105"
                   : ""
               }
-              ${size === 20 ? "xl:pl-0 xl:text-lg" : "xl:pl-4 xl:text-sm"}
+              ${size === 20 ? "xl:pl-0 xl:text-base" : "xl:pl-4 xl:text-sm"}
               `}
           >
             {index}
