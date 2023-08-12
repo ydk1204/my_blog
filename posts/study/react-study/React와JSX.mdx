@@ -16,23 +16,22 @@ copyright: https://kr.freepik.com/free-vector/fashion-logo-sticker-business-bran
 
 JSX 문법으로 HTML 요소들을 반환할 때 최상위 요소는 반드시 1개가 존재해야 한다.
 
-```
-// 가능
+```javascript
 <div>
   <span>hello, world!</span>
 </div>
 
-// 불가능, 최상위 요소가 두개
+<p>sadasd</p>
+
 <span>hello,</span>
 <span>world!</span>
-
 ```
 
 ### 여러 요소 반환하는 방법
 
 여러 요소들을 리턴하고 싶다면 그 요소들을 감싸는 최상위 요소를 만들어 감싸주면 된다.
 
-```
+```javascript
 <div>
   <span>hello, world!</span>
 </div>
@@ -52,9 +51,7 @@ JSX 문법으로 HTML 요소들을 반환할 때 최상위 요소는 반드시 1
 
 이유는 간단한데 다음 코드를 살펴보자
 
-```
-index.js
-
+```javascript
 ReactDOM.render(
   <App />
   document.getElementById('root')
@@ -80,11 +77,10 @@ ReactDOM.render(
 
 먼저 같은 리액트 방식이지만 약간 다르게 보자
 
-```
+```javascript
 const rootElement = document.getElementById("root");
 const element = react.createElement("span", null, "hello, world!");
 rootElement.render(element);
-
 ```
 
 뭔가 익숙하면서도 다른 점이 있을 것이다.
@@ -96,7 +92,7 @@ rootElement.render(element);
 2번의 element를 자세히 살펴보면 react에서 제공해주는 문법 중 createElement를 이용하는 것을 볼 수 있는데,
 createElement라는 단어를 살펴보면 대충 느낌이 올 것이다. 이는 해당 페이지의 맨 위의 코드에서
 
-```
+```javascript
 <span>hello, world!</span>
 ```
 
@@ -108,7 +104,7 @@ createElement라는 단어를 살펴보면 대충 느낌이 올 것이다. 이�
 우리는 리액트가 자바스크립트 라이브러리라는 것을 안다.
 그렇기에 순수 자바스크립트로 똑같은 코드를 작성할 수 있다.
 
-```
+```javascript
 const rootElement = document.getElementById("root");
 const element = document.createElement("span");
 element.textContent = "hello, world!";
@@ -144,7 +140,7 @@ rootElement.appendChild(element);
 
 배열을 사용한다니 뭔가 특이해 보이는데 매우 심플하다.
 
-```
+```javascript
 return [
   <span>Hello,</span>
   <span>World!</span>
@@ -161,10 +157,10 @@ return [
 
 따라서 배열에 감싸 요소들을 반환한다면 똑같이 각 요소마다 반드시 key 속성을 부여해 줘야한다는 번거로움이 있다.
 
-```
+```javascript
 return [
-  <span key=1>Hello,</span>
-  <span key=2>World!</span>
+  <span key=1 >Hello,</span>
+  <span key=2 >World!</span>
 ]
 ```
 
@@ -174,19 +170,17 @@ return [
 
 별도의 컴포넌트를 만들어 props로 반환하고 싶은 요소들을 전달받아 반환할 때는 해당 컴포넌트만 반환하는 방식이다.
 
-```
-Components
+```javascript
+const Components = (props) => {
+  return props.children;
+};
 
-const Components = props => {
-  return props.children
-}
-
-export default Components
+export default Components;
 ```
 
 위와 같은 컴포넌트를 만들고
 
-```
+```javascript
 <Components>
   <span>Hello,</span>
   <span>World!</span>
@@ -204,7 +198,7 @@ props.children를 사용할 경우 여는 태그와 닫는 태그 사이에 존�
 
 사실 위의 컴포넌트를 사용하는 방식보다 더 편한 방식이 이 방식이다.
 
-```
+```javascript
 <>
   <span>Hello,</span>
   <span>World!</span>

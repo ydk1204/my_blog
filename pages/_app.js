@@ -86,7 +86,7 @@ function MyApp({ Component, pageProps }) {
     <ThemeContext.Provider value={{ colorTheme, toggleColorTheme}} >
       <ModalContext.Provider value={{isClickIndex, isClickList, toggleModal }}>
           <AppLayout {...pageProps}>
-            {loading && <Loading />}
+          {loading && <Loading />}
           <Component {...pageProps} />
         </AppLayout>
       </ModalContext.Provider>

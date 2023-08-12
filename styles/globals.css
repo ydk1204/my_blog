@@ -680,7 +680,6 @@ a {
 
 .loading_conteiner {
   display: flex;
-  width: 100vw;
   min-height: 100vh;
   background: transparent;
   justify-content: center;
@@ -698,6 +697,8 @@ a {
     font-size: 4em;
   }
 }
+
+
 
 .loading_conteiner h2::before {
   content: attr(data-text);

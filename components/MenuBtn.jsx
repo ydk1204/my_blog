@@ -8,7 +8,10 @@ import { ThemeContext } from "../pages/_app";
 const MenuBtn = ({ data, title }) => {
   const { isClickIndex, isClickList, toggleModal } = useContext(ModalContext);
   const { colorTheme } = useContext(ThemeContext);
-  const { props } = data;
+  const postData = data && data[1];
+  const { props } = postData;
+
+  console.log(props);
 
   const toggleBtn = (title) => {
     if (title === "index") toggleModal("mobile", "index");
@@ -41,7 +44,7 @@ const MenuBtn = ({ data, title }) => {
             `}
             onClick={() => toggleBtn(title)}
           >
-            {title}
+            목차
           </button>
         )}
         {!isClickList && title === "list" && !isClickIndex && (
@@ -56,7 +59,7 @@ const MenuBtn = ({ data, title }) => {
             `}
             onClick={() => toggleBtn(title)}
           >
-            {title}
+            {props?.post.note}
           </button>
         )}
 
@@ -68,7 +71,7 @@ const MenuBtn = ({ data, title }) => {
             ${colorTheme === lightTheme ? "text-white" : "text-white"}
             `}
             >
-              <BookList posts={props.posts} title={props.post.title} />
+              <BookList posts={props?.posts} title={props?.post.title} />
             </div>
             <div
               onClick={() => toggleBtn(title)}
