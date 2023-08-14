@@ -10,6 +10,11 @@ import { ThemeContext } from "../../_app";
 import RelatedPostCard from "../../../components/RelatedPostCard";
 import Giscus from "../../../components/Giscus";
 import Link from "next/link";
+import { Pre } from "../../../components/Pre";
+
+const components = {
+  pre: Pre,
+};
 
 const Post = ({ post, posts }) => {
   const { colorTheme } = useContext(ThemeContext);
@@ -69,7 +74,7 @@ const Post = ({ post, posts }) => {
             )}
             <h1 className="mt-10 px-2 md:px-0">{post.title}</h1>
             <div className="px-2 md:px-0">
-              <MDXComponent />
+              <MDXComponent components={components} />
             </div>
           </div>
 

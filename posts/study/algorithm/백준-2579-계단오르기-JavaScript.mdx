@@ -98,15 +98,19 @@ ex\_ 1번 = 10, 2번 = 20, 3번 = 30, ...
 
 ### JavaScript, NodeJs 풀이
 
-```
+```javascript
 const BAEAKJOONFILE = "/dev/stdin";
 const VSCODEFILE = "./coding/example.txt";
 
 const fs = require("fs");
-let [step, ...input] = fs.readFileSync(VSCODEFILE).toString().trim().split("\n");
+let [step, ...input] = fs
+  .readFileSync(VSCODEFILE)
+  .toString()
+  .trim()
+  .split("\n");
 
 step = Number(step); // 6이라 가정
-input = input.map(x => +x); // 10, 20, 15, 25, 10, 20 이라 가정
+input = input.map((x) => +x); // 10, 20, 15, 25, 10, 20 이라 가정
 
 const answer = (step, input) => {
   const dp = Array(input.length).fill(0); // dp라는 길이 6개의 배열을 만들고 모두 0으로 초기화
@@ -123,7 +127,7 @@ const answer = (step, input) => {
   }
 
   console.log(dp[step - 1]);
-}
+};
 
 answer(step, input);
 ```
