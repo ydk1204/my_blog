@@ -1,0 +1,188 @@
+---
+title: 백준 1260번 DFS와 BFS JavaScript, NodeJS
+date: 2023-08-16
+description: 백준 1260번 DFS와 BFS JavaScript, NodeJS 풀이방법, 깊이우선탐색, 너비우선탐색
+img: /postImg/algorithm/bfs.svg.png
+tag: study
+note: algorithm
+copyright: https://en.wikipedia.org/wiki/Breadth-first_search
+---
+
+## 백준 1260번 DFS와 BFS
+
+문제 링크 ➡ [1260번: DFS와 BFS][백준]
+
+---
+
+## 문제
+
+그래프를 DFS로 탐색한 결과와 BFS로 탐색한 결과를 출력하는 프로그램을 작성하시오.
+단, 방문할 수 있는 정점이 여러 개인 경우에는 정점 번호가 작은 것을 먼저 방문하고,
+더 이상 방문할 수 있는 점이 없는 경우 종료한다. 정점 번호는 1번부터 N번까지이다.
+
+### 이 문제는
+
+이름에 적혀 있듯이 DFS와 BFS를 이용해서 풀면 된다.
+
+- 깊이 우선 탐색(DFS, Depth-First Search)
+- 너비 우선 탐색(BFS, Breadth-First search)
+
+간단하게,  
+DFS는 한 길을 걷다가 여러 길(갈림길)이 나왔을 때 하나를 골라서 끝까지 갈 수 있는 곳까지 뒤도 안 돌아보고
+들어 가다가 길이 끊기면 뒤로 나와서 다른 길로 가고,  
+BFS는 한 길을 걷다가 여러 길(갈림길)이 있을 때 하나 골라서 잠깐 걷다가 그새 질려서 뒤로 나와 옆길로 빠지고
+다시 또 나와서 옆길로 빠지고를 반복하다가 옆길이 더 이상 없으면 더 안쪽 길로 들어 가면서 위의
+루트를 반복 한다고 보면 된다.
+
+다음 그림을 보면 이해가 쉬울 것이다.
+
+- [DFS 그림 - 출처 [위키 백과][DFS]]
+  ![연결 요소의 개수 예제 1번 그림](/postImg/algorithm/dfs.svg.png)
+
+- [BFS 그림 - 출처 [위키 백과][BFS]]
+  ![연결 요소의 개수 예제 1번 그림](/postImg/algorithm/bfs.svg.png)
+
+---
+
+## 문제 풀이
+
+### 예제 보고 이해하기
+
+```javascript
+// 입력 값
+4 5 1
+1 2
+1 3
+1 4
+2 4
+3 4
+
+// 출력 값
+1 2 4 3 // DFS
+1 2 3 4 // BFS
+```
+
+백준에 가서 문제를 봤다면 위의 예제가 뜻하는 것이 무엇인지는 이해했을 것이다.  
+n = 4, m = 5, v = 1  
+아래의 숫자가 그래프 라는 것,
+
+그럼 각 그래프가 갈 수 있는 길을 살펴보자
+
+1 = [2, 3, 4]  
+2 = [1, 4]  
+3 = [1, 4]  
+4 = [1, 2, 3]
+
+위처럼 이동이 가능한데,  
+문제를 보면 이동 경로를 출력하라는 말이니 이동하면서 걸어온 길은 기억하면 된다.  
+단, 한번 가봤던 길은 중복으로 기록하지 않고 한번만 기록하면 된다.
+
+v가 1이니 1번부터 갈 수 있는 길로 이동할 것이다. 먼저 DFS 방식으로 이동했을 때
+
+1. 1번 => 2번으로 들어간다
+2. 2번 => 2번에서 첫번째로 갈 수 있는 길은 1번인데 1번은 이미 걸었던 길이라 질렸다 패스,
+   그 [다음으로 갈 수있는 길] = [4번]이니 4번으로 이동
+3. 4번 => 4번에서 갈 수 있는 길을 보니 1, 2번은 이미 갔고 [안 간길] = [3번]이니 3번으로 이동
+4. 3번 왔더니 다른 길은 다 가봤던 길이다. 경로를 살펴보니,  
+   => 1 => 2 => 4 => 3 이다.
+
+이번엔 BFS 방식으로 보면,
+
+1. 1번 => 2번으로 들어간다.
+2. DFS와 달리 2번에서 갈 수 있는 길로 계속 들어가는게 아니라 옆길이 궁금해진다,
+   1번에서 갈 수 있는 길이 3, 4번이 더 있으니 먼저 3번 부터 가본다.
+3. 3번 으로 이동, 아직 옆길이 남아 있다, 남은 길도 궁금하니 가본다.
+4. 4번 으로 이동. 벌써 다 돌았다 끝이다. 경로를 살펴보니,  
+   => 1 => 2 => 3 => 4 이다.
+
+### 실제 코드
+
+```javascript
+const BAEAKJOONFILE = "/dev/stdin";
+const VSCODEFILE = "./coding/example.txt";
+
+const fs = require("fs");
+let [count, ...input] = fs
+  .readFileSync(VSCODEFILE)
+  .toString()
+  .trim()
+  .split("\n");
+let [n, m, v] = count.split(" ").map((x) => +x);
+let graph = []; // 갈 수 있는 길 목록
+let DFS_visited = new Array(n + 1).fill(false); // 걸었던 길인지 체크, DFS 전용
+let BFS_visited = new Array(n + 1).fill(false); // 걸었던 길인지 체크, BFS 전용
+let DFS_answer = [];
+let BFS_answer = [];
+
+for (let i = 1; i <= n; i++) graph[i] = []; // 여행 길 리스트 미리 만들기
+
+for (let i = 0; i < input.length; i++) {
+  let [a, b] = input[i].split(" ").map((x) => +x);
+  graph[a].push(b); // 문제에서 방향은 정해져 있지않다 즉, a에서 b로
+  graph[b].push(a); // b에서 a로 갈 수 있다는 말이니 그에 맞게 길을 짜준다.
+}
+
+graph.forEach((x) => {
+  // 갈림길 중에서 작은 숫자부터 가보라는 문제의 지시가 있으니 따라준다.
+  x.sort((a, b) => a - b);
+});
+
+const DFS = (v) => {
+  // 왔던 길인지 확인
+  if (DFS_visited[v]) return;
+  // 이번에 걷게 될 곳이니 방문 기록 남겨두기
+  DFS_visited[v] = true;
+  // 지금 걷는 길 경로 기록
+  DFS_answer.push(v);
+  // 내가 지금 걷는 길의 갈림길을 다 가볼 것이니 반복
+  for (let i = 0; i < graph[v].length; i++) {
+    // 단 이미 가본 곳은 지루하니 이미 가본 곳인지 살펴보기
+    if (!DFS_visited[graph[v][i]]) {
+      // 안 가본 곳이면 그 길로 go
+      DFS(graph[v][i]);
+    }
+  }
+};
+
+const BFS = (v) => {
+  // 가볼 곳 따로 기록 해두기
+  let queue = [v];
+  while (queue.length) {
+    // 기록 해둔 곳 중에서 가장 앞에 적은 곳으로 하나 정하기
+    let x = queue.shift();
+    // 그 길이 이미 가본 곳이면 다시
+    if (BFS_visited[x] === true) {
+      continue;
+    }
+    // 이번에 처음 와보니 방문 기록 남기기
+    BFS_visited[x] = true;
+    // 경로 기록 남기기
+    BFS_answer.push(x);
+    // 이 길에서 갈 수 있는 갈림길이 어디 있는지 미리 살펴보기(가지는 않고 보기만 함)
+    for (let i = 0; i < graph[x].length; i++) {
+      // 물론 안 가본 곳만
+      if (BFS_visited[graph[x][i]] === false) {
+        // 가볼 곳 기록 해두기
+        queue.push(graph[x][i]);
+      }
+    }
+  }
+};
+
+DFS(v);
+console.log(DFS_answer.join(" "));
+BFS(v);
+console.log(BFS_answer.join(" "));
+```
+
+---
+
+사실 나는 이 문제 오래 걸렸다. 계속 틀려서 뭐가 문제인지 한참 뒤에 알았는데  
+결과 값을 배열에 저장하고 그대로 출력해서 문제였다.  
+출력 방식으로 밨을 때 문제가 없어서 신경 안 쓰고 있었는데... 주의하자
+
+---
+
+[백준]: https://www.acmicpc.net/problem/1260
+[DFS]: https://ko.wikipedia.org/wiki/%EA%B9%8A%EC%9D%B4_%EC%9A%B0%EC%84%A0_%ED%83%90%EC%83%89
+[BFS]: https://ko.wikipedia.org/wiki/%EB%84%88%EB%B9%84_%EC%9A%B0%EC%84%A0_%ED%83%90%EC%83%89

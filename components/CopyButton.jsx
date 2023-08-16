@@ -11,11 +11,15 @@ export const CopyButton = ({ text }) => {
 
     setTimeout(() => {
       setIsCopied(false);
-    }, 10000);
+    }, 3000);
   };
 
   return (
-    <button disabled={isCopied} onClick={copy}>
+    <button
+      disabled={isCopied}
+      onClick={copy}
+      className="duration-100 hover:text-white/80"
+    >
       {isCopied ? "복사완료!" : "복사"}
     </button>
   );
