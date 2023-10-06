@@ -51,17 +51,20 @@ const Nav = () => {
             </Link>
           </li>
         ))}
+        <li>
+          <button onClick={DarkModeToggle} className="">
+            <Image
+              src={`/${colorTheme === lightTheme ? "sun.png" : "moon.png"}`}
+              className={``}
+              width={25}
+              height={20}
+              alt="theme icon"
+            />
+            <div className="h-4"></div>
+          </button>
+        </li>
         <div className="indicator"></div>
       </ul>
-      <button onClick={DarkModeToggle}>
-        <Image
-          src={`/${colorTheme === lightTheme ? "sun.png" : "moon.png"}`}
-          className={`ml-1 sm:mx-4`}
-          width={25}
-          height={5}
-          alt="theme icon"
-        />
-      </button>
     </nav>
   );
 };
