@@ -33,6 +33,10 @@ const AppLayout = ({ children }, props) => {
   const { colorTheme } = useContext(ThemeContext);
   const [isProfile, setIsProfile] = useState(false);
 
+  const [isHovering, setIsHovered] = useState(false);
+  const onMouseEnter = () => setIsHovered(true);
+  const onMouseLeave = () => setIsHovered(false);
+
   const meta = {
     title: metadata.title,
     description: metadata.description,
@@ -80,18 +84,22 @@ const AppLayout = ({ children }, props) => {
                 : "bg-zinc-900 text-white shadow-headDwon md:shadow-headUp max-w-6xl"
             }`}
         >
-          <Link
-            className={`hidden flex-row items-center md:flex mx-2`}
-            href={"/"}
-          >
-            <Image
-              src={"/mainLogo.png"}
-              alt="로고"
-              width={40}
-              height={40}
-              className={`object-cover`}
-            />
-          </Link>
+          <div className="w-24 text-4xl duration-75 text-orange-400 font-extrabold hover:text-3xl">
+            <Link
+              className={`hidden flex-row items-center md:flex mx-2 group w-full`}
+              href={"/"}
+            >
+              <p className="w-full">
+                간
+                <span
+                  className={`hidden nameLogo group-hover:inline-block group-hover:text-5xl`}
+                >
+                  ?
+                </span>
+                편
+              </p>
+            </Link>
+          </div>
           <Nav />
         </header>
         {isProfile ? (
