@@ -30,7 +30,7 @@ const getTransitionStyles = {
   },
 };
 const AppLayout = ({ children }, props) => {
-  const { colorTheme } = useContext(ThemeContext);
+  const { colorTheme, imgTarget } = useContext(ThemeContext);
   const [isProfile, setIsProfile] = useState(false);
 
   const meta = {
@@ -75,9 +75,11 @@ const AppLayout = ({ children }, props) => {
             ${
               isProfile
                 ? "bg-white/30 backdrop-blur-lg shadow-none border-t-[1px] border-t-gray-300/50 md:px-10 md:border-b-[1px] md:border-b-gray-300/10"
-                : colorTheme === lightTheme
-                ? "bg-white text-black shadow-headDwon md:shadow-headUp max-w-6xl"
-                : "bg-zinc-900 text-white shadow-headDwon md:shadow-headUp max-w-6xl"
+                : imgTarget === true
+                ? colorTheme === lightTheme
+                  ? "bg-white p-0 shadow-headDwon md:shadow-headUp max-w-6xl"
+                  : "bg-zinc-900 p-0 shadow-headDwon md:shadow-headUp max-w-6xl"
+                : "p-10 max-w-6xl"
             }`}
         >
           <div className="hidden w-24 mx-2 text-4xl duration-75 text-orange-400 font-extrabold hover:text-3xl md:flex">
@@ -98,9 +100,7 @@ const AppLayout = ({ children }, props) => {
         {isProfile ? (
           <div className="w-full min-h-screen m-0 p-0">{children}</div>
         ) : (
-          <TransitionGroup
-            style={{ position: "relative", width: "100%", maxWidth: "72rem" }}
-          >
+          <TransitionGroup style={{ position: "relative", width: "100%" }}>
             <Transition
               key={router.pathname}
               timeout={{

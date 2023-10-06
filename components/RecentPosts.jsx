@@ -4,6 +4,7 @@ import recentImg from "../data/recent-img";
 import { useContext } from "react";
 import { lightTheme } from "../styles/theme";
 import { ThemeContext } from "../pages/_app";
+import { RecentPostsCard } from "./RecentPostsCard";
 
 const RecentPosts = ({ posts }) => {
   const { colorTheme } = useContext(ThemeContext);
@@ -17,27 +18,9 @@ const RecentPosts = ({ posts }) => {
           colorTheme === lightTheme ? "border-black" : "border-white"
         }`}
       ></div>
-      <div className={`recent-container`}>
+      <div className={`w-full flex justify-between flex-wrap`}>
         {posts?.slice(0, 4).map((post) => (
-          <div key={post._id} className="recent-card">
-            <div
-              className="recent-imgBx"
-              style={{
-                background: `url(${
-                  post.img !== "" ? post.img : "/postImg/defaultImg.png"
-                })`,
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-              }}
-              data-text={post.tag}
-            ></div>
-            <div className="recent-content">
-              <h3>{post.title}</h3>
-              <p>{post.description}</p>
-              <Link href={`/${post._raw.flattenedPath}`}>Read More...</Link>
-            </div>
-          </div>
+          <RecentPostsCard key={post._raw.flattenedPath} post={post} />
         ))}
       </div>
     </section>

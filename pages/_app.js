@@ -11,9 +11,13 @@ import Loading from '../components/Loading';
 
 export const ThemeContext = createContext({
   colorTheme: lightTheme,
+  imgTarget: false,
   toggleColorTheme: () => {
     return null
   },
+  interSectionScroll: (target) => {
+    return null
+  }
 });
 
 export const ModalContext = createContext({
@@ -25,7 +29,7 @@ export const ModalContext = createContext({
 })
 
 function MyApp({ Component, pageProps }) {
-  const { colorTheme, toggleColorTheme } = useDarkMode();
+  const { colorTheme, toggleColorTheme, imgTarget, interSectionScroll } = useDarkMode();
   const { isClickIndex, isClickList, toggleModal } = useClickIndex();
   const [loading, setLoading] = useState(false);
 
@@ -83,7 +87,7 @@ function MyApp({ Component, pageProps }) {
       />
       {/* GA 설정 끝 */}
 
-    <ThemeContext.Provider value={{ colorTheme, toggleColorTheme}} >
+    <ThemeContext.Provider value={{ colorTheme, toggleColorTheme, imgTarget, interSectionScroll}} >
       <ModalContext.Provider value={{isClickIndex, isClickList, toggleModal }}>
           <AppLayout {...pageProps}>
           {loading && <Loading />}
