@@ -6,6 +6,8 @@ import TypeIt from "typeit-react";
 import { useState, useEffect, useRef, useContext } from "react";
 import Link from "next/link";
 import { ThemeContext } from "./_app";
+import dice from "../public/dice.webp";
+import arrow from "../public/downArrow.webp";
 
 import { allPosts } from "contentlayer/generated";
 
@@ -43,19 +45,23 @@ const Home = ({ posts }) => {
   return (
     <Conainer>
       <div className={`w-full flex flex-col items-center`}>
-        <div className={`relative main-box w-screen top-0 left-0`}>
+        <div className={`block relative main-box w-full h-screen top-0 left-0`}>
           <Image
-            src={`/home.png`}
+            src={dice}
             alt="대표 이미지"
             width={100}
             height={45}
-            layout={`responsive`}
+            sizes="100vh"
+            // 완전히 로딩되기 전에 이미지가 차지하는 자리를 어떻게 보여줄지 blur or empty
+            placeholder="blur"
+            // 우선 순위
+            priority
             onLoadingComplete={() => imgRef.current.remove()}
-            className={`object-fill`}
+            className={`object-cover w-full h-screen brightness-50`}
           />
           <div className="img-animation" ref={imgRef}></div>
           <div
-            className={`absolute top-[3rem] md:top-[7rem] lg:top-[10rem] font-extrabold text-white text-2xl md:text-[4rem] lg:text-[5rem] text flex justify-center w-full drop-shadow-lg`}
+            className={`absolute top-[20rem] md:top-[15rem] lg:top-[20rem] font-extrabold text-white text-[3rem] md:text-[4rem] lg:text-[5rem] text flex justify-center w-full drop-shadow-lg`}
           >
             {/* <TypeIt>{metadata.description}</TypeIt> */}
             <p aria-label={metadata.description}>
@@ -86,6 +92,15 @@ const Home = ({ posts }) => {
                 생각하고 살기
               </TypeIt>
             </p>
+          </div>
+          <div className="absolute bottom-[14rem] sm:bottom-20 lg:bottom-10 flex justify-center w-full">
+            <Image
+              src={arrow}
+              width={50}
+              height={50}
+              alt={"down arrow"}
+              className="arrowDown"
+            />
           </div>
         </div>
         <div className="max-w-6xl">

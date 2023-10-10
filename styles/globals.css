@@ -24,6 +24,21 @@ a {
   position: fixed;
 }
 
+/* mainPage */
+
+.arrowDown {
+  animation: up-down 1.4s infinite ease-in-out alternate;
+}
+
+@keyframes up-down {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-20px);
+  }
+}
+
 .note-container {
   display: flex;
   justify-content: center;
