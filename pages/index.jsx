@@ -42,28 +42,17 @@ const Home = ({ posts }) => {
     observer.observe(box);
   }, [instance]);
 
+  const bgImg = {
+    "--img": `url("${dice.src}")`,
+  };
+
   return (
     <Conainer>
       <div className={`w-full flex flex-col items-center`}>
-        <div className={`block relative main-box w-full h-screen top-0 left-0`}>
-          <Image
-            src={dice}
-            alt="대표 이미지"
-            width={100}
-            height={45}
-            sizes="100vh"
-            // 완전히 로딩되기 전에 이미지가 차지하는 자리를 어떻게 보여줄지 blur or empty
-            placeholder="blur"
-            // 우선 순위
-            priority
-            onLoadingComplete={() => imgRef.current.remove()}
-            className={`object-cover w-full h-screen brightness-50`}
-          />
-          <div className="img-animation" ref={imgRef}></div>
+        <div className="block relative main-box top-0 left-0" style={bgImg}>
           <div
             className={`absolute top-[20rem] md:top-[15rem] lg:top-[20rem] font-extrabold text-white text-[3rem] md:text-[4rem] lg:text-[5rem] text flex justify-center w-full drop-shadow-lg`}
           >
-            {/* <TypeIt>{metadata.description}</TypeIt> */}
             <p aria-label={metadata.description}>
               <TypeIt
                 getBeforeInit={(instance) => {
@@ -93,17 +82,18 @@ const Home = ({ posts }) => {
               </TypeIt>
             </p>
           </div>
-          <div className="absolute bottom-[14rem] sm:bottom-20 lg:bottom-10 flex justify-center w-full">
+          <div className="absolute bottom-[14rem] text-white sm:bottom-20 flex flex-col items-center w-full">
             <Image
               src={arrow}
               width={50}
               height={50}
               alt={"down arrow"}
-              className="arrowDown"
+              className="arrowDown w-20"
             />
+            <div className="w-20 h-[1px] spread-div"></div>
           </div>
         </div>
-        <div className="max-w-6xl">
+        <div className="max-w-6xl h-full">
           <RecentPosts posts={posts} />
         </div>
         <div className="max-w-6xl w-full relative h-20">

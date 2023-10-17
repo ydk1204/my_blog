@@ -13,21 +13,21 @@ import MenuBtn from "./MenuBtn";
 
 const TIMEOUT = 100;
 const getTransitionStyles = {
-  entering: {
-    // position: `absolute`,
-    opacity: 0,
-    transform: `translateY(50px)`,
-  },
-  entered: {
-    transition: `opacity ${TIMEOUT}ms ease-in-out, transform ${TIMEOUT}ms ease-in-out`,
-    opacity: 1,
-    transform: `translateY(0px)`,
-  },
-  exiting: {
-    transition: `opacity ${TIMEOUT}ms ease-in-out, transform ${TIMEOUT}ms ease-in-out`,
-    opacity: 0,
-    transform: `translateY(-50px)`,
-  },
+  // entering: {
+  //   // position: `absolute`,
+  //   opacity: 0,
+  //   transform: `translateY(50px)`,
+  // },
+  // entered: {
+  //   transition: `opacity ${TIMEOUT}ms ease-in-out, transform ${TIMEOUT}ms ease-in-out`,
+  //   opacity: 1,
+  //   transform: `translateY(0px)`,
+  // },
+  // exiting: {
+  //   transition: `opacity ${TIMEOUT}ms ease-in-out, transform ${TIMEOUT}ms ease-in-out`,
+  //   opacity: 0,
+  //   transform: `translateY(-50px)`,
+  // },
 };
 const AppLayout = ({ children }, props) => {
   const { colorTheme, imgTarget } = useContext(ThemeContext);

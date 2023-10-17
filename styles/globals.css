@@ -27,7 +27,7 @@ a {
 /* mainPage */
 
 .arrowDown {
-  animation: up-down 1.4s infinite ease-in-out alternate;
+  animation: up-down 1s infinite ease-in-out alternate;
 }
 
 @keyframes up-down {
@@ -37,6 +37,45 @@ a {
   to {
     transform: translateY(-20px);
   }
+}
+
+.spread-div {
+  position: relative;
+}
+
+.spread-div::after {
+  content: "";
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	bottom: -6px;
+	left: 0;
+	background-color: white;
+	visibility: hidden;
+	animation: spread 1s infinite ease-in-out alternate;
+}
+
+@keyframes spread {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    visibility: visible;
+    transform: scaleX(0);
+  }
+}
+
+
+.main-box {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9)), var(--img);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  width: 100%;
+  height: 100vh;
+
 }
 
 .note-container {

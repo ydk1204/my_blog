@@ -20,7 +20,12 @@ const RecentPosts = ({ posts }) => {
       ></div>
       <div className={`w-full flex justify-between flex-wrap`}>
         {posts?.slice(0, 4).map((post) => (
-          <RecentPostsCard key={post._raw.flattenedPath} post={post} />
+          <Link
+            key={post._raw.flattenedPath}
+            href={`/${post._raw.flattenedPath}`}
+          >
+            <RecentPostsCard key={post._raw.flattenedPath} post={post} />
+          </Link>
         ))}
       </div>
     </section>
