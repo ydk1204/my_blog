@@ -8,9 +8,9 @@ import study__cssStudy__cssMdx from './study__css-study__css초기화.mdx.json' 
 import study__cssStudy__JsxCssMdx from './study__css-study__리액트-JSX에서-CSS-변수사용.mdx.json' assert { type: 'json' }
 import study__htmlStudy__seoMdx from './study__html-study__SEO란.mdx.json' assert { type: 'json' }
 import study__htmlStudy__htmlMdx from './study__html-study__html초기화.mdx.json' assert { type: 'json' }
+import study__jsStudy__jsMdx from './study__js-study__js초기화.mdx.json' assert { type: 'json' }
 import study__reactStudy__reactJsxMdx from './study__react-study__React와JSX.mdx.json' assert { type: 'json' }
 import study__reactStudy__Mdx from './study__react-study__리액트와사이드이펙트.mdx.json' assert { type: 'json' }
-import study__jsStudy__jsMdx from './study__js-study__js초기화.mdx.json' assert { type: 'json' }
 import projects__projectsMdx from './projects__projects포스팅.mdx.json' assert { type: 'json' }
 
-export const allPosts = [game__gameMdx, study__algorithm___11724JavaScriptCopyMdx, study__algorithm___1260DfSandBfsJavaScriptMdx, study__algorithm___2579JavaScriptMdx, study__cssStudy__cssMdx, study__cssStudy__JsxCssMdx, study__htmlStudy__seoMdx, study__htmlStudy__htmlMdx, study__reactStudy__reactJsxMdx, study__reactStudy__Mdx, study__jsStudy__jsMdx, projects__projectsMdx]
+export const allPosts = [game__gameMdx, study__algorithm___11724JavaScriptCopyMdx, study__algorithm___1260DfSandBfsJavaScriptMdx, study__algorithm___2579JavaScriptMdx, study__cssStudy__cssMdx, study__cssStudy__JsxCssMdx, study__htmlStudy__seoMdx, study__htmlStudy__htmlMdx, study__jsStudy__jsMdx, study__reactStudy__reactJsxMdx, study__reactStudy__Mdx, projects__projectsMdx]

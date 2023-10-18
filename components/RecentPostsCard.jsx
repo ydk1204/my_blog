@@ -33,14 +33,14 @@ export const RecentPostsCard = ({ post }) => {
             <p className="text-9xl">{month}</p>
             <p className="text-4xl">{day}</p>
           </div>
-          <div className="w-full h-[320px] ease-in -translate-y-full group-hover:translate-y-0 duration-[220ms] bg-gray-300">
+          <div className="w-full rounded-t-2xl overflow-hidden h-[320px] ease-in -translate-y-full group-hover:translate-y-0 duration-[220ms] bg-gray-300">
             <Image
               src={img}
               alt={"포스트 이미지"}
               width={30}
               height={30}
               sizes="100vh"
-              className="w-full h-full"
+              className="w-full h-full rounded-t-2xl"
             />
           </div>
         </div>

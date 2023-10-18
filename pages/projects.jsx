@@ -12,7 +12,7 @@ const Blog = ({ posts, lists }) => {
     <>
       <Container>
         <div
-          className={`h-40 max-h-[12rem] flex flex-col duration-300 justify-center items-center rounded-md mb-10 ${
+          className={`h-40 max-h-[12rem] flex flex-col duration-300 justify-center items-center rounded-md mt-24 mb-10 ${
             colorTheme === lightTheme
               ? "text-black bg-gray-500"
               : "text-white bg-gray-500/40"

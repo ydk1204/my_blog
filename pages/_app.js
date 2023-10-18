@@ -91,7 +91,7 @@ function MyApp({ Component, pageProps }) {
       <ModalContext.Provider value={{isClickIndex, isClickList, toggleModal }}>
           <AppLayout {...pageProps}>
           {loading && <Loading />}
-          <Component {...pageProps} />
+          {!loading && <Component {...pageProps} />}
         </AppLayout>
       </ModalContext.Provider>
       </ThemeContext.Provider>

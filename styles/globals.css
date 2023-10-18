@@ -750,6 +750,7 @@ a {
 
 .loading_conteiner {
   display: flex;
+  min-width: 100vw;
   min-height: 100vh;
   background: transparent;
   justify-content: center;

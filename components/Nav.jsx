@@ -44,7 +44,7 @@ const Nav = () => {
                 alt={"네이게이션바 버튼 이미지"}
                 src={nav.logo}
                 className={`svg-color-filter ${
-                  colorTheme === lightTheme ? "lightSvgColor" : "lightSvgColor"
+                  colorTheme === lightTheme ? "lightSvgColor" : ""
                 }`}
               ></Image>
               <span className="nav-text">{nav.title}</span>

@@ -49,7 +49,7 @@ const Post = ({ post, posts }) => {
 
   return (
     <Container customMeta={customMeta}>
-      <div className="w-full min-h-[60rem] h-full flex flex-col justify-center items-center">
+      <div className="w-full min-h-[60rem] h-full flex flex-col justify-center items-center mt-20">
         <div className="flex w-full justify-center">
           <div className="hidden xl:flex w-48 sticky top-[8.5rem] left-0 h-full flex-col items-center pl-7 z-10">
             <BookList posts={posts} title={post.title} />
