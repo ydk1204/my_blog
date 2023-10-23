@@ -22,7 +22,6 @@ export const ThemeContext = createContext({
 
 export const ModalContext = createContext({
   isClickIndex: false,
-  isClickList: false,
   toggleModal: () => {
     return null
   }
@@ -30,7 +29,7 @@ export const ModalContext = createContext({
 
 function MyApp({ Component, pageProps }) {
   const { colorTheme, toggleColorTheme, imgTarget, interSectionScroll } = useDarkMode();
-  const { isClickIndex, isClickList, toggleModal } = useClickIndex();
+  const { isClickIndex, toggleModal } = useClickIndex();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -88,7 +87,7 @@ function MyApp({ Component, pageProps }) {
       {/* GA 설정 끝 */}
 
     <ThemeContext.Provider value={{ colorTheme, toggleColorTheme, imgTarget, interSectionScroll}} >
-      <ModalContext.Provider value={{isClickIndex, isClickList, toggleModal }}>
+      <ModalContext.Provider value={{isClickIndex, toggleModal }}>
           <AppLayout {...pageProps}>
           {loading && <Loading />}
           {!loading && <Component {...pageProps} />}

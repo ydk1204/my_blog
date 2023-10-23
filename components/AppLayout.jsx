@@ -134,8 +134,7 @@ const AppLayout = ({ children }, props) => {
         )}
         {router.pathname.slice(-5, -1) === "slug" && (
           <>
-            <MenuBtn data={children} title={"list"} />
-            <MenuBtn data={children} title={"index"} />
+            <MenuBtn data={children} />
           </>
         )}
         <Footer />

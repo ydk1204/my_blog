@@ -56,7 +56,7 @@ const Post = ({ post, posts }) => {
           </div> */}
           <div
             className={`mx-6 prose w-full max-w-3xl ${
-              colorTheme === lightTheme ? "" : "dark:prose-invert"
+              colorTheme === lightTheme ? "" : "prose-invert"
             }`}
           >
             {post.img !== "" && (
@@ -79,7 +79,7 @@ const Post = ({ post, posts }) => {
           </div>
 
           <div className="hidden xl:block sticky right-0 w-60 h-fit top-[7.5rem] ml-0 ">
-            <Toc prevPost={prevPost} />
+            <Toc posts={posts} title={post.title} />
           </div>
         </div>
         <div className="max-w-[50rem] w-full mb-20">
