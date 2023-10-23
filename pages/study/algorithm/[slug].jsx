@@ -51,9 +51,9 @@ const Post = ({ post, posts }) => {
     <Container customMeta={customMeta}>
       <div className="w-full min-h-[60rem] h-full flex flex-col justify-start items-center mt-20">
         <div className="flex w-full justify-center">
-          <div className="hidden xl:flex w-48 sticky top-[8.5rem] left-0 h-full flex-col items-center pl-7 z-10">
+          {/* <div className="hidden xl:flex w-48 sticky top-[8.5rem] left-0 h-full flex-col items-center pl-7 z-10">
             <BookList posts={posts} title={post.title} />
-          </div>
+          </div> */}
           <div
             className={`mx-6 prose w-full max-w-3xl ${
               colorTheme === lightTheme ? "" : "dark:prose-invert"
