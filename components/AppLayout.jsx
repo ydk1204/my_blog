@@ -8,6 +8,7 @@ import Footer from "./Footer";
 import metadata from "../data/metadata";
 import { lightTheme } from "../styles/theme";
 import { ThemeContext } from "../pages/_app";
+import { ModalContext } from "../pages/_app";
 import MenuBtn from "./MenuBtn";
 
 const TIMEOUT = 100;
@@ -30,7 +31,7 @@ const getTransitionStyles = {
 };
 const AppLayout = ({ children }, props) => {
   const { colorTheme, imgTarget } = useContext(ThemeContext);
-  // const [isProfile, setIsProfile] = useState(false);
+  const { isClickIndex, toggleModal } = useContext(ModalContext);
   const [noAnimPage, setNoAnimPage] = useState(false);
 
   const meta = {
@@ -43,6 +44,9 @@ const AppLayout = ({ children }, props) => {
   const router = useRouter();
 
   useEffect(() => {
+    if (isClickIndex) toggleModal("mobile");
+
+    // 아래의 각 경로마다의 unset은 혹시 모바일 toc 활성화 중에 경로 변경 시 스크롤 안 되는 경우 방지
     if (router.asPath === "/" || router.asPath === "/profile") {
       setNoAnimPage(true);
       document.body.style.overflow = "unset";

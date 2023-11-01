@@ -40,23 +40,24 @@ const TOC = ({ posts, title }) => {
     // IntersectionObserver들이 들어갈 배열 ( 이벤트 해제를 위해 )
     const observerList = [];
 
-    [...hNodeList].forEach((node) => {
-      // 목차 내용이랑 사이즈 구해서 저장
-      const index = node.textContent;
-      const size = (+node.nodeName[1] - 1) * 20;
-      setIndexList((prev) => {
-        if (prev.map((v) => v.index).includes(index)) return prev;
-        return [...prev, { index, size }];
+    hNodeList &&
+      [...hNodeList].forEach((node) => {
+        // 목차 내용이랑 사이즈 구해서 저장
+        const index = node.textContent;
+        const size = (+node.nodeName[1] - 1) * 20;
+        setIndexList((prev) => {
+          if (prev.map((v) => v.index).includes(index)) return prev;
+          return [...prev, { index, size }];
+        });
+
+        // 3. 각 <h*>에 id로 현재 컨텐츠 내용 추가
+        node.id = index;
+
+        observer.observe(node);
+
+        // 이벤트 해제를 위해 등록
+        observerList.push(observer);
       });
-
-      // 3. 각 <h*>에 id로 현재 컨텐츠 내용 추가
-      node.id = index;
-
-      observer.observe(node);
-
-      // 이벤트 해제를 위해 등록
-      observerList.push(observer);
-    });
 
     // 이벤트 해제
     return () => observerList.forEach((observer) => observer.disconnect());
@@ -121,13 +122,25 @@ const TOC = ({ posts, title }) => {
           ))}
         {!isToggle &&
           posts?.map((post) => (
-            <li key={post._raw.flattenedPath}>
+            <li
+              key={post._raw.flattenedPath}
+              className={`
+              w-10/12 xl:w-fit
+              text-center xl:text-left
+              mb-3 xl:mb-0
+              text-[1.1rem]
+              font-semibold xl:font-normal
+              border-b-2 xl:border-0
+              border-orange-900
+              cursor-pointer transition-all hover:text-amber-600
+              select-none
+              `}
+            >
               <Link
                 href={`/${post._raw.flattenedPath}`}
                 key={post.title}
-                className={`${
-                  title === post.title && "text-orange-400 scale-105"
-                } `}
+                className={`
+                ${title === post.title && "text-orange-400 scale-105"} `}
               >
                 {post.title}
               </Link>
