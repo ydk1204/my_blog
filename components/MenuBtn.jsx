@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from "react";
 import Toc from "./Toc";
-import BookList from "./BookList";
 import { ModalContext } from "../pages/_app";
 import { lightTheme } from "../styles/theme";
 import { ThemeContext } from "../pages/_app";
+import { useRouter } from "next/router";
 
 const MenuBtn = ({ data }) => {
   const { isClickIndex, toggleModal } = useContext(ModalContext);
@@ -11,19 +11,26 @@ const MenuBtn = ({ data }) => {
   const postData = data && data[1];
   const { props } = postData;
 
-  console.log(props);
+  const [currentPath, setCurrentPath] = useState("");
+  const [toggleBtnPath, setToggleBtnPath] = useState("");
 
   const toggleBtn = () => {
     toggleModal("mobile");
   };
 
+  const router = useRouter();
+
   useEffect(() => {
-    if (isClickIndex) document.body.style.overflow = "hidden";
+    if (isClickIndex) setToggleBtnPath(router.asPath);
+  }, [isClickIndex, router.asPath]);
+
+  useEffect(() => {
+    const pathEqual = toggleBtnPath === router.asPath;
+    if (isClickIndex && pathEqual) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "unset";
-  }, [isClickIndex]);
+  }, [toggleBtnPath, isClickIndex, router.asPath]);
 
   return (
-    // 전달받은 데이터 별로 기능을 다르게
     <>
       <div
         className={`

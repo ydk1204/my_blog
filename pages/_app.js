@@ -24,7 +24,7 @@ export const ModalContext = createContext({
   isClickIndex: false,
   toggleModal: () => {
     return null
-  }
+  },
 })
 
 function MyApp({ Component, pageProps }) {

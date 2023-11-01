@@ -74,6 +74,7 @@ const TOC = ({ posts, title }) => {
       xl:bg-transparent
       rounded-t-2xl xl:rounded-xl
       w-full xl:w-fit
+      pb-4
       h-96 xl:h-full
       
       xl:top-10 xl:right-10 xl:border-4 xl:border-orange-400 xl:px-2 xl:py-2 z-10

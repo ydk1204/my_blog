@@ -6,7 +6,6 @@ import Head from "next/head";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import metadata from "../data/metadata";
-import Image from "next/image";
 import { lightTheme } from "../styles/theme";
 import { ThemeContext } from "../pages/_app";
 import MenuBtn from "./MenuBtn";
@@ -44,9 +43,16 @@ const AppLayout = ({ children }, props) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (router.asPath === "/" || router.asPath === "/profile")
+    if (router.asPath === "/" || router.asPath === "/profile") {
       setNoAnimPage(true);
-    else setNoAnimPage(false);
+      document.body.style.overflow = "unset";
+    } else if (
+      router.asPath === "/study" ||
+      router.asPath === "/projects" ||
+      router.asPath === "/game"
+    ) {
+      document.body.style.overflow = "unset";
+    } else setNoAnimPage(false);
   }, [router.asPath]);
 
   return (
