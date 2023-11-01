@@ -10,7 +10,9 @@ const RecentPosts = ({ posts }) => {
   const { colorTheme } = useContext(ThemeContext);
   return (
     <section className={`mt-20`}>
-      <h1 className={`text-center sm:text-left text-3xl font-extrabold`}>
+      <h1
+        className={`text-center sm:text-left ml-0 md:ml-2 xl:ml-0 text-3xl font-extrabold`}
+      >
         최근 게시물
       </h1>
       <div

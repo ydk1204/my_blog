@@ -73,7 +73,7 @@ const AppLayout = ({ children }, props) => {
         </Head>
         <header
           className={`w-full sm:w-full h-[4.5rem] bottom-0 md:top-0 xl:top-0 duration-300 flex justify-center items-center 
-          fixed z-10
+          fixed z-[999]
             ${
               imgTarget === true
                 ? colorTheme === lightTheme
@@ -137,7 +137,13 @@ const AppLayout = ({ children }, props) => {
             <MenuBtn data={children} />
           </>
         )}
-        <Footer />
+        <div
+          className={`w-full flex justify-center h-fit z-10 ${
+            colorTheme === lightTheme ? "bg-white" : "bg-zinc-900"
+          }`}
+        >
+          <Footer />
+        </div>
       </div>
     </>
   );

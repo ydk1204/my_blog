@@ -6,8 +6,9 @@ import TypeIt from "typeit-react";
 import { useState, useEffect, useRef, useContext } from "react";
 import Link from "next/link";
 import { ThemeContext } from "./_app";
-import dice from "../public/dice.webp";
+import dice from "../public/dice.jpg";
 import arrow from "../public/downArrow.webp";
+import { lightTheme, ColorTheme } from "../styles/theme";
 
 import { allPosts } from "contentlayer/generated";
 
@@ -18,7 +19,7 @@ const options = {
 const Home = ({ posts }) => {
   const imgRef = useRef(null);
   const [instance, setInstance] = useState(null);
-  const { interSectionScroll } = useContext(ThemeContext);
+  const { colorTheme, interSectionScroll } = useContext(ThemeContext);
 
   // 텍스트 이펙트를 주는 object가 뷰포트에서 대략 절반이상 안 보이면 정지(freeze),
   // 범위 내 들어오면 다시 실행(unfreeze)
@@ -48,8 +49,9 @@ const Home = ({ posts }) => {
 
   return (
     <Conainer>
-      <div className={`w-full flex flex-col items-center`}>
-        <div className="block relative main-box top-0 left-0" style={bgImg}>
+      <div className={`w-full flex flex-col items-center homepage`}>
+        <div className="block relative w-full h-screen">
+          <div className="main-box" style={bgImg}></div>
           <div
             className={`absolute top-[20rem] md:top-[15rem] lg:top-[20rem] font-extrabold text-white text-[3rem] md:text-[4rem] lg:text-[5rem] text flex justify-center w-full drop-shadow-lg`}
           >
@@ -93,19 +95,25 @@ const Home = ({ posts }) => {
             <div className="w-20 h-[1px] spread-div"></div>
           </div>
         </div>
-        <div className="max-w-6xl h-full">
-          <RecentPosts posts={posts} />
-        </div>
-        <div className="max-w-6xl w-full relative h-20">
-          <div className="copyright ">
-            <Link
-              target="_blank"
-              href={
-                "https://pixabay.com/ko/users/cromaconceptovisual-4595909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=6022003"
-              }
-            >
-              이미지 제공 Pixabay - cromaconceptovisual
-            </Link>
+        <div
+          className={`overflow-x-hidden w-full flex flex-col justify-center items-center z-10 ${
+            colorTheme === lightTheme ? "bg-white" : "bg-zinc-900"
+          }`}
+        >
+          <div className="max-w-6xl h-full">
+            <RecentPosts posts={posts} />
+          </div>
+          <div className="max-w-6xl w-full relative h-20">
+            <div className="copyright ">
+              <Link
+                target="_blank"
+                href={
+                  "https://pixabay.com/ko/users/cromaconceptovisual-4595909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=6022003"
+                }
+              >
+                이미지 제공 Pixabay - cromaconceptovisual
+              </Link>
+            </div>
           </div>
         </div>
       </div>
