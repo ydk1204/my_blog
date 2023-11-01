@@ -89,6 +89,10 @@ a {
   display: none !important;
 }
 
+.related-card {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), var(--src);
+}
+
 .note-container {
   display: flex;
   justify-content: center;

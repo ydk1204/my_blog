@@ -13,7 +13,7 @@ import { lightTheme, ColorTheme } from "../styles/theme";
 import { allPosts } from "contentlayer/generated";
 
 const options = {
-  threshold: [0, 0.5, 1],
+  threshold: [0, 0.3, 0.5],
 };
 
 const Home = ({ posts }) => {
@@ -26,7 +26,7 @@ const Home = ({ posts }) => {
   const callback = (entries) => {
     instance !== null &&
       entries.forEach((entry) => {
-        if (entry.intersectionRatio > 0.4) {
+        if (entry.intersectionRatio < 0.3) {
           instance.unfreeze();
           interSectionScroll(false);
         } else {
@@ -39,7 +39,7 @@ const Home = ({ posts }) => {
   // IntersectionObserver
   useEffect(() => {
     const observer = new IntersectionObserver(callback, options);
-    const box = document.querySelector(".main-box");
+    const box = document.querySelector(".post-box");
     observer.observe(box);
   }, [instance]);
 
@@ -96,7 +96,7 @@ const Home = ({ posts }) => {
           </div>
         </div>
         <div
-          className={`overflow-x-hidden w-full flex flex-col justify-center items-center z-10 ${
+          className={`post-box overflow-x-hidden w-full flex flex-col justify-center items-center z-10 ${
             colorTheme === lightTheme ? "bg-white" : "bg-zinc-900"
           }`}
         >
