@@ -30,7 +30,7 @@ const Blog = ({ posts, lists }) => {
         >
           카테고리
         </h2>
-        <div className="grid gap-3 xl:grid-cols-3 lg:grid-cols-2 place-items-center">
+        <div className="grid gap-3 xl:grid-cols-3 md:grid-cols-2 place-items-center mb-24">
           {lists?.map((list, idx) => (
             <NoteBook
               key={idx}
@@ -41,7 +41,7 @@ const Blog = ({ posts, lists }) => {
           ))}
         </div>
 
-        <div className="copyright">
+        <div className="text-gray-400 text-xs">
           <Link
             target="_blank"
             href={

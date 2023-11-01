@@ -49,10 +49,10 @@ const Post = ({ post, posts }) => {
 
   return (
     <Container customMeta={customMeta}>
-      <div className="w-full min-h-[60rem] h-full flex flex-col justify-center items-center mt-20">
+      <div className="w-full min-h-[60rem] h-full flex flex-col justify-start items-center mt-20">
         <div className="flex w-full justify-center">
           <div
-            className={`mx-6 prose w-full max-w-3xl ${
+            className={`mx-4 prose w-full max-w-5xl ${
               colorTheme === lightTheme ? "" : "prose-invert"
             }`}
           >
@@ -74,18 +74,25 @@ const Post = ({ post, posts }) => {
               <MDXComponent components={components} />
             </div>
           </div>
+
           <div className="hidden xl:block sticky right-0 w-60 h-fit top-[7.5rem] ml-0 ">
             <Toc posts={posts} title={post.title} />
           </div>
         </div>
-
-        <div className="max-w-[50rem] w-full mb-20">
+        <div className="max-w-6xl w-full mb-20">
           <div className="mb-20">
             <div
               className={`py-10 my-10 border-b-2 ${
                 colorTheme === lightTheme ? "border-b-black" : "border-b-white"
               }`}
             ></div>
+            <p
+              className={`text-xl font-semibold my-4 ${
+                colorTheme === lightTheme ? "text-black" : "text-white"
+              }`}
+            >
+              또 다른 이야기를 보고 싶다면?
+            </p>
             <article className="flex flex-col md:flex-row justify-between">
               {prevPost && Object.keys(prevPost).length > 1 ? (
                 <RelatedPostCard division={"이전 글"} post={prevPost} />
@@ -99,11 +106,11 @@ const Post = ({ post, posts }) => {
           </div>
           <Giscus />
         </div>
-      </div>
-      <div className="copyright">
-        <Link target="_blank" href={post.copyright}>
-          이미지 제공
-        </Link>
+        <div className="w-full h-10 text-gray-400">
+          <Link target="_blank" href={post.copyright}>
+            이미지 제공
+          </Link>
+        </div>
       </div>
     </Container>
   );

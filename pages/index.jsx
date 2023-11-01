@@ -103,8 +103,8 @@ const Home = ({ posts }) => {
           <div className="max-w-6xl h-full">
             <RecentPosts posts={posts} />
           </div>
-          <div className="max-w-6xl w-full relative h-20">
-            <div className="copyright ">
+          <div className="max-w-6xl w-full relative h-10 mt-10">
+            <div className="text-gray-400">
               <Link
                 target="_blank"
                 href={

@@ -11,15 +11,6 @@ const RelatedPostCard = ({ division, post = "" }) => {
     "--src": `url("${post?.img}")`,
   };
 
-  // const [postImage, setPostImage] = useState(`bg-[url("../public/dice.jpg")]`);
-
-  // useEffect(() => {
-  //   if (post === "") return;
-
-  //   const postSrc = post?.img;
-  //   console.log(postSrc);
-  // }, [post]);
-
   return (
     <Link
       href={`/${post?._raw?.flattenedPath}`}

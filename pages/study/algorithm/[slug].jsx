@@ -85,6 +85,13 @@ const Post = ({ post, posts }) => {
                 colorTheme === lightTheme ? "border-b-black" : "border-b-white"
               }`}
             ></div>
+            <p
+              className={`text-xl font-semibold my-4 ${
+                colorTheme === lightTheme ? "text-black" : "text-white"
+              }`}
+            >
+              또 다른 이야기를 보고 싶다면?
+            </p>
             <article className="flex flex-col md:flex-row justify-between">
               {prevPost && Object.keys(prevPost).length > 1 ? (
                 <RelatedPostCard division={"이전 글"} post={prevPost} />
@@ -98,11 +105,11 @@ const Post = ({ post, posts }) => {
           </div>
           <Giscus />
         </div>
-      </div>
-      <div className="copyright">
-        <Link target="_blank" href={post.copyright}>
-          이미지 제공
-        </Link>
+        <div className="w-full h-10 text-gray-400">
+          <Link target="_blank" href={post.copyright}>
+            이미지 제공
+          </Link>
+        </div>
       </div>
     </Container>
   );

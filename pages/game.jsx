@@ -37,7 +37,7 @@ const Blog = ({ posts, lists }) => {
             <div>아직 포스팅이 없습니다.</div>
           )}
         </div>
-        <div className="copyright">
+        <div className="text-gray-400 absolute bottom-0">
           <Link
             target="_blank"
             href={"https://maplestory.nexon.com/Media/ArtWork?page=1"}

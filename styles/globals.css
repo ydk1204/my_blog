@@ -90,7 +90,12 @@ a {
 }
 
 .related-card {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), var(--src);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), var(--src);
+  transition: all 0.3s ease-in-out;
+}
+
+.related-card:hover {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), var(--src);
 }
 
 .note-container {
@@ -966,15 +971,6 @@ a {
 
 .profile_text {
   position: relative;
-}
-
-
-
-.copyright {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  color: rgba(128, 128, 128, 0.484);
 }
 
 @media (max-width: 1610px) {
