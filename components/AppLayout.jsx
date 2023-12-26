@@ -61,7 +61,21 @@ const AppLayout = ({ children }, props) => {
   }, [router.asPath]);
 
   useEffect(() => {
-    if (imgTarget) {
+    if (router.asPath === "/") {
+      if (imgTarget) {
+        if (colorTheme === lightTheme) {
+          setNavBgColor(
+            (prev) => "bg-white p-[8px] shadow-headDwon md:shadow-headUp"
+          );
+        } else {
+          setNavBgColor(
+            (prev) => "bg-zinc-900 p-[8px] shadow-headDwon md:shadow-headUp"
+          );
+        }
+      } else {
+        setNavBgColor((prev) => "p-[16px]");
+      }
+    } else {
       if (colorTheme === lightTheme) {
         setNavBgColor(
           (prev) => "bg-white p-[8px] shadow-headDwon md:shadow-headUp"
@@ -71,10 +85,8 @@ const AppLayout = ({ children }, props) => {
           (prev) => "bg-zinc-900 p-[8px] shadow-headDwon md:shadow-headUp"
         );
       }
-    } else {
-      setNavBgColor((prev) => "p-[16px]");
     }
-  }, [imgTarget, colorTheme]);
+  }, [router.asPath, imgTarget, colorTheme]);
 
   return (
     <>
