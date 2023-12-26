@@ -1,5 +1,5 @@
 import Container from "components/Container";
-import { allPosts } from "contentlayer/generated";
+import { allPosts, allDocuments } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import Image from "next/image";
 import Toc from "../../../components/Toc";

@@ -33,6 +33,7 @@ const AppLayout = ({ children }, props) => {
   const { colorTheme, imgTarget } = useContext(ThemeContext);
   const { isClickIndex, toggleModal } = useContext(ModalContext);
   const [noAnimPage, setNoAnimPage] = useState(false);
+  const [navBgColor, setNavBgColor] = useState("p-[16px]");
 
   const meta = {
     title: metadata.title,
@@ -59,6 +60,22 @@ const AppLayout = ({ children }, props) => {
     } else setNoAnimPage(false);
   }, [router.asPath]);
 
+  useEffect(() => {
+    if (imgTarget) {
+      if (colorTheme === lightTheme) {
+        setNavBgColor(
+          (prev) => "bg-white p-[8px] shadow-headDwon md:shadow-headUp"
+        );
+      } else {
+        setNavBgColor(
+          (prev) => "bg-zinc-900 p-[8px] shadow-headDwon md:shadow-headUp"
+        );
+      }
+    } else {
+      setNavBgColor((prev) => "p-[16px]");
+    }
+  }, [imgTarget, colorTheme]);
+
   return (
     <>
       <div
@@ -84,13 +101,7 @@ const AppLayout = ({ children }, props) => {
         <header
           className={`w-full sm:w-full h-[4.5rem] bottom-0 md:top-0 xl:top-0 duration-300 flex justify-center items-center 
           fixed z-[999]
-            ${
-              imgTarget === true
-                ? colorTheme === lightTheme
-                  ? "bg-white p-[8px] shadow-headDwon md:shadow-headUp"
-                  : "bg-zinc-900 p-[8px] shadow-headDwon md:shadow-headUp"
-                : "p-[16px]"
-            }`}
+            ${navBgColor}`}
         >
           <div className="flex w-full max-w-6xl justify-center md:justify-between">
             <div className="hidden w-24 mx-2 text-4xl duration-75 text-orange-400 font-extrabold hover:text-3xl md:flex">

@@ -8,6 +8,7 @@ import { RecentPostsCard } from "./RecentPostsCard";
 
 const RecentPosts = ({ posts }) => {
   const { colorTheme } = useContext(ThemeContext);
+
   return (
     <section className={`mt-20`}>
       <h1
@@ -20,13 +21,15 @@ const RecentPosts = ({ posts }) => {
           colorTheme === lightTheme ? "border-black" : "border-white"
         }`}
       ></div>
-      <div className={`w-full flex justify-between flex-wrap`}>
-        {posts?.slice(0, 4).map((post) => (
+      <div
+        className={`w-full flex justify-center  md:justify-between flex-wrap`}
+      >
+        {posts?.slice(0, 4).map((post, idx) => (
           <Link
-            key={post._raw.flattenedPath}
+            key={post._raw.flattenedPath + idx}
             href={`/${post._raw.flattenedPath}`}
           >
-            <RecentPostsCard key={post._raw.flattenedPath} post={post} />
+            <RecentPostsCard key={post._raw.flattenedPath + idx} post={post} />
           </Link>
         ))}
       </div>

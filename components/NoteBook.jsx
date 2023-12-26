@@ -11,6 +11,8 @@ const NoteBook = ({ title = "", count, posts = [] }) => {
   // slug = 경로(post 파일이름)
   const [slug, setSlug] = useState("");
 
+  console.log(slug);
+
   // 전체 포스트 중에서 같은 항목(ex_html)의 포스트 선별
   useEffect(() => {
     getPath(title, posts).then((res) => setSlug(res));
