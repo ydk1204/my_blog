@@ -143,6 +143,7 @@ export const getStaticProps = async ({ params }) => {
       post,
       posts,
     },
+    revalidate: 10,
   };
 };
 

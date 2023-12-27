@@ -14,10 +14,6 @@ const RecentPosts = ({ posts }) => {
     setGetPost((prev) => posts.slice(0, 4));
   }, [posts]);
 
-  getPost.map((post) => {
-    console.log(`/${post._raw.flattenedPath}`);
-  });
-
   return (
     <section className={`mt-20`}>
       <h1
@@ -35,8 +31,7 @@ const RecentPosts = ({ posts }) => {
       >
         {getPost.map((post) => (
           <Link key={post.title} href={`/${post._raw.flattenedPath}`}>
-            {/* <RecentPostsCard key={post.title} post={post} /> */}
-            {post.title}
+            <RecentPostsCard key={post.title} post={post} />
           </Link>
         ))}
       </div>

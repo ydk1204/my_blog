@@ -32,25 +32,25 @@ function MyApp({ Component, pageProps }) {
   const { isClickIndex, toggleModal } = useClickIndex();
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const start = () => {
-      setLoading(true);
-    }
+  // useEffect(() => {
+  //   const start = () => {
+  //     setLoading(true);
+  //   }
 
-    const end = () => {
-      setLoading(false);
-    }
+  //   const end = () => {
+  //     setLoading(false);
+  //   }
 
-    router.events.on("routeChangeStart", start);
-    router.events.on("routeChangeComplete", end);
-    router.events.on("routeChangeError", end);
+  //   router.events.on("routeChangeStart", start);
+  //   router.events.on("routeChangeComplete", end);
+  //   router.events.on("routeChangeError", end);
 
-    return () => {
-      router.events.off("routeChangeStart", start);
-      router.events.off("routeChangeComplete", end);
-      router.events.off("routeChangeError", end);
-    }
-  }, []);
+  //   return () => {
+  //     router.events.off("routeChangeStart", start);
+  //     router.events.off("routeChangeComplete", end);
+  //     router.events.off("routeChangeError", end);
+  //   }
+  // }, []);
 
   // GA 설정 시작
   const router = useRouter();
@@ -89,8 +89,8 @@ function MyApp({ Component, pageProps }) {
     <ThemeContext.Provider value={{ colorTheme, toggleColorTheme, imgTarget, interSectionScroll}} >
       <ModalContext.Provider value={{isClickIndex, toggleModal }}>
           <AppLayout {...pageProps}>
-          {loading && <Loading />}
-          {!loading && <Component {...pageProps} />}
+          {/* {loading && <Loading />} */}
+            {!loading && <Component {...pageProps} />}
         </AppLayout>
       </ModalContext.Provider>
       </ThemeContext.Provider>
