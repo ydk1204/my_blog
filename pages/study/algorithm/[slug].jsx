@@ -15,7 +15,7 @@ const components = {
   pre: Pre,
 };
 
-const Post = ({ post, posts, params }) => {
+const Post = ({ post, posts }) => {
   const { colorTheme } = useContext(ThemeContext);
   const [prevPost, setPrevPost] = useState({});
   const [nextPost, setNextPost] = useState({});
@@ -48,7 +48,7 @@ const Post = ({ post, posts, params }) => {
 
   return (
     <Container customMeta={customMeta}>
-      <div className="w-full min-h-[60rem] h-full flex flex-col justify-start items-center mt-20">
+      <div className="w-full min-h-[60rem] h-full flex flex-col justify-start items-center mt-1 md:mt-20">
         <div className="flex w-full justify-center">
           <div
             className={`mx-4 prose w-full max-w-5xl ${
@@ -141,9 +141,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       post,
       posts,
-      params,
     },
-    revalidate: 10,
   };
 };
 

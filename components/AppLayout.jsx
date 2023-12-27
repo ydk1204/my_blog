@@ -49,7 +49,6 @@ const AppLayout = ({ children }, props) => {
 
     // 아래의 각 경로마다의 unset은 혹시 모바일 toc 활성화 중에 경로 변경 시 스크롤 안 되는 경우 방지
     if (router.asPath === "/" || router.asPath === "/profile") {
-      setNoAnimPage(true);
       document.body.style.overflow = "unset";
     } else if (
       router.asPath === "/study" ||

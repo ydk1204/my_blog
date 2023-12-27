@@ -14,11 +14,9 @@ const TOC = ({ posts, title }) => {
   const { colorTheme } = useContext(ThemeContext);
   const { isClickIndex, toggleModal } = useContext(ModalContext);
 
-  posts.map((post) => {
-    console.log(`/${post._raw.flattenedPath}`);
-  });
-
   const router = useRouter();
+  const [path, setPath] = useState(router.asPath);
+
   // 목차 리스트 ( index: 목차, size: 목차의 크기 ( h1~h6는 크기를 다르게 렌더링해주기 위함 ) )
   const [indexList, setIndexList] = useState([]);
 
@@ -31,6 +29,10 @@ const TOC = ({ posts, title }) => {
 
   // 현재 보이는 목차 ( 강조 표시 해주기 위함 )
   const [currentIndex, setCurrentIndex] = useState("");
+
+  useEffect(() => {
+    setPath((prev) => router.asPath);
+  }, [router.asPath]);
 
   useEffect(() => {
     setIndexList([]);
@@ -65,7 +67,7 @@ const TOC = ({ posts, title }) => {
 
     // 이벤트 해제
     return () => observerList.forEach((observer) => observer.disconnect());
-  }, [router.asPath, colorTheme, isClickIndex]);
+  }, [path, colorTheme, isClickIndex]);
 
   return (
     <aside
@@ -180,10 +182,12 @@ const TOC = ({ posts, title }) => {
   );
 };
 
+// 이동하게될 요소의 ID를 담음
 export const isScrollView = (index, toggleModal) => {
   var getMeTo = document.getElementById(index);
   var getWidt = document.body?.offsetWidth;
   getMeTo.scrollIntoView({ behavior: "smooth" }, true);
+  console.log(document.getElementById(index));
   if (getWidt >= 1280) return;
   setTimeout(() => toggleModal("mobile"), 900);
 };

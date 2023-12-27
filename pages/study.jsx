@@ -14,7 +14,7 @@ const Blog = ({ posts, lists }) => {
     <>
       <Container>
         <div
-          className={`h-40 max-h-[12rem] flex flex-col duration-300 justify-center items-center rounded-md mt-24 mb-10 ${
+          className={`h-40 max-h-[12rem] flex flex-col duration-300 justify-center items-center rounded-md mt-1  md:mt-24 mb-10 ${
             colorTheme === lightTheme
               ? "text-black bg-gray-500"
               : "text-white bg-gray-500/40"
@@ -24,7 +24,7 @@ const Blog = ({ posts, lists }) => {
           <p className="text-lg">공부노트, 주제별 구분</p>
         </div>
         <h2
-          className={`text-lg mb-4  border-b-[1px] ${
+          className={`text-lg mb-4 font-semibold border-b-[2px] text-center xl:text-start ${
             colorTheme === lightTheme ? "border-b-black" : "border-b-white"
           }`}
         >
