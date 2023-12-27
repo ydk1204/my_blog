@@ -15,7 +15,7 @@ const components = {
   pre: Pre,
 };
 
-const Post = ({ post, posts }) => {
+const Post = ({ post, posts, params }) => {
   const { colorTheme } = useContext(ThemeContext);
   const [prevPost, setPrevPost] = useState({});
   const [nextPost, setNextPost] = useState({});
@@ -141,6 +141,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       post,
       posts,
+      params,
     },
   };
 };

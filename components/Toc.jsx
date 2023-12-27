@@ -14,6 +14,10 @@ const TOC = ({ posts, title }) => {
   const { colorTheme } = useContext(ThemeContext);
   const { isClickIndex, toggleModal } = useContext(ModalContext);
 
+  posts.map((post) => {
+    console.log(`/${post._raw.flattenedPath}`);
+  });
+
   const router = useRouter();
   // 목차 리스트 ( index: 목차, size: 목차의 크기 ( h1~h6는 크기를 다르게 렌더링해주기 위함 ) )
   const [indexList, setIndexList] = useState([]);

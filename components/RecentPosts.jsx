@@ -1,13 +1,22 @@
 import Link from "next/link";
 import Image from "next/image";
 import recentImg from "../data/recent-img";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { lightTheme } from "../styles/theme";
 import { ThemeContext } from "../pages/_app";
 import { RecentPostsCard } from "./RecentPostsCard";
 
 const RecentPosts = ({ posts }) => {
   const { colorTheme } = useContext(ThemeContext);
+  const [getPost, setGetPost] = useState([]);
+
+  useEffect(() => {
+    setGetPost((prev) => posts.slice(0, 4));
+  }, [posts]);
+
+  getPost.map((post) => {
+    console.log(`/${post._raw.flattenedPath}`);
+  });
 
   return (
     <section className={`mt-20`}>
@@ -24,12 +33,10 @@ const RecentPosts = ({ posts }) => {
       <div
         className={`w-full flex justify-center  md:justify-between flex-wrap`}
       >
-        {posts?.slice(0, 4).map((post, idx) => (
-          <Link
-            key={post._raw.flattenedPath + idx}
-            href={`/${post._raw.flattenedPath}`}
-          >
-            <RecentPostsCard key={post._raw.flattenedPath + idx} post={post} />
+        {getPost.map((post) => (
+          <Link key={post.title} href={`/${post._raw.flattenedPath}`}>
+            {/* <RecentPostsCard key={post.title} post={post} /> */}
+            {post.title}
           </Link>
         ))}
       </div>
