@@ -8,8 +8,7 @@ import { useRouter } from "next/router";
 const MenuBtn = ({ data }) => {
   const { isClickIndex, toggleModal } = useContext(ModalContext);
   const { colorTheme } = useContext(ThemeContext);
-  const postData = data && data[1];
-  const { props } = postData;
+  const { props } = data && data;
 
   // 혹시나 모바일 toc 버튼 활성화 상태 중 다른 경로로 갔을 때 스크롤 문제 생기는거 방지용
   const [toggleBtnPath, setToggleBtnPath] = useState("");

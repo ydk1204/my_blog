@@ -30,7 +30,7 @@ export const ModalContext = createContext({
 function MyApp({ Component, pageProps }) {
   const { colorTheme, toggleColorTheme, imgTarget, interSectionScroll } = useDarkMode();
   const { isClickIndex, toggleModal } = useClickIndex();
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   // useEffect(() => {
   //   const start = () => {
@@ -90,7 +90,7 @@ function MyApp({ Component, pageProps }) {
       <ModalContext.Provider value={{isClickIndex, toggleModal }}>
           <AppLayout {...pageProps}>
           {/* {loading && <Loading />} */}
-            {!loading && <Component {...pageProps} />}
+          <Component {...pageProps} />
         </AppLayout>
       </ModalContext.Provider>
       </ThemeContext.Provider>

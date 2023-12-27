@@ -165,11 +165,11 @@ const AppLayout = ({ children }, props) => {
             </Transition>
           </TransitionGroup>
         )}
-        {/* {router.pathname.slice(-5, -1) === "slug" && (
+        {router.pathname.slice(-5, -1) === "slug" && (
           <>
             <MenuBtn data={children} />
           </>
-        )} */}
+        )}
         <div
           className={`w-full flex justify-center h-fit z-10 ${
             colorTheme === lightTheme ? "bg-white" : "bg-zinc-900"

@@ -10,8 +10,6 @@ import RelatedPostCard from "../../../components/RelatedPostCard";
 import Giscus from "../../../components/Giscus";
 import Link from "next/link";
 import { Pre } from "../../../components/Pre";
-import { useRouter } from "next/router";
-import Loading from "../../../components/Loading";
 
 const components = {
   pre: Pre,
@@ -47,13 +45,6 @@ const Post = ({ post, posts, params }) => {
       setNextPost(posts[findIndex - 1]);
     }
   }, [posts]);
-
-  const router = useRouter();
-
-  if (router.isFallback) {
-    return <Loading />;
-    // fallback = true 시, 접속한 페이지를 생성할 때 보여주는 페이지
-  }
 
   return (
     <Container customMeta={customMeta}>
@@ -131,7 +122,7 @@ export const getStaticPaths = async () => {
         slug: p._raw.flattenedPath.replace(p._raw.sourceFileDir + "/", ""),
       },
     })),
-    fallback: true,
+    fallback: "blocking",
   };
 };
 
