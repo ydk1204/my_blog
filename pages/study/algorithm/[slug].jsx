@@ -55,10 +55,10 @@ const Post = ({ post, posts }) => {
               colorTheme === lightTheme ? "" : "prose-invert"
             }`}
           >
-            {post?.img !== "" && (
+            {post.img !== "" && (
               <div className="w-full h-[10rem] md:h-[20rem] xl:h-[25rem] overflow-hidden flex justify-center items-center rounded-xl xl:mt-10">
                 <Image
-                  src={post?.img}
+                  src={post.img}
                   width={1000}
                   height={500}
                   alt={"대표 이미지"}
@@ -68,14 +68,14 @@ const Post = ({ post, posts }) => {
                 <div className="img-animation" ref={imgRef}></div>
               </div>
             )}
-            <h1 className="mt-10 px-2 md:px-0">{post?.title}</h1>
+            <h1 className="mt-10 px-2 md:px-0">{post.title}</h1>
             <div className="px-2 md:px-0">
               <MDXComponent components={components} />
             </div>
           </div>
 
           <div className="hidden xl:block sticky right-0 w-60 h-fit top-[7.5rem] ml-0 ">
-            <Toc posts={posts} title={post?.title} />
+            <Toc posts={posts} title={post.title} />
           </div>
         </div>
         <div className="max-w-6xl w-full mb-20">
@@ -106,7 +106,7 @@ const Post = ({ post, posts }) => {
           <Giscus />
         </div>
         <div className="w-full h-10 text-gray-400">
-          <Link target="_blank" href={post?.copyright}>
+          <Link target="_blank" href={post.copyright}>
             이미지 제공
           </Link>
         </div>
