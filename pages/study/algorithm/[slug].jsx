@@ -49,7 +49,7 @@ const Post = ({ post, posts }) => {
 
   console.log(post);
 
-  if (post !== undefined) return <Error />;
+  if (post === undefined) return <Error />;
 
   return (
     <Container customMeta={customMeta}>
