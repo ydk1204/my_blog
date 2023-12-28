@@ -2,7 +2,6 @@ import Container from "components/Container";
 import { allPosts } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import Image from "next/image";
-import BookList from "../../../components/BookList";
 import Toc from "../../../components/Toc";
 import { useState, useEffect, useContext, useRef } from "react";
 import { lightTheme, ColorTheme } from "../../../styles/theme";
