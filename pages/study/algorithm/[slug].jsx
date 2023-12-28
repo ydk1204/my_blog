@@ -10,6 +10,7 @@ import RelatedPostCard from "../../../components/RelatedPostCard";
 import Giscus from "../../../components/Giscus";
 import Link from "next/link";
 import { Pre } from "../../../components/Pre";
+import Error from "../../404.jsx";
 
 const components = {
   pre: Pre,
@@ -45,6 +46,10 @@ const Post = ({ post, posts }) => {
       setNextPost(posts[findIndex - 1]);
     }
   }, [posts]);
+
+  console.log(post);
+
+  if (post !== undefined) return <Error />;
 
   return (
     <Container customMeta={customMeta}>
