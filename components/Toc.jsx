@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -15,7 +15,6 @@ const TOC = ({ posts, title }) => {
   const { isClickIndex, toggleModal } = useContext(ModalContext);
 
   const router = useRouter();
-  const [path, setPath] = useState(router.asPath);
 
   // 목차 리스트 ( index: 목차, size: 목차의 크기 ( h1~h6는 크기를 다르게 렌더링해주기 위함 ) )
   const [indexList, setIndexList] = useState([]);
@@ -30,12 +29,31 @@ const TOC = ({ posts, title }) => {
   // 현재 보이는 목차 ( 강조 표시 해주기 위함 )
   const [currentIndex, setCurrentIndex] = useState("");
 
-  useEffect(() => {
-    setPath((prev) => router.asPath);
-  }, [router.asPath]);
-
+  // 상태(경로 변경, 색상 테마 변경, 목차 변경) 시 목차 새로 고침
   useEffect(() => {
     setIndexList([]);
+  }, [router.asPath, colorTheme, isClickIndex]);
+
+  // setInterval + useEffect hook = useInterval
+  const useInterval = (callback, delay) => {
+    const savedCallback = useRef(null);
+
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
+
+    useEffect(() => {
+      const executeCallback = () => {
+        savedCallback.current();
+      };
+      if (indexList.length <= 0) {
+        let interval = setInterval(executeCallback, delay);
+        return () => clearInterval(interval);
+      }
+    }, [indexList]);
+  };
+
+  useInterval(() => {
     const observer = getObserver(setCurrentIndex);
     // 1. <main> 내부에서만 목차를 만들거라서 <main> 선택
     // 2. <h1>, <h2>, <h3> 찾기 ( h4~h6는 없기도 하고 안쓸거라서 생략 )
@@ -63,11 +81,11 @@ const TOC = ({ posts, title }) => {
 
         // 이벤트 해제를 위해 등록
         observerList.push(observer);
-      });
 
-    // 이벤트 해제
-    return () => observerList.forEach((observer) => observer.disconnect());
-  }, [path, colorTheme, isClickIndex]);
+        // 이벤트 해제
+        return () => observerList.forEach((observer) => observer.disconnect());
+      });
+  }, 100);
 
   return (
     <aside
@@ -187,7 +205,6 @@ export const isScrollView = (index, toggleModal) => {
   var getMeTo = document.getElementById(index);
   var getWidt = document.body?.offsetWidth;
   getMeTo.scrollIntoView({ behavior: "smooth" }, true);
-  console.log(document.getElementById(index));
   if (getWidt >= 1280) return;
   setTimeout(() => toggleModal("mobile"), 900);
 };
