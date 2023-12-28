@@ -18,8 +18,14 @@ const Footer = () => {
         }`}
       ></div>
       <nav className="flex w-full py-2 flex-col justify-between items-center md:flex-row md:items-start">
-        <div className="md:mr-16 md:w-fit m-0 w-full hidden md:block">
-          <Image src="/mainLogo.png" alt="logo Image" width={80} height={80} />
+        <div className="md:mr-16 md:w-fit h-14 m-0 w-full overflow-hidden md:flex justify-center items-center hidden">
+          <Image
+            src="/nameLogo.png"
+            alt="logo Image"
+            width={160}
+            height={80}
+            className="overflow-hidden"
+          />
         </div>
         <div className="flex">
           <div className="md:mr-16 md:w-fit m-0 w-full flex flex-col items-center md:items-end">
