@@ -10,6 +10,10 @@ import { ModalContext } from "../pages/_app";
 import categoryBtn from "../public/category_btn.png";
 import tocBtn from "../public/toc_btn.png";
 
+const sizeH1 = "xl:pl-0 xl:text-lg";
+const sizeH2 = "xl:pl-2 xl:text-base";
+const sizeH3 = "xl:pl-4 xl:text-sm";
+
 const TOC = ({ posts, title }) => {
   const { colorTheme } = useContext(ThemeContext);
   const { isClickIndex, toggleModal } = useContext(ModalContext);
@@ -59,7 +63,7 @@ const TOC = ({ posts, title }) => {
     // 2. <h1>, <h2>, <h3> 찾기 ( h4~h6는 없기도 하고 안쓸거라서 생략 )
     const hNodeList = document
       .querySelector("main")
-      ?.querySelectorAll("h2, h3");
+      ?.querySelectorAll("h1, h2, h3");
 
     // IntersectionObserver들이 들어갈 배열 ( 이벤트 해제를 위해 )
     const observerList = [];
@@ -138,7 +142,7 @@ const TOC = ({ posts, title }) => {
                   ? "text-orange-400 scale-110 xl:scale-105"
                   : ""
               }
-              ${size === 20 ? "xl:pl-0 xl:text-base" : "xl:pl-4 xl:text-sm"}
+              ${size === 0 ? sizeH1 : size === 20 ? sizeH2 : sizeH3}
               `}
             >
               {index}
