@@ -4,6 +4,7 @@ const bookColor = [
   { key: "js", color: "#FAAC58" },
   { key: "react", color: "#00BFFF" },
   { key: "algorithm", color: "#D8F781" },
+  { key: "cs", color: "#08298A" },
 ]
 
 export default bookColor;

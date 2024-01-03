@@ -82,6 +82,14 @@ const Blog = ({ posts, lists }) => {
           >
             이미지 제공 Freepik - Becris
           </Link>
+          <Link
+            target="_blank"
+            href={
+              "https://www.flaticon.com/kr/free-icon/computer-science_9969786?term=computer+science&page=1&position=55&origin=search&related_id=9969786"
+            }
+          >
+            이미지 제공 Flaticon - Soremba
+          </Link>
         </div>
       </Container>
     </>
