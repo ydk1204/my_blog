@@ -6,104 +6,109 @@
 >
   <url>
     <loc>https://ydkblog.vercel.app/</loc>
-    <lastmod>2024-01-03T04:04:30.588Z</lastmod>
+    <lastmod>2024-01-04T06:01:41.642Z</lastmod>
   </url>
 
   <url>
     <loc>https://ydkblog.vercel.app/404</loc>
-    <lastmod>2024-01-03T04:04:30.588Z</lastmod>
+    <lastmod>2024-01-04T06:01:41.642Z</lastmod>
   </url>
 
   <url>
     <loc>https://ydkblog.vercel.app/game</loc>
-    <lastmod>2024-01-03T04:04:30.588Z</lastmod>
+    <lastmod>2024-01-04T06:01:41.642Z</lastmod>
   </url>
 
   <url>
     <loc>https://ydkblog.vercel.app/profile</loc>
-    <lastmod>2024-01-03T04:04:30.588Z</lastmod>
+    <lastmod>2024-01-04T06:01:41.642Z</lastmod>
   </url>
 
   <url>
     <loc>https://ydkblog.vercel.app/projects</loc>
-    <lastmod>2024-01-03T04:04:30.588Z</lastmod>
+    <lastmod>2024-01-04T06:01:41.642Z</lastmod>
   </url>
 
   <url>
     <loc>https://ydkblog.vercel.app/study</loc>
-    <lastmod>2024-01-03T04:04:30.588Z</lastmod>
-  </url>
-
-  <url>
-    <loc>https://ydkblog.vercel.app/game/game포스팅</loc>
-    <lastmod>2024-01-03T04:04:30.588Z</lastmod>
+    <lastmod>2024-01-04T06:01:41.642Z</lastmod>
   </url>
 
   <url>
     <loc>https://ydkblog.vercel.app/projects/projects포스팅</loc>
-    <lastmod>2024-01-03T04:04:30.588Z</lastmod>
+    <lastmod>2024-01-04T06:01:41.642Z</lastmod>
   </url>
 
   <url>
-    <loc>https://ydkblog.vercel.app/study/cs-study/디자인패턴</loc>
-    <lastmod>2024-01-03T04:04:30.588Z</lastmod>
-  </url>
-
-  <url>
-    <loc>https://ydkblog.vercel.app/study/css-study/css초기화</loc>
-    <lastmod>2024-01-03T04:04:30.588Z</lastmod>
-  </url>
-
-  <url>
-    <loc
-      >https://ydkblog.vercel.app/study/css-study/리액트-JSX에서-CSS-변수사용</loc
-    >
-    <lastmod>2024-01-03T04:04:30.588Z</lastmod>
-  </url>
-
-  <url>
-    <loc>https://ydkblog.vercel.app/study/html-study/SEO란</loc>
-    <lastmod>2024-01-03T04:04:30.588Z</lastmod>
-  </url>
-
-  <url>
-    <loc>https://ydkblog.vercel.app/study/html-study/html초기화</loc>
-    <lastmod>2024-01-03T04:04:30.588Z</lastmod>
-  </url>
-
-  <url>
-    <loc>https://ydkblog.vercel.app/study/js-study/js초기화</loc>
-    <lastmod>2024-01-03T04:04:30.588Z</lastmod>
-  </url>
-
-  <url>
-    <loc>https://ydkblog.vercel.app/study/react-study/React와JSX</loc>
-    <lastmod>2024-01-03T04:04:30.588Z</lastmod>
-  </url>
-
-  <url>
-    <loc>https://ydkblog.vercel.app/study/react-study/리액트와사이드이펙트</loc>
-    <lastmod>2024-01-03T04:04:30.588Z</lastmod>
+    <loc>https://ydkblog.vercel.app/game/game포스팅</loc>
+    <lastmod>2024-01-04T06:01:41.642Z</lastmod>
   </url>
 
   <url>
     <loc
       >https://ydkblog.vercel.app/study/algorithm-study/백준-JavaScript-11724</loc
     >
-    <lastmod>2024-01-03T04:04:30.588Z</lastmod>
+    <lastmod>2024-01-04T06:01:41.642Z</lastmod>
   </url>
 
   <url>
     <loc
       >https://ydkblog.vercel.app/study/algorithm-study/백준-JavaScript-1260</loc
     >
-    <lastmod>2024-01-03T04:04:30.588Z</lastmod>
+    <lastmod>2024-01-04T06:01:41.642Z</lastmod>
   </url>
 
   <url>
     <loc
       >https://ydkblog.vercel.app/study/algorithm-study/백준-JavaScript-2579</loc
     >
-    <lastmod>2024-01-03T04:04:30.588Z</lastmod>
+    <lastmod>2024-01-04T06:01:41.642Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://ydkblog.vercel.app/study/cs-study/디자인패턴</loc>
+    <lastmod>2024-01-04T06:01:41.642Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://ydkblog.vercel.app/study/cs-study/프레임워크와-라이브러리</loc>
+    <lastmod>2024-01-04T06:01:41.642Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://ydkblog.vercel.app/study/css-study/css초기화</loc>
+    <lastmod>2024-01-04T06:01:41.642Z</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://ydkblog.vercel.app/study/css-study/리액트-JSX에서-CSS-변수사용</loc
+    >
+    <lastmod>2024-01-04T06:01:41.642Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://ydkblog.vercel.app/study/html-study/SEO란</loc>
+    <lastmod>2024-01-04T06:01:41.642Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://ydkblog.vercel.app/study/html-study/html초기화</loc>
+    <lastmod>2024-01-04T06:01:41.642Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://ydkblog.vercel.app/study/js-study/js초기화</loc>
+    <lastmod>2024-01-04T06:01:41.642Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://ydkblog.vercel.app/study/react-study/React와JSX</loc>
+    <lastmod>2024-01-04T06:01:41.642Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://ydkblog.vercel.app/study/react-study/리액트와사이드이펙트</loc>
+    <lastmod>2024-01-04T06:01:41.642Z</lastmod>
   </url>
 </urlset>

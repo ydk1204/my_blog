@@ -27,7 +27,7 @@ const RelatedPostCard = ({ division, post = "" }) => {
     >
       <div className={`w-full px-10 flex flex-col items-center`}>
         <p className="m-0 mb-2 text-teal-400">{division}</p>
-        <h1 className="m-0 text-3xl truncate w-full">{post.title}</h1>
+        <p className="m-0 text-3xl truncate w-full">{post.title}</p>
         <p className="m-0 text-lg truncate w-full">{post.description}</p>
         <span></span>
       </div>
