@@ -1,0 +1,312 @@
+---
+title: 싱글톤 패턴
+date: 2024-01-05
+description: 싱글톤 패턴을 알아보자요
+img: /postImg/defaultImg.png
+tag: study
+note: cs
+copyright: https://pixabay.com/ko/users/abdulstudio-16007621/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5048215
+---
+
+---
+
+# 싱글톤 패턴이란?
+
+**하나의 클래스**에 **하나의 인스턴스**만 가지는 패턴이다.<br/>
+즉, 하나의 유일한 객체를 만들기 위한 코드 패턴이다.
+
+## 사용하는 이유
+
+다시 싱글톤 패턴을 말하자면 생성자를 통해 여러번 호출 되더라도 인스턴스를 새로 생성하지 않고
+최초 호출 시에 만들어두었던 인스턴스를 재활용하는 패턴이다.
+
+여기서 **재활용**이라는 단어를 다시 한번 생각해보자.
+
+우리가 일상생활에서 재활용을 하는 이유가 무엇일까?<br/>
+간단하다 **낭비**를 막기 위해서다. 어차피 똑같은 용도로 다시 사용할 예정이기 때문에
+재활용을 할 수 있고, 재활용을 함으로써 얻을 수 있는 이득이 있으니 실행한다.
+
+그럼 다시 돌아와서 코드를 작성할 때 인스턴스를 재활용하는 이유는 무엇일까?<br/>
+바로 **메모리 낭비**를 방지할 수 있다. 코드를 작성할 때 어차피 같은 인스턴스 객체를 사용하게 될
+예정이라면 굳이 사용할 때마다 새로운 인스턴스를 만들어 사용하는 것보다 기존의 인스턴스를 재활용하는게
+메모리 상에 이롭지 않을까? 라는 생각이 들때 사용하면 된다.<br/>
+
+---
+
+# 싱글톤 패턴을 자바스크립트로
+
+```javascript
+class Singleton {
+  constructor() {
+    // 싱글톤 인스턴스가 아직 한번도 안 만들어졌을 때
+    if (!Singleton.instance) {
+      Singleton.instance = this;
+    }
+    // 이미 만들어져 있다면 퍼가요
+    return Singleton.instance;
+  }
+  getInstance() {
+    return this;
+  }
+}
+
+const 첫째 = new Singleton();
+const 둘째 = new Singleton();
+
+console.log(첫째 === 둘째);
+```
+
+---
+
+# 싱글톤의 단점
+
+얘가 속 편한 애는 아니다.
+
+### 1. 의존성이 높아진다.
+
+대부분 클래스의 객체를 미리 생성하고 정적 메소드를 이용해 사용하기 때문에 클래스 사이에
+**강한 의존성**과 **높은 결합**이 생긴다.
+
+어렵게 생각할거 없이 인스턴스 하나 만들어 두고 걔를 돌려 쓰는데 당연히 같이 공유해서 쓰는
+애들끼리 결합이 생기고 인스턴스 한명에게 의존하게 되는건 당연한 일이다.
+
+따라서 싱글튼으로 생성한 인스턴스를 변경하면 얘를 쓰는 다른 친구들도 그에 맞춰서
+코드를 수정해야 할 수도 있는 번거로움이 생기기도 한다.
+
+### 2. 테스트가 어렵소
+
+테스트 방법론 중 TDD 단위 테스트가 존재한다. 이 방법은 서로 독립적이어야 하고 테스트를 할 때
+어떤 순서로든 실행할 수 있어야 하는데, 여기서 문제가 발생한다.
+
+싱글톤 인스턴스는 **자원을 공유하고 있어서** 전혀 독립적이지 않아 테스트를 이어갈려면 매번
+인스턴스의 상태를 초기화 해줘야하는 번거로움이 발생한다. 그렇지 않으면 테스트가 망해요
+
+### 3. 그 외
+
+1. 상속이 어렵다.
+
+자바와 같은 언어의 경우 private라는 키워드를 사용해 만들어서 자바언어의 강력한 기능 중 하나인
+상속을 통한 자식 클래스를 만들지 못 한다는 문제가 있다고 한다. 나는 자바 안 써서 다행이다.
+
+2. 원칙 위반
+
+위반 목록은 다음과 같다.
+
+- 인스턴스 하나만 생성해 사용하기 때문에 이 친구가 가지게 되는 책임이 많아 **단일 책임 원칙**(SRP)를 위반한다.
+- 여러 클래스들과 나눔하면 결합도가 높아지게 되서 **개방-폐쇄 원칙**(OCP)를 위반한다.
+- 의존 관계상 클라이언트가 인터페이스와 같은 추상화가 아닌 구체 클래스에 의존하게 되어 **의존 역전 원칙**(DIP)를 위반한다.
+
+그래서 싱글톤 패턴을 객체 지향 프로그래밍의 안티 패턴이라고 불리기도 한다.
+
+---
+
+# 싱글톤 패턴 구현방법
+
+보통 JAVA를 이용한 방법이 많이 보인다.<br/>
+javascript를 사용하는 나에게는 딱히 필요없어 보이는데 한번 보면 나중에 써먹을 때가 있지 않을까 싶어서 정리한다.
+
+## 1. 지연 초기화 (Lazy initialization)
+
+싱글톤 패턴 생성 여부를 확인한 뒤 없다면 새로 만들고, 있다면 만들어둔 인스턴스를 보내준다.
+
+```java
+public class Singleton {
+  private static Singleton instance;
+
+  private Singleton() {}
+
+  public static Singleton getInstance() {
+    // 만들어 둔게 있을까?
+    if (instance == null) {
+      instance = new Singleton();
+    }
+    return instance;
+  }
+}
+```
+
+여기에는 치명적인 문제가 존재한다고 한다.<br/>
+바로 자바는 멀티쓰레드 환경을 가지는데, 이러한 멀티쓰레드에서는 **쓰레드 세이프**하지 않다고 한다.<br/>
+
+예를 들어 도로가 1차선 도로와 2차선 도로가 있다고 가정하고 A 자동차, B 자동차가 있다고 생각하자.<br/>
+그리고 그 도로 중간에는 좌우로 가르지르는 끈이 존재하고 자동차 하나가 지나가면 끈이 끊어진다.<br/>
+
+1. 1차선 도로<br/>
+   1차선 도로일 때는 당연히 A 자동차가 먼저 출발하면 B 자동차가 뒤를 이어 달릴 수 있고,<br/>
+   A 자동차가 앞에서 먼저 달리고 있기 때문에 끈은 A 자동차만 끊을 수 있다.<br/>
+   B 자동차는 끈 근처에도 못 간다.
+
+2. 2차선 도로<br/>
+   2차선 도로일 때는 A 자동차가 달리고 있을 때 B 자동차도 같이 달릴 수 있다.<br/>
+   그렇기에 A 자동차와 B 자동차가 비슷한 타이밍에 끈 주변에 도달한다면 여러 주변 상황에 따라 둘다 끈에 닿을 수 있을 것이다.<br/>
+
+이 끈이 만약 결승을 판 가름하는 결승점 끈이라면 상황이 귀찮아지지 않을까?<br/>
+
+싱글톤에서는 이 점이 문제가 된다. A 쓰레드와 B 쓰레드가 존재하고<br/>
+A 쓰레드가 먼저 if문에 도달하고 인스턴스 생성코드에 접근 예정 중이라고 가정하자,<br/>
+그런데 자바는 멀티 쓰레드라 B 쓰레드도 비슷한 시기에 if문에 도달해 if문을 확인할 수 있다.<br/>
+어라? 근데 A 쓰레드가 아직 인스턴스를 생성하기 전이라 B 쓰레드도 싱글톤 인스턴스 생성 코드에 도달한다.<br/>
+결과적으로 A 쓰레드 이후 B 쓰레드가 또 인스턴스를 생성해 싱글톤인데 싱글이 아니게 된다.<br/>
+
+축하한다 커플의 탄생이다.
+
+## 2. 동기화 (synchronized)
+
+synchronized 키워드를 통해 메서드에 쓰레드들을 하나씩 접근하게 **잠금**(lock)을 건다.<br/>
+단, getInstance() 메서드를 호출할 때마다 lock이 걸리게 되니 성능이 저하된다.
+
+잠금장치라고 생각하면 되겠다. 잠금장치를 쓰면 보안은 되는데 그만큼 귀찮고 시간이 걸리는 것처럼 말이다.
+
+```java
+public class Singleton {
+  private static Singleton instance;
+
+  private Singleton() {}
+
+  public static synchronized Singleton getInstance() {
+    if (instance == null) {
+      instance = new Singleton();
+    }
+    return instance;
+  }
+}
+```
+
+## 3. static
+
+정적(static) 이나 정적 블록(static block)은 런타임이 아니라 JVM이 클래스를 로딩할 때 모든 클래스들을
+로드하는 시기에 미리 인스턴스를 생성하는데 이를 이용한 방법이다.
+
+문제는 당장 싱글톤 인스턴스를 사용하지 않더라도 무조건 싱글톤 클래스를 호출해 인스턴스를 생성하기 때문에
+**자원 낭비**가 발생한다. 추가로 이 친구는 예외 처리가 불가하다.
+
+```java
+public class Singleton {
+  private final static Singleton instance = new Singleton();
+
+  private Singleton() {}
+
+  public static Singleton getInstance() {
+    return instance;
+  }
+}
+```
+
+## 4. static block (Static block initialization)
+
+위의 static과 같지만 static block을 사용해 **예외처리가 가능하다.**
+하지만 메모리 자원 낭비에 대한 문제점은 동일하다.
+
+```java
+public class Singleton {
+    private static Singleton instance;
+
+    private Singleton() {}
+
+    // 예외 처리
+    static {
+        try {
+            instance = new Singleton();
+        } catch (Exception e) {
+            throw new RuntimeException("싱글톤 객체 생성 오류");
+        }
+    }
+
+    public static Singleton getInstance() {
+        return instance;
+    }
+}
+```
+
+## 5. 이중 확인 잠금 (Double-Checked Locking)
+
+꺼진 불도 다시 보자, 이중 확인
+
+위의 동기화(synchronized) 방법처럼 synchronized를 사용할 때 문제점이었던 잠금 설정을
+좀 더 보완하는 방법이다.
+
+싱글톤 패턴 잠금 전에 한번.<br/>
+객체를 생성하기 전에 한번.
+
+총 2번의 체크를 통해 인스턴스가 진짜 진짜 존재하지 않을 경우에만 잠금을 걸어 문제점을 해결한다.
+
+이때 volatile 키워드를 사용해야 I/O 불일치 문제가 해결된다고 한다.
+다만 volatile 키워드를 사용하기 위해서는 JVM이 1.5 이상, JVM에 따라 쓰레드 세이프가 보장되지 않는
+경우도 있다고 하니 권장되는 방법은 아니라고 한다.
+
+> > volatile? 저게 멀까?<br/>
+> > java는 멀티 쓰레드라는 것은 알고 있다. 이때 쓰레드를 2개 이상 사용하면 변수를 메인 메모리(RAM)에서
+> > 가져오는 것이 아니라 캐시(Cache)메모리에서 가져온다.
+> > 여기서 문제가 발생하는데, A 쓰레드의 캐시 메모리에 저장된 변수 값과 B 쓰레드의 캐시 메모리에 저장된 변수 값이
+> > 다를 수 있다는 점이다. <br/>메인 메모리가 아닌 각자의 캐시 메모리에 저장된 값을 사용하기 때문에 생길 수 있는 문제인데
+> > 이 문제점을 volatile 키워드를 사용하면 이제 각 쓰레드가 기존처럼 캐시 메모리를 사용하는게 아니라
+> > 메인 메모리에서 값을 가져와 사용하게 됨으로 값 불일치의 문제가 해결될 수 있다.
+
+```java
+public class Singleton {
+    private static volatile Singleton instance;
+
+    private Singleton() {}
+
+    public static Singleton getInstance() {
+        if (instance == null) {
+        	// 동기화 위치 주의
+            synchronized (Singleton.class) {
+                if(instance == null) {
+                    instance = new Singleton();
+                }
+            }
+        }
+        return instance;
+    }
+}
+```
+
+## 6. 중첩 클래스 (LazyHolder)
+
+singleInstanceHolder라는 **내부 클래스**를 추가로 만들어서 싱글톤 클래스가 JVM이 클래스를 로딩할 때
+인스턴스를 만들게 놔두지 않고 getInstance() 메서드를 호출할 때 비로소 인스턴스가 생성되도록 만든다.
+
+```java
+public class Singleton {
+
+    private Singleton() {}
+
+    // static 내부 클래스
+    private static class SingleInstanceHolder {
+        private static final Singleton INSTANCE = new Singleton();
+    }
+
+    //getInstance 메서드를 호출할 때 인스턴스 생성
+    public static Singleton getInstance() {
+        return SingleInstanceHolder.INSTANCE;
+    }
+}
+```
+
+## 7. Enum (Enum)
+
+Enum은 기본적으로 private로 만들고 한번만 초기화 하기 때문에 쓰레드 세이프(thread safe) 하다.
+
+```java
+public enum Singleton {
+  INSTANCE;
+  public void imSingle() {
+    return 'very sad';
+  }
+}
+```
+
+---
+
+이 포스팅을 만들며 참조한 사이트 목록
+
+- [wikipedia][wikipedia]
+- [tecoble블로그][tecoble블로그]
+- [junhyeong블로그][junhyeong블로그]
+- [InpaDev][InpaDev]
+
+[wikipedia]: https://ko.wikipedia.org/wiki/%EC%8B%B1%EA%B8%80%ED%84%B4_%ED%8C%A8%ED%84%B4
+[tecoble블로그]: https://tecoble.techcourse.co.kr/post/2020-11-07-singleton/
+[junhyeong블로그]: https://velog.io/@jhbae0420/%EC%8B%B1%EA%B8%80%ED%86%A4-%ED%8C%A8%ED%84%B4%EC%9D%98-%EC%82%AC%EC%9A%A9-%EC%9D%B4%EC%9C%A0%EC%99%80-%EB%AC%B8%EC%A0%9C%EC%A0%90
+[InpaDev]: https://inpa.tistory.com/entry/GOF-%F0%9F%92%A0-%EC%8B%B1%EA%B8%80%ED%86%A4Singleton-%ED%8C%A8%ED%84%B4-%EA%BC%BC%EA%BC%BC%ED%95%98%EA%B2%8C-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90
