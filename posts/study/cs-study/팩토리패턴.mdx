@@ -1,0 +1,105 @@
+---
+title: 팩토리 패턴
+date: 2024-01-06
+description: 팩토리 패턴을 알아보자
+img: /postImg/defaultImg.png
+tag: study
+note: cs
+copyright: https://pixabay.com/ko/users/abdulstudio-16007621/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5048215
+---
+
+---
+
+# 팩토리 패턴이란?
+
+상속 관계에 있는 두 클래스에서 상위 클래스가 중요한 뼈대를 결정하고, 하위 클래스가 구체적인 정보를 갖는 형식이다.<br/>
+제품 객체를 생성하는 중앙 공장을 만들고, 이를 상속하는 전문 제작 공장에서 여러 제품을 담당해서 객체를 생성한다.
+
+부모(상위) 클래스는 객체 생성방식에 대해 알 필요가 없어지기 때문에 **유연성**을 갖을 수 있고,
+객체 생성 로직은 자식(하위) 클래스에서만 관리 되기 때무에 **유지보수성**이 증가한다.
+
+## 언제 사용할까?
+
+- 클래스 생성과 사용 로직을 분리해 결합도를 낮추고 싶을 때
+- 코드 캡슐화를 통해 정보 은닉 처리를 하고 싶을 때
+- 기존 객체를 재사용함으로써 자원 낭비를 덜고 싶을 때
+
+## 장점은?
+
+- 생성자와 구현 객체를 구분하여 **결합도**를 낮출 수 있다.
+- 상위 클래스인 팩토리 메서드를 통해 생성 후 기본적으로 수행할 일을 정의할 수 있다.
+- **캡슐화**와 추상화를 통해 정보 은닉 가능하다
+- 클래스가 각자 하는 일이 나눠져 있어, 객체는 단 하나의 책임만을 가져야 한다는 **단일 책임 원칙**을 수행한다.
+- 기존 코드를 변경하지 않고, 하위 클래스를 통해 기능을 추가할 수 있어 **개방 폐쇄 원칙**을 수행한다.
+- 생성과 구현 인터페이스가 나눠져 있기 때문에 **협업** 개발에 좋다.
+
+## 단점은?
+
+- 새롭게 구현해야할 객체가 늘어날 때마다 하위 공장을 추가해줘야 하기 때문에 클래스가 늘어나고,
+  그만큼 **코드가 복잡**해질 수 있다.
+
+---
+
+# 코드로 알아보기
+
+상속관계가 확실한 Java언어를 이용한 예시가 많은데 나는 javaScript를 사용하기 때문에
+한번 쓰윽 보고 말았다.<br/>
+보통 자동차를 예시로 드는게 많은거 같아서 나도 해본다.
+
+```javascript
+class CarFactory {
+  static createCar(type) {
+    const factory = factoryList[type];
+    return factory.createCar();
+  }
+}
+
+class Truck {
+  constructor() {
+    this.division = "트럭";
+    this.price = "워메.. 가격보소..ㅋㅋ";
+  }
+}
+
+class SUV {
+  constructor() {
+    this.division = "suv";
+    this.price = "와! 할인 중!";
+  }
+}
+
+class TruckFactory extends CarFactory {
+  static createCar() {
+    return new Truck();
+  }
+}
+
+class SUVFactory extends CarFactory {
+  static createCar() {
+    return new SUV();
+  }
+}
+
+const factoryList = { TruckFactory, SUVFactory };
+
+const main = () => {
+  const car = CarFactory.createCar("TruckFactory");
+  console.log(`이 차는 ${car.division}이네, 어디 가격은... ${car.price}`);
+};
+main();
+```
+
+위의 코드를 복사 후 [jsbin][jsbin]에서 간단하게 확인해볼 수 있다.
+
+---
+
+이 포스팅을 만들며 참조한 사이트 목록
+
+- [wikipedia][wikipedia]
+- [ellyheetov블로그][ellyheetov블로그]
+- [Inpa블로그][Inpa블로그]
+
+[wikipedia]: https://ko.wikipedia.org/wiki/%ED%8C%A9%ED%86%A0%EB%A6%AC_%EB%A9%94%EC%84%9C%EB%93%9C_%ED%8C%A8%ED%84%B4
+[jsbin]: https://jsbin.com/?html,output
+[ellyheetov블로그]: https://velog.io/@ellyheetov/Factory-Pattern
+[Inpa블로그]: https://inpa.tistory.com/entry/GOF-%F0%9F%92%A0-%ED%8C%A9%ED%86%A0%EB%A6%AC-%EB%A9%94%EC%84%9C%EB%93%9CFactory-Method-%ED%8C%A8%ED%84%B4-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%B0%B0%EC%9B%8C%EB%B3%B4%EC%9E%90#factory_method_pattern
