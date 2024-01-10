@@ -11,6 +11,9 @@
 # sitemap
 /public/robots.txt
 
+# test code
+/scripts/testCode.js
+
 # testing
 /coverage
 
