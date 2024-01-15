@@ -1,0 +1,164 @@
+---
+title: 옵저버 패턴
+date: 2024-01-15
+description: 옵저버 패턴
+img: /postImg/defaultImg.png
+tag: study
+note: cs
+copyright: https://pixabay.com/ko/users/abdulstudio-16007621/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5048215
+---
+
+---
+
+# 옵저버 패턴이란?
+
+옵저버 패턴(Observer Pattern)은 옵저버(관찰자)들이 관찰하고 있는 대상자의 상태 변화가 있을 때마다
+대상자는 직접 목록의 각 관찰자들에게 소식을 전하고, 관찰자들은 소식을 전달 받아 조치를 취하는 패턴이다.
+
+> **잠시, 상태 변화란?**
+>
+> "상태(State)"는 **변화하기 때문에 관리의 대상이 되는 모든 데이터** 값을 말한다.<br/>
+> 반대로 변하지 않는 값은 관리할 필요가 없고 이는 상태가 아니다. <br/>
+> 이런 상태가 변화하는 것을 상태 변화 라한다.
+
+이 패턴은 우리 일상에서 일어나는 일과 비슷한데, 바로 유튜브이다.
+
+유튜브를 보면서 관심이 생긴 유튜브 채널을 구독 해두면 유튜브 채널은 발행자(Subject)가 되고,
+구독자들은 관찰자(Observer)가 된다. 이때 유튜버가 새로운 영상을 올리면 구독을 한 여러명의
+구독자들(Observer)에게 모두 새로운 영상이 올라왔다는 **알림**이 전달되고, 구독을 하지 않았거나
+구독을 취속한 사람들에게는 알림이 전달되지 않는다.
+
+이런 구조가 옵저버 패턴의 예시라고 보면된다.
+즉, 옵저버 패턴은 어떤 객체(Subject)의 **상태 변화**를 관찰하다가 **상태 변화**가 있을 때마다
+메서드 등을 통해 옵저버(Observer) 목록에 있는 옵저버들에게 변화를 알려주는 패턴이다.
+
+위의 유튜브를 보면 이해가 가겠지만 옵저버 패턴은 **일대다(one-to-many)** 의존성을 지닌 패턴이다.
+
+## 흐름 구조
+
+1. 한개의 관찰 대상자(Subject)와 여러개의 관찰자들(Observer's')로 일대다 관계로 구성
+2. Subject의 **상태가 바뀌면** 변경사항을 Observer에게 전달한다.
+3. Subject로부터 소식을 받은 Observer는 값을 바꿀 수도 있고, 삭제할 수도 있다
+4. Observer들은 언제든 Subject의 그룹에서 **추가/삭제** 될 수 있다. Subject 그룹에 추가되면 Subject로부터 정보를 전달받고, 삭제될 경우
+   Subject로부터 정보를 받을 수 없다.
+
+---
+
+# 옵저버 패턴 장단점
+
+## 장점
+
+- Subject의 **상태 변화**를 주기적으로 조회하지 않고 감지할 수 있다.
+- 상태를 변경하는 객체(Subject)와 변경을 감지하는 객체(Observer)의 관계를 **느ㅡ슨**하게 유지할 수 있다.
+
+## 단점
+
+- 구독자는 알림 순서를 제어할 수 없고, 무작위 순서로 알림을 받는다.
+- 옵저버 패턴을 자주 구성하면 구조와 동작을 알아보기 힘들어져 코드 **복잡도가 증가**한다.
+- 여러 옵저버 객체를 등록 후 해지하지 않는다면 **메모리 누수**가 발생할 수도 있다.
+
+### 느ㅡㅡ슨한 결합
+
+위의 장점 중에 객체간의 관계를 느슨하게 유지한다고 했는데, 왜 이게 장점일까?
+
+두 객체가 느슨하게 결합되어 있다는 것은, 그 둘이 **상호작용은 하되 서로에 대해 잘 모르는 것**을 의미한다.
+이런 느-슨한 결합을 가짐으로써 얻는 장점은 무엇일까?
+
+1. 옵저버를 언제든 새로 추가, 제거할 수 있다.
+2. 대상자(Subject)와 관찰자(Observer)는 서로 독립적으로 **재사용**할 수 있다.
+3. 대상자(Subject)나 관찰자(Observer)가 바뀌어도 **서로에게 영향을 주지 않는다**.
+
+---
+
+# 코드로 보기
+
+```javascript
+// 관찰 대상자(Subject)
+class Subject {
+  constructor() {
+    // 관찰자들을 담을 배열
+    this.observers = [];
+  }
+
+  // 배열에 추가
+  subscribe(observer) {
+    this.observers.push(observer);
+    console.log(`${observer.obsName}님이 구독 했습니다.`);
+  }
+
+  // 배열에서 삭제
+  unsubscribe(observer) {
+    this.observers.splice(this.observers.indexOf(observer), 1);
+    console.log(`${observer.obsName}님이 구독을 취소 했습니다.`);
+  }
+
+  // 모든 관찰자들에게 이벤트 송신
+  notifyAll() {
+    this.observers.forEach((observer) => observer.update());
+  }
+}
+
+// 관찰자(옵저버)
+class Observer {
+  constructor(obsName) {
+    this.obsName = obsName;
+  }
+
+  // 실행 할 이벤트
+  update() {
+    console.log(`${this.obsName}님, Apple이 새로운 영상을 업로드 했습니다!`);
+  }
+}
+
+const subject = new Subject();
+
+const 게이츠 = new Observer("빌 게이츠");
+const 팀쿡 = new Observer("팀쿡");
+
+subject.subscribe(게이츠); // 빌 게이츠님이 구독 했습니다.
+subject.subscribe(팀쿡); // 팀쿡님이 구독 했습니다.
+
+subject.notifyAll();
+// 빌 게이츠님, Apple이 새로운 영상을 업로드 했습니다!
+// 팀쿡님, Apple이 새로운 영상을 업로드 했습니다!
+
+subject.unsubscribe(게이츠); // 빌 게이츠님이 구독을 취소 했습니다.
+
+subject.notifyAll();
+// 팀쿡님, Apple이 새로운 영상을 업로드 했습니다!
+```
+
+위의 코드는 Subject 클래스의 subscribe와 unsubscribe 메서드가 Observer 클래스의 구조(observer.obsName)를
+알고 있는 상황에서 사용하기 때문에 적절한 예시는 아니라고 생각된다.
+**느-슨한 결합**이 아니기 때문에
+
+작성한 예시는 그저 옵저버 패턴이 어떤 흐름으로 흘러가는지, 코드와 주석을 통해 알아가는 정도로
+보면 좋을 것이라 생각된다. 아니면 subscribe와 unsubscribe 메서드에 존재하는 console.log만 삭제하면
+옵저버 패턴 예시로 괜찮을 것 같다고 생각된다.
+
+추가로 javaScript에서 옵저버 패턴의 더 좋은 예시는 **Intersection Observer API**라고 생각된다.
+
+### 번외
+
+블로그에서 TOC(Table of Contents)를 제작할 때 사용한 API인데, 전까지 이게 옵저버 패턴이라는
+디자인 패턴 구조로 만들어진 API라는 것을 몰랐다가 이번에 알게 됐다.
+이전에 full-page 방식의 화면을 개인 프로젝트나 팀 프로젝트 만들 때도 사용했는데 대충 구조만
+이해하고 사용했다가 이제야 더 알아가게 될 수 있었다.
+
+이 디자인 패터을 공부하면서 오랜만에 공부가 재밌다고 느껴졌다. 내가 전에 사용하던 도구의 사용방법을
+대략적으로 방법만 습득하고 사용했다가, 이론 공부를 통해 그 도구에 대해 알아갈 수 있어서 좋았고 이 공부를 하는 이유를 다시 한번
+상기 시켜주었다.
+
+---
+
+이 포스팅을 만들며 참조한 사이트 목록
+
+- [wikipedia][wikipedia]
+- [Inpa블로그][Inpa블로그]
+- [365Kim 블로그][365Kim 블로그]
+- [hanna2100 블로그][hanna2100 블로그]
+
+[wikipedia]: https://ko.wikipedia.org/wiki/%EC%98%B5%EC%84%9C%EB%B2%84_%ED%8C%A8%ED%84%B4
+[Inpa블로그]: https://inpa.tistory.com/entry/GOF-%F0%9F%92%A0-%EC%98%B5%EC%A0%80%EB%B2%84Observer-%ED%8C%A8%ED%84%B4-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%B0%B0%EC%9B%8C%EB%B3%B4%EC%9E%90
+[365Kim 블로그]: https://365kim.tistory.com/89
+[hanna2100 블로그]: https://velog.io/@hanna2100/%EB%94%94%EC%9E%90%EC%9D%B8%ED%8C%A8%ED%84%B4-2.-%EC%98%B5%EC%A0%80%EB%B2%84-%ED%8C%A8%ED%84%B4-%EA%B0%9C%EB%85%90%EA%B3%BC-%EC%98%88%EC%A0%9C-observer-pattern
