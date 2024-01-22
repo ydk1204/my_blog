@@ -1,0 +1,405 @@
+---
+title: MVC MVP MVVM
+date: 2024-01-22
+description: MVC MVP MVVM를 알아보자
+img: /postImg/defaultImg.png
+tag: study
+note: cs
+copyright: https://pixabay.com/ko/users/abdulstudio-16007621/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5048215
+---
+
+---
+
+# MVC 패턴
+
+MVC(모델-뷰-컨트롤러)는 소프트웨어 디자인 패턴 중 하나로, 소프트웨어를 구조화하고 모듈화하는데 사용된다.<br/>
+주로 사용자 인터페이스를 구현하는데 적합한 패턴으로 알려져 있는데, MVC 패턴은 세 가지 구성 요소로 구성되어 있다.
+
+1. **모델(Model)** :
+- 데이터와 비즈니스 **로직**을 관리한다.
+- 모델은 데이터의 **상태를 유지**하고 이에 따른 **동작을 정의**한다.
+- 사용자 인터페이스와 직접 상호 작용하지 않고, 어떤 변경이 발생하면 **뷰와 컨트롤러에게 통지**한다.
+<br/>
+
+2. **뷰(View)** :
+- 사용자에게 **정보를 표시**하는 부분이다.
+- 모델의 상태에 따라 데이터를 시각적으로 나타내고 사용자 입력을 받아 **모델에 전달**한다.
+- 뷰는 모델의 상태를 직접 변경하지 않고, 모델의 변화에 대한 **통지를 받아** 업데이트한다.
+<br/>
+
+3. **컨트롤러(Controller)** : 
+- **사용자 입력을 받아** 모델 및 뷰를 업데이트하는 부분이다.
+- 사용자의 요청에 따라 **모델의 상태를 변경**하고, 변경된 상태에 따라 **뷰를 업데이트** 한다.
+- 뷰와 모델 사이의 **중개자 역할**을 수행하며, 뷰와 직접 상호 작용하지 않는다.
+
+이런 MVC 패턴은 소프트웨어를 분리해서 유지 보수와 확장성을 증가시키는데 도움을 준다.
+
+## MVC 장단점
+
+### MVC 장점
+
+1. 모듈화와 유지보수성 : 각 구성요소(모델, 뷰, 컨트롤러)가 **독립적으로 개발**되고 유지 보수되기 때문에
+코드를 쉽게 이해하고 수정할 수 있다.
+2. 재사용성 : 모델, 뷰, 컨트롤러는 서로 독립적이므로 각각의 구성 요소를 다른 프로젝트에서 **재사용**하기 쉽다.
+3. 테스트 용이성 : 각 구성 요소가 독립적으로 테스트되서 **쉽게 테스트**할 수 있다.
+4. 유연성 : 사용자 인터페이스와 비즈니스 로직의 변경이 서로 영향을 미치지 않도록 되어 있어, **시스템이 유연**하다.
+
+### MVC 단점
+1. 복잡성 : MCV 패턴을 제대로 구현하기 위해서 각 구성 요소의 역할과 상호작용에 대한 **이해가 필요**하다.
+2. 과도한 분리 : 너무 많은 모듈화와 분리가 있을 경우, 간단한 기능을 구현하는 데에도 **많은 코드가 필요**할 수 있다.
+3. 순환 의존성 문제 : 뷰와 컨트롤러 사이에 순환 의존성이 발생할 수 있다. 이는 **시스템을 이해하기 어렵게 만들** 수 있다.
+
+## MVC JavaScript 에시
+
+html과 JS를 이용한 간단한 예시이다.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MVC Example</title>
+</head>
+<body>
+
+  <div id="app">
+    <h1 id="counter">0</h1>
+    <button id="incrementBtn">Increment</button>
+  </div>
+
+  <script>
+    // 모델 정의
+    const model = {
+      count: 0,
+      increment: function() {
+        this.count++;
+      }
+    };
+
+    // 뷰 정의
+    const view = {
+      render: function() {
+        const counterElement = document.getElementById('counter');
+        counterElement.textContent = model.count;
+      }
+    };
+
+    // 컨트롤러 정의
+    const controller = {
+      init: function() {
+        this.incrementBtn = document.getElementById('incrementBtn');
+        this.incrementBtn.addEventListener('click', this.handleIncrement.bind(this));
+
+        // 초기 뷰 렌더링
+        view.render();
+      },
+
+      handleIncrement: function() {
+        // 모델 업데이트
+        model.increment();
+        // 뷰 업데이트
+        view.render();
+      }
+    };
+
+    // 애플리케이션 초기화
+    controller.init();
+  </script>
+
+</body>
+</html>
+
+```
+
+모델은 데이터와 비즈니스 로직을 관리하고, 뷰는 화면에 데이터를 표시하고, 컨트롤러는 사용자 입력에
+응답하여 모델을 업데이트하고 뷰를 갱신하다.
+
+---
+
+# MVP 패턴
+
+MVP(모델-뷰-프리젠터)는 위의 MVC 패턴과 비슷한 아키텍처이다.<br/>
+MVP 패턴은 주로 **사용자 인터페이스를 구현**하는데 적합하다, 모델과 뷰는 위와 비슷한 기능을 하고
+교체된 프리젠터 또한 마찬가지인데 하는 일은 다음과 같다.
+
+1. 프리젠터(Presenter) : 
+- 사용자 입력을 처리하고, 모델과 뷰 사이의 **중재자 역할**을 하는 부분이다.
+- 프리젠터는 뷰로부터 사용자 입력을 받아 모델을 업데이트하고, 모델의 변화를 감지하여 뷰를 업데이트 한다.
+
+MVP 패턴에서는 컨트롤러 대신 프리젠터가 사용자 입력을 처리하고 뷰와 모델 간의 통신을 중재한다.
+
+MVP 패턴은 MVC 패턴과 비슷하지만, 각각의 구성 요소가 더 강하게 **분리**되어 있고, 뷰와 모델이 서로에게
+직접적으로 접근하지 않는 특징이 있다.
+
+## MVP 장단점
+
+MVC와 비슷하기 때문에 장단점 또한 비슷하다.
+단점은 다른 점이 조금 있어서 단점만 살펴보자.
+
+### MVP 단점
+
+1. 복잡성 : MVC 패턴과 비슷하거나 보다 덜 복잡하지만 여전히 복잡하다, 따라서 구성 요소간의 상호 작용을
+이해하고 구현하는데 시간이 필요하다.
+2. 코드 증가 : 구성 요소 간 분리가 많기 때문에 코드 양이 늘어난다.
+3. 단방향 통신 : 뷰에서 프리젠터로의 **단방향 통신**으로 인해, 어떤 경우에는 뷰에서 직접 모델에 접근해야 하는 상황이 발생
+할 수 있다. 이는 MVP의 엄격한 단방향 통신 규칙을 어길 수 있다.
+
+## MVP JavaScript 예시
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MVP Example</title>
+</head>
+<body>
+
+  <div id="app">
+    <h1 id="counter">0</h1>
+    <button id="incrementBtn">Increment</button>
+  </div>
+
+  <script>
+    // 모델 정의
+    class Model {
+      constructor() {
+        this.count = 0;
+      }
+
+      increment() {
+        this.count++;
+      }
+    }
+
+    // 뷰 정의
+    class View {
+      constructor() {
+        this.counterElement = document.getElementById('counter');
+        this.incrementBtn = document.getElementById('incrementBtn');
+      }
+
+      render(count) {
+        this.counterElement.textContent = count;
+      }
+
+      bindIncrementHandler(handler) {
+        this.incrementBtn.addEventListener('click', handler);
+      }
+    }
+
+    // 프리젠터 정의
+    class Presenter {
+      constructor(model, view) {
+        this.model = model;
+        this.view = view;
+
+        // 뷰와 프리젠터 연결
+        this.view.bindIncrementHandler(this.handleIncrement.bind(this));
+
+        // 초기 뷰 렌더링
+        this.view.render(this.model.count);
+      }
+
+      handleIncrement() {
+        // 모델 업데이트
+        this.model.increment();
+        // 뷰 업데이트
+        this.view.render(this.model.count);
+      }
+    }
+
+    // 애플리케이션 초기화
+    const model = new Model();
+    const view = new View();
+    const presenter = new Presenter(model, view);
+  </script>
+
+</body>
+</html>
+
+```
+
+---
+
+# MVVM 패턴
+
+MVVM(모델-뷰-뷰모델),<br/>
+다른 친구들은 익숙하니 새로운 뷰모델 친구를 알아보자
+
+1. 뷰모델(ViewModel) : 
+- 뷰와 모델 사이에서 중간 역할을 하는 부분이다.
+- 뷰모델은 뷰에 표시되는 데이터를 관리하고, 사용자 입력을 받아 모델에 전달하며, 모델의 변경 사항을
+감지하여 뷰를 업데이트 한다.
+
+MVVM 패턴은 주로 웹 및 모바일 애플리케이션에서 **프론트엔드 개발**에 많이 사용된다.<br/>
+특히 데이터 바인딩과 함께 사용되면 효과적으로 상태를 관리하고 사용자 인터페이스를 업데이트하는데
+도움 된다. **Angular**나 **Vue.js** 등과 같은 프레임워크 및 라이브러리가 MVVM 패턴을 지원하고 있다.
+
+## ?!
+여기서 잠시, 프론트엔드 라이브러리 하면 유명한 친구인 **리액트**(React)는?
+
+리액트는 MVVM 패턴이 아닌, 단방향 데이터 바인딩을 갖는 **컴포넌트 기반 라이브러리**이다.<br/>
+**MVVM 패턴은 주로 양방향 데이터 바인딩**을 통한 뷰와 모델의 동기화에 중점을 두는 반면,
+**리액트는 단방향 데이터 흐름**을 중시하고 가상 DOM을 통한 성능 최적화에 주력한다.
+리액트는 상태(State)와 속성(Props)을 통한 데이터 전달을 통해 컴포넌트 간의 효과적인 상호작용을
+구현한다.
+
+## MVVM 장단점
+
+### MVVM 장점
+
+1. 뷰와 모델의 분리 : MVVM은 뷰와 모델을 분리하여 개발을 가능하게 한다. 뷰모델이 중간에서
+상호작용하기 때문에 뷰는 UI 로직만, 모델은 비즈니스 로직에만 **집중**할 수 있다.
+2. 데이터 바인딩 : MVVM은 양방향 데이터 바인딩을 통해 뷰와 모델 간의 **동기화**를 쉽게 구현할 수 있다.
+이는 코드의 양을 줄이고 개발 생산성을 향상 시킬 수 있다.
+3. 테스트 용이성 : 뷰모델은 비즈니스 로직과 UI 로직을 포함하므로 이를 **독립적으로 테스트**하기 쉽다.
+4. 코드 재사용 : 뷰모델은 뷰와 모델 간의 중재자로서 여러 뷰에서 재사용할 수 있다.
+
+
+### MVVM 단점
+
+1. 복잡성 : 프로젝트가 복잡해지면 뷰모델의 복잡성도 증가할 수 있다. 특히 특정 상태를 관리하거나
+다양한 사용자 입력에 대응하는 논리를 다룰 때 복잡성이 증가할 수 있다.
+2. 리소스 낭비 : MVVM 패턴에서는 뷰모델과 데이터 바인딩을 통한 상태 관리가 추가적인 리소스를
+필요로 할 수 있다. 특히 모바일 환경에서는 이러한 **리소스 소비**가 성능에 영향을 미칠 수 있다.
+
+MVVM은 특히 데이터 바인딩이 중요하고 복잡한 UI와 상태 관리가 필요한 프로젝트에서 효과적일 수 있다.
+
+## MVVM JavaScript 예시
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MVVM Example</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <h1 id="messageDisplay"></h1>
+    <input type="text" id="userInput" placeholder="Type something...">
+  </div>
+
+  <script>
+    const model = {
+      data: {
+        message: 'Hello, MVVM!',
+        userInput: ''
+      },
+      set message(value) {
+        this.data.message = value;
+        viewModel.updateMessageDisplay();
+      },
+      get message() {
+        return this.data.message;
+      }
+    };
+
+    const viewModel = {
+      updateMessageDisplay: function () {
+        const messageDisplay = document.getElementById('messageDisplay');
+        messageDisplay.textContent = model.message;
+      },
+
+      handleUserInput: function () {
+        model.message = document.getElementById('userInput').value;
+      }
+    };
+
+    // 초기 뷰(View) 렌더링
+    viewModel.updateMessageDisplay();
+
+    // 양방향 바인딩 설정
+    const userInput = document.getElementById('userInput');
+    userInput.addEventListener('input', function () {
+      viewModel.handleUserInput();
+    });
+  </script>
+
+</body>
+
+</html>
+
+```
+
+MVVM 패턴은 효과적으로 구현하려면 프레임워크나 라이브러리를 사용하는게 좋다고 한다.<br/>
+즉, 위에서 말한 Angular나 Vue.js를 사용하면 편하고 깔끔하게 만들 수 있을 것 이다.<br/>
+
+그렇다면 우리의 친구 리액트는 안 될까? <br/>
+아래는 React를 이용한 예시이다.
+
+```jsx
+import React, { useState, useEffect } from "react";
+
+// 모델(Model)
+const model = {
+  message: "Hello, MVVM!",
+  userInput: "",
+};
+
+// 뷰모델(ViewModel)
+const viewModel = {
+  updateMessageDisplay: function (setMessage) {
+    setMessage(model.message);
+  },
+
+  handleUserInput: function (value, setUserInput) {
+    model.userInput = value;
+    setUserInput(value);
+  },
+};
+
+// 뷰(View) 컴포넌트
+const View = () => {
+  const [message, setMessage] = useState("");
+
+  // 초기 뷰(View) 렌더링
+  useEffect(() => {
+    viewModel.updateMessageDisplay(setMessage);
+  }, []);
+
+  return (
+    <div>
+      <h1>{message}</h1>
+      <input
+        type="text"
+        value={model.userInput}
+        onChange={(e) => viewModel.handleUserInput(e.target.value, setMessage)}
+        placeholder="Type something..."
+      />
+    </div>
+  );
+};
+
+export default View;
+```
+
+위에서 React는 MVVM 패턴과 다른 개념이라고 했지만, MVVM 패턴과 유사한 개념을 적용할 수는 있다.
+
+MVVM 패턴의 핵심은 **뷰모델(ViewModel)이라는 중간 계층을 가지고 뷰와 모델 간의 상호 작용을
+관리하는 것**이기 때문이다.
+
+위의 예시에서 'View' 컴포넌트가 뷰(View)역할을 하고, 'modle'은 모델(Model) 역할,
+'viewModel' 객체는 뷰모델(ViewModel) 역할을 수행한다.
+뷰 컴포넌트의 상태를 변경하는 함수(setMessage, setUserInput)를 인자로 받아 사용한다.
+
+한가지 여기서 React는 주로 단방향 데이터 흐름을 가지고 있다는 것을 명심하자.
+그렇기에 React와 MVVM의 차이는 있지만 일부 개념을 활용한 사례를 만들 수는 있다. 
+
+---
+
+이 포스팅을 만들며 참조한 사이트 목록
+
+- [wikipedia][wikipedia]
+- [MDN][MDN]
+- Chat GPT
+
+[wikipedia]: https://ko.wikipedia.org/wiki/%EB%AA%A8%EB%8D%B8-%EB%B7%B0-%EC%BB%A8%ED%8A%B8%EB%A1%A4%EB%9F%AC
+[MDN]: https://developer.mozilla.org/ko/docs/Glossary/MVC
