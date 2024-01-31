@@ -1,0 +1,72 @@
+---
+title: Flux 패턴
+date: 2024-01-31
+description: Flux 패턴은?
+img: /postImg/defaultImg.png
+tag: study
+note: cs
+copyright: https://pixabay.com/ko/users/abdulstudio-16007621/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5048215
+---
+
+---
+
+# Flux 패턴이란?
+
+Flux 패턴은 페이스북에서 제안한 웹 애플리케이션 아키텍처로,
+**단방향 데이터 흐름**을 통해 상태를 예측 가능하고 관리하기 쉽게 하는
+디자인 패턴이다.
+
+Flux 패턴은 다음과 같은 네 가지 구성 요소로 이루어져 있다.
+
+## 구성 요소 
+
+### 1. Action : 
+- **사용자 입력**이나 **서버 응답**과 같은 이벤트를 객체 형태로 표현한다. 
+- Action 객체는 **type 속성**을 필수적으로 가지고 있다.
+- 이 type 속성은 Action의 **의도를 식별**하는데 사용된다.
+
+### 2. Dispatcher :
+- Action을 전달 받아서 등록된 **콜백 함수를 실행**시켜주는 중개자 역할
+- Dispatcher는 여러 개의 Store에게 Action을 **전달**하고, Store에서 데이터를
+**업데이트**하는 일을 할 수 있다.
+- Dispatcher는 **전역**으로 유일한 인스턴스를 가지고 있다.
+
+### 3. Store :
+- 애플리케이션의 **상태와 로직**을 관리
+- Store는 단 **하나만 존재**하고, 여러 개의 View에게 공유된다.
+- Store의 **상태가 변경**될 때마다, View는 Store에 등록된 콜백 함수를 실행하여
+업데이트된 **상태를 반영**한다.
+
+
+### 4. View :
+- 사용자에게 보여지는 **화면을 렌더링**한다.
+- View는 Store에서 전달받은 상태를 기반으로 화면을 갱신하고, 사용자와의
+**상호작용**을 통해 Action을 발생 시킬 수 있다.
+
+---
+
+# 장단점
+
+## 장점
+
+- 데이터가 한 방향으로만 흐르기 때문에 **데이터 흐름의 복잡성을 줄이고**,
+예측 가능하게 만들 수 있다.
+- 컴포넌트 간의 의존성을 줄여서 **유지보수**가 용이하다.
+
+## 단점
+
+- **코드가 많아**진다.
+- 그에 따라 복잡성이 늘어날 수 있다.
+- 한 개 이상의 Store를 사용할 때, Store 간의 **의존성이 발생**할 수 있다.
+
+---
+
+이 포스팅을 만들며 참조한 사이트 목록
+
+- [Heechan][Heechan]
+- [Harry's Blog][Harry's Blog]
+- [파닥파닥][파닥파닥]
+
+[Heechan]: https://medium.com/hcleedev/web-react-flux-%ED%8C%A8%ED%84%B4-88d6caa13b5b
+[Harry's Blog]: https://velog.io/@andy0011/Flux-%ED%8C%A8%ED%84%B4%EC%9D%B4%EB%9E%80
+[파닥파닥]: https://velog.io/@beberiche/%EC%8B%B1%EA%B8%80%ED%86%A4-%ED%8C%A8%ED%84%B4%EA%B3%BC-Flux-%ED%8C%A8%ED%84%B4%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94
