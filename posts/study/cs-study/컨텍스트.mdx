@@ -1,0 +1,73 @@
+---
+title: 컨텍스트
+date: 2024-01-31
+description: 컨텍스트
+img: /postImg/defaultImg.png
+tag: study
+note: cs
+copyright: https://pixabay.com/ko/users/abdulstudio-16007621/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5048215
+---
+
+---
+
+# 컨텍스트란
+
+디자인 패턴에서 컨텍스트(context)는 두 가지 의미를 가질 수 있다.
+
+1. 어떤 종류의 상태나 환경을 **캡슐화**한 것이다.
+- 예를 들어, 전략 패턴에서 컨텍스트는 다양한 전략을 적용할 수 있는
+객체를 말한다.
+- 컨텍스트는 전략을 바꾸거나 실행할 수 있는 메서드를 가지고 있다.
+
+2. 작업이 중단되고 나중에 같은 지점에서 계속될 수 있도록 저장하는
+**최소 데이터 집합**
+- 예를 들어, *컨텍스트 스위칭*에서 컨텍스트는 프로세스의 레지스터, 스택,
+메모리 등을 저장한다.
+
+<br/>
+
+### 잠깐 컨텍스트 스위칭?
+
+컨텍스트 스위칭이란 CPU가 현재 실행 중인 프로세스나 스레드를 중단하고
+다른 프로세스나 스레드로 교체하는 작업을 말한다.
+
+컨텍스트 스위칭을 할 때는 현재 프로세스나 스레드의 상태 정보를 PCB라는 곳에
+저장하고, 다음 프로세스나 스레드의 상태 정보를 PCB에서 가져온다.
+컨텍스트 스위칭을 통해 멀티 프로세싱이나 멀티 스레딩을 구현할 수 있다.
+
+단, 컨텍스트 스위칭에는 시간과 자원이 소모되기 때문에 너무 자주 하면
+성능저하를 불러올 수 있다.
+
+---
+
+# 간단하게
+
+간단하게 현실에 비유하자면 다음과 같다고 볼 수 있다.
+
+1. 컨텍스트는 여행자의 **가방**에 비유할 수 있다.
+- 여행자는 여행지에 따라 다른 가방을 선택하고, 가방 안에는 여행에
+필요한 물건들이 들어있다.
+- 여행자는 가방을 바꾸거나 열어서 물건을 사용할 수 있다.
+- 이와 같이 컨텍스트는 상황에 따라 전략을 바꾸거나 실행할 수 있는 메서드를
+가지고 있다.
+
+2. 컨텍스트는 **책갈피**로 비유할 수 있다.
+- 책을 읽다가 중단하면, 책갈피를 넣어서 나중에 다시 읽을 수 있다.
+- 책갈피는 책의 페이지 번호와 줄을 저장하고 있다.
+- 이와 같이 컨텍스트는 작업을 중단해도 나중에 같은 지점에서 계속 할 수 있도록
+저장하는 데이터 집합이다.
+
+
+---
+
+이 포스팅을 만들며 참조한 사이트 목록
+
+- [hyobi Blog][hyobi Blog]
+- [oobwrite Blog][oobwrite Blog]
+- [쩨리쩨리][쩨리쩨리]
+- [Crocus][Crocus]
+
+[hyobi Blog]: https://velog.io/@hyobi-lim/CS-%EC%A0%95%EB%A6%AC-%EB%94%94%EC%9E%90%EC%9D%B8%ED%8C%A8%ED%84%B4-MVC-MVP-MVVM-flux-%ED%8C%A8%ED%84%B4-%EC%A0%84%EB%9E%B5%ED%8C%A8%ED%84%B4%EA%B3%BC-%EC%9D%98%EC%A1%B4%EC%84%B1-%EC%A3%BC%EC%9E%85%EC%9D%98-%EC%B0%A8%EC%9D%B4-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8
+[oobwrite Blog]: https://oobwrite.com/entry/%EB%94%94%EC%9E%90%EC%9D%B8-%ED%8C%A8%ED%84%B4Design-Pattern-%EC%B4%9D%EC%A0%95%EB%A6%AC-23%EA%B0%80%EC%A7%80-%EB%94%94%EC%9E%90%EC%9D%B8-%ED%8C%A8%ED%84%B4-%EC%A0%95%EC%9D%98-%EC%A2%85%EB%A5%98-%EC%9E%A5%EB%8B%A8%EC%A0%90
+[쩨리쩨리]: https://jerryjerryjerry.tistory.com/181
+[Crocus]: https://www.crocus.co.kr/1364
