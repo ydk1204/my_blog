@@ -1,0 +1,197 @@
+---
+title: 트래픽, 처리량, 대역폭, RTT
+date: 2024-02-01
+description: 트래픽, 처리량, 대역폭, RTT
+img: /postImg/defaultImg.png
+tag: study
+note: cs
+copyright: https://pixabay.com/ko/users/abdulstudio-16007621/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5048215
+---
+
+---
+
+# 트래픽
+
+트래픽이란 네트워크에서 데이터가 전송되는 **양이나 빈도**를 말한다.
+
+트래픽이 많으면 네트워크의 성능이 떨어질 수 있기 때문에, 트래픽을 관측하고
+관리하는 것이 중요하다.
+
+트래픽을 관측하고 관리하는 방법에는 QoS, 트래픽 쉐이핑, 방화벽 규칙 등이 있다.
+트래픽을 줄이는 방법에는 캐싱, CDN, 스케일 아웃, 데이터 압축 등이 있다.
+
+단위는 bps(bits per second) 이다.
+
+예를 들어 **10mb** 동영상을 **10명**이 다운로드 했을 때 누적 트래픽은 10 x 10 = **100mb** 이다.
+
+## 트래픽 관리
+
+1. **QoS(Quality of Service)** : 트래픽의 우선 **순위**를 지정하거나, 특정 유형의 트래픽에 대해
+대역폭을 **할당**하는 기능
+2. **트래픽 쉐이핑** : 트래픽의 **흐름**을 조절하여 네트워크의 **안정성**을 유지하는 기능
+3. **방화벽 규칙** : 특정 IP 주소, 포트, 프로토콜 등을 기반으로 트랙픽을 **차단**하거나 **제한**하는 기능
+
+
+## 트래픽 줄이기
+
+### 일상에서 줄일 수 있는 방법 
+
+
+1. **온라인 비디오 화질 조절** : 화질을 낮추면 트래픽을 줄일 수 있다.
+2. **파일 다운로드 방법 변경** : 다운로드 매니저나 토렌트와 같은 도구를 사용하면 트래픽을 절약할 수 있다.
+3. **휴대폰 데이터 사용량 제한** : 데이터 사용량을 제한하거나 모바일 데이터를 끄면 트래픽을 줄일 수 있다.
+4. **애드블록 사용** : 광고는 웹페이지의 로딩 속도를 늦추고, 트래픽을 증가 시키는 주요 원인 중 하나이기 때문에,
+광고를 차단하면 트래픽을 약 40% 줄일 수 있다.
+5. **백그라운드 작업 종료** : 백그라운드에서 동작하는 앱이나 프로그램이 인터넷을 사용하고 있을 수 있기 때문에,
+작업을 종료 시키면 트래픽을 줄일 수 있다.
+
+### 좀 더 세밀하게 줄이는 방법
+
+1. **캐싱(Caching)** :
+- 파일이나 데이터의 복사본을 빠른 메모리 영역에 **저장**하여 보다 빠르게 접근할 수 있도록 하는 기술
+- 예를 들어 웹 브라우저는 웹 페이지의 HTML, CSS, 이미지 등을 캐시하여 다시 방문할 때 더 빠르게
+로드할 수 있다.
+
+2. **CDN(Content Delivery Network)** :
+- 지리적으로 분산된 서버들을 **연결**한 네트워크로서 웹 컨텐츠의 **복사본**을 사용자에 가까운 곳에 두거나
+동적 컨텐츠의 전달을 활성화하여 웹 성능 및 속도를 향상할 수 있게 한다.
+- 예를 들어 넷플릭스는 전 세계에 있는 CDN 서버를 통해 고화질의 비디오 스트리밍을 제공한다.
+
+3. **스케일 아웃(Scale out)** :
+- 장비를 추가해서 **확장**하는 방식
+- 기존 서버만으로 용량이나 성능의 한계에 도달했을 때, 비슷한 사양의 서버를 추가로
+연결한다. 이렇게 하면 처리할 수 있는 데이터 용량이 증가하고 기존 서버의 부하를 분담해
+성능 향상의 효과를 기대할 수 있다.
+
+4. **데이터 압축(Data Compression)** :
+- 데이터를 더 적은 저장 공간에 효율적으로 기록하기 위한 기술, 혹은 기술의 실제 적용
+- 크게 데이터를 더 작은 크기로 변환시키는 **인코딩** 과정과 저장된 데이터를 다시 불러와
+원래 데이터 형태로 복원시키는 **디코딩** 과정으로 이루어진다.
+- 이때 인코딩하기 전의 데이터 크기와 인코딩하고 나서의 데이터 크기의 비율을
+**압축률**이라고 한다.
+- 압축 기술의 종류에 따라 데이터의 내용을 바꾸지 않고 원래 내용 그대로 디코딩할 수 있지만
+디코딩한 데이터의 세부적인 디테일을 일부 희생시키는 **손실 압축**이 존재한다.
+
+5. **미디어 최적화(Media Optimization)** :
+- 미디어 파일의 크기, 형식, 품질, 코딩, 압축 등을 조정하여 웹 사이트의 로딩 속도를
+높이고, 사용자 경험을 개선하고, 네트워크 대역폭을 절약하는 기술이다.
+- 미디어 최적화는 웹 사이트의 성능과 **SEO**에 영향을 미치므로, 적절한 **미디어 형식**을
+선택하고, 미디어 파일의 **크기를 최소화** 하고, **캐싱과 CDN**을 활용하고, 미디어 파일의 품질과 코딩을
+**최적화** 하는 등의 작업이 필요하다.
+
+6. **데이터베이스 최적화(Database Optimization)** :
+- 데이터베이스 시스템의 성능을 최적화하고 효율적으로 운영하기 위한 프로세스이다.
+- 이는 주로 데이터베이스 관리 시스템(DBMS)의 **쿼리 처리**, 테이블 및 **인덱스 구조**, **시스템 설정** 등에
+대한 최적화 작업을 포함합니다. 데이터베이스 최적화를 통해 웹 사이트의 응답 시간을 단축하고,
+데이터베이스 오류와 충돌 등의 문제를 방지할 수 있다.
+
+---
+
+# 처리량
+
+처리량이란 링크를 통해 전달되는 단위 시간당 데이터 양을 말한다.
+예를 들어, 초당 비트 수(bps)로 측정할 수 있다.
+
+처리량은 네트워크의 성능과 효율성을 나타내는 중요한 지표이다.
+처리량이 높으면 더 많은 데이터를 더 빠르게 전송할 수 있다. 처리량은 네트워크의 트래픽, 대역폭,
+패킷 손실, 네트워크 토폴로지 등의 여러 요인에 영향을 받는다.
+
+간단하게 처리량은 링크 내에서 **실제로** 전달된 데이터의 양을 말한다고 보면 된다.
+많은 트래픽을 처리한다 = 많은 처리량을 가진다.
+
+---
+
+# 대역폭
+
+대역폭이란 통신 링크가 **한 번에 전송**할 수 있는 데이터의 양을 말한다.
+대역폭은 초당 비트(bps) 단위로 측정되고, 대역폭이 높을 수록 데이터 전송 속도가 빠르다.
+
+대역폭은 네트워크의 성능과 효율성을 나타내는 중요한 지표이다.
+
+예를 들자면 도로의 차선이라고 생각하면 될 것 같다.
+차선이 1차선과 2차선, 4차선이 있다고 가정했을 때, 1차선보단 2차선이, 그리고 2차선 보단
+4차선이 더 교통이 좋을 것이라고 예상되는 것처럼 대역폭이 높을 수록 사용자에게 빠른 서비스를
+제공할 수 있다.
+
+추가로 이를 통해 최대 동접자수를 예측할 수도 있는데,
+예를 들어 10Mbps 대역폭을 가진 서버가 있다고 가정하고, 한 사용자당 10kbps로 사진 파일을
+요청한다고 했을 때, 최대 동접자수는 어떻게 될까?
+
+10Mbps / 10kbps = 약 1000명이다.
+=> 10,000 / 10 = 1000
+
+## !잠깐
+
+처리량과 대역폭의 설명을 읽으면 둘이 비슷하다는 것을 알 수 있다.
+어떤 점이 다를까?
+
+대역폭과 처리량은 서로 다른 개념이지만, 관련이 있다.
+대역폭은 **한 번에** 전송할 수 있는 최대 데이터의 양을,
+처리량은 **실제로** 전송되는 데이터의 양을 말한다.
+
+대역폭은 처리량의 상한성을 결정한다. 즉, 처리량은 대역폭보다 같거나 작아야한다.
+하지만 대역폭이 높다고 해서 반드시 처리량이 높은 것은 아니다.
+
+처리량은 네트워크의 트래픽, 대기 시간, 패킷 손실, 네트워크 토폴로지 등의 여러 요인에 영향을
+받기 때문이다.
+
+---
+
+# RTT(Round-Trip Time)
+
+RTT(Round-Trip Time)는 **왕복 시간**으로,
+네트워크 요청이 시작점에서 목적지로 갔다가 다시 시작점으로 돌아오는 데 걸리는 시간을 말한다.
+
+RTT는 네트워크의 성능과 효율성을 나타내는 중요한 지표이다.
+일반적으로 밀리초 단위로 측정된다. RTT가 낮을 수록 네트워크가 빠르고 안정적이라는 뜻이다.
+
+RTT는 거리, 전송 미디어, 네트워크 홉 수, 네트워크 정체, 서버 응답 시간, LAN 트래픽 등의
+여러 요인에 영향을 받는다.
+
+RTT를 줄이는 방법으로는 콘텐츠 전송 네트워크(CDN)나, 캐싱과 같은 기술을 사용할 수 있다.
+
+---
+
+이 포스팅을 만들며 참조한 사이트 목록
+
+- [wikipedia-QoS][wikipedia-QoS]
+- [wikipedia-트래픽쉐이핑][wikipedia-트래픽쉐이핑]
+- [GFI 솔루션][GFI 솔루션]
+- [윌리의 테크니컬 래퍼런스][윌리의 테크니컬 래퍼런스]
+- [islove8587 블로그][islove8587 블로그]
+- [tecoble][tecoble]
+- [cloudflare 캐싱][cloudflare 캐싱]
+- [cloudflare CDN][cloudflare CDN]
+- [ibm][ibm]
+- [aws][aws]
+- [mdn][mdn]
+- [개발 마스터의 길][개발 마스터의 길]
+- [chobe1 블로그][chobe1 블로그]
+- [aws-처리량][aws-처리량]
+- [Tech Talks][Tech Talks]
+- [SKnBiz][SKnBiz]
+- [aws-처리량과 지연시간][aws-처리량과 지연시간]
+- [cloudflare-왕복 시간][cloudflare-왕복 시간]
+- [aws-RTT][aws-RTT]
+- [Vect R][Vect R]
+
+[wikipedia-QoS]: https://ko.wikipedia.org/wiki/QoS
+[wikipedia-트래픽쉐이핑]: https://ko.wikipedia.org/wiki/%ED%8A%B8%EB%9E%98%ED%94%BD_%EC%85%B0%EC%9D%B4%ED%95%91
+[GFI 솔루션]: https://m.blog.naver.com/softmate1/222772869435
+[윌리의 테크니컬 래퍼런스]: https://blog.naver.com/PostView.naver?blogId=techref&logNo=223169613520
+[islove8587 블로그]: https://m.blog.naver.com/islove8587/220548900044
+[tecoble]: https://tecoble.techcourse.co.kr/post/2021-10-12-scale-up-scale-out/
+[cloudflare 캐싱]: https://www.cloudflare.com/ko-kr/learning/cdn/what-is-caching/
+[cloudflare CDN]: https://www.cloudflare.com/learning/cdn/what-is-a-cdn/
+[ibm]: https://www.ibm.com/kr-ko/topics/content-delivery-networks
+[aws]: https://aws.amazon.com/ko/what-is/cdn/
+[mdn]: https://developer.mozilla.org/ko/docs/Web/HTTP/Caching
+[개발 마스터의 길]: https://devmasterload.tistory.com/entry/DB-%ED%8A%9C%EB%8B%9D%EC%9D%98-3%EB%8B%A8%EA%B3%84
+[chobe1 블로그]: https://chobe1.tistory.com/39
+[aws-처리량]: https://aws.amazon.com/ko/compare/the-difference-between-throughput-and-latency/
+[Tech Talks]: https://tech-talks.tistory.com/entry/%EC%B2%98%EB%A6%AC%EB%9F%89%EA%B3%BC-%EC%A7%80%EC%97%B0-%EC%8B%9C%EA%B0%84
+[SKnBiz]: https://m.blog.naver.com/dreamxpeed/222115245259
+[aws-처리량과 지연시간]: https://aws.amazon.com/ko/compare/the-difference-between-throughput-and-latency/
+[cloudflare-왕복 시간]: https://www.cloudflare.com/ko-kr/learning/cdn/glossary/round-trip-time-rtt/
+[aws-RTT]: https://aws.amazon.com/ko/what-is/rtt-in-networking/
+[Vect R]: https://blog.naver.com/PostView.naver?blogId=86591shin&logNo=222704299676
