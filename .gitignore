@@ -6,7 +6,7 @@
 .pnp.js
 
 # scripts/sitemap
-/scripts/sitemap.js
+# /scripts/sitemap.js
 
 # sitemap
 /public/robots.txt
