@@ -1,0 +1,127 @@
+---
+title: 네트워크
+date: 2024-02-06
+description: 네트워크 기초
+img: /postImg/defaultImg.png
+tag: study
+note: cs
+copyright: https://pixabay.com/ko/users/abdulstudio-16007621/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5048215
+---
+
+---
+
+# 네트워크 토폴로지
+
+네트워크 토폴로지는 컴퓨터 네트워크의 요소들(링크, 노드 등)을 **물리적으로 연결**해 놓은 것,
+또는 그 **연결 방식**을 말한다.
+
+로컬 영역 네트워크(LAN)은 물리적 토폴로지와 논리적 토폴로지 둘 다 보여 줄 수 있는
+네트워크의 한 예이다. 네트워크 토폴로지는 정보와 데이터를 공유하기 위해 연결되어 있는
+컴퓨터 또는 **장치를 나타내는 노드**와 정보 흐름을 감독하는 상호 연결된 여러 노드 간의 **연결 패턴
+및 디자인을 나타내는 토폴로지**로 구성된다.
+
+가장 기본적인 토폴로지로는 버스, 스타형, 원형, 망형으로 구분할 수 있다.
+
+---
+
+# 토폴로지들
+
+네트워크 토폴로지의 각 형태에 따른 특징과 장단점을 간단하게 정리해본다.
+
+## 버스(Bus)형:
+
+**공통**의 공유된 케이블에 컴퓨터를 연결한 형태
+
+### 장점 :
+
+- 구성이 간단하다
+- 비용이 적게든다.
+
+### 단점 :
+
+- 케이블에 장애가 발생하면 **전체** 네트워크에 영향을 준다.
+
+---
+
+## 스타(Star)형:
+
+**중앙**의 허브나 스위치에 컴퓨터를 연결한 형태
+
+### 장점 :
+
+- 장애가 발생해도 다른 컴퓨터에 영향을 주지 않는다.
+- 확장이 용이하다.
+
+### 단점 :
+
+- **중앙 장치**에 과부하가 걸리거나 고장나면 전체 네트워크가 마비된다.
+
+---
+
+## 원(Ring)형:
+
+노드의 좌우가 **인접**한 노드와 연결되어 원형을 이루는 형태
+
+### 장점 :
+
+- 버스형보다 성능이 우월하다.
+- 데이터 전송이 균일하다.
+
+> **! 데이터 전송이 균일하다 !**<br/>
+>다른 형태는 균일하지 않나? 싶어서 찾아보니
+원형의 데이터 전송이 균일하다는 것은 신호의 대역폭이 클수록 데이터 전송률이
+더 높다는 의미라고 한다. 다른 형태는 신호의 대역폭이 작거나 감쇠와 같은
+손상이 있어서 데이터 전송률이 낮거나 불안정할 수 있다고 한다.
+
+### 단점 :
+
+- 한 노드에 장애가 발생하면 **전체** 네트워크에 영향을 준다.
+
+---
+
+## 망(Mesh)형:
+
+네트워크 상의 **모든** 노드를 상호 연결하는 형태
+
+### 장점 :
+
+- 장애에 강하다.
+- 데이터 전송이 빠르다.
+
+### 단점 :
+
+- 구성이 **복잡**하다.
+- **비용**이 많이 든다.
+
+
+---
+
+이 포스팅을 만들며 참조한 사이트 목록
+
+- [wikipedia-네트워크 토폴로지][wikipedia-네트워크 토폴로지]
+- [TMK Security 블로그][TMK Security 블로그]
+- [SKnBiz][SKnBiz]
+- [wikipedia-데이터전송][wikipedia-데이터전송]
+- [cdnetworks][cdnetworks]
+- [세영직업전문학교][세영직업전문학교]
+- [하이라인닷넷 블로그][하이라인닷넷 블로그]
+- [하늘의펭귄 블로그][하늘의펭귄 블로그]
+- [kjrok 블로그][kjrok 블로그]
+- [멍멍이발기록][멍멍이발기록]
+- [sail 브로그][sail 브로그]
+- [wikipedia-스타 네트워크][wikipedia-스타 네트워크]
+- [wikipedia-버스 네트워크][wikipedia-버스 네트워크]
+
+[wikipedia-네트워크 토폴로지]: https://ko.wikipedia.org/wiki/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC_%ED%86%A0%ED%8F%B4%EB%A1%9C%EC%A7%80
+[TMK Security 블로그]: https://m.blog.naver.com/tmk0429/222294391405
+[SKnBiz]: https://m.blog.naver.com/dreamxpeed/223056660012
+[wikipedia-데이터전송]: https://ko.wikipedia.org/wiki/%EB%8D%B0%EC%9D%B4%ED%84%B0_%EC%A0%84%EC%86%A1
+[cdnetworks]: https://www.cdnetworks.com/ko/enterprise-applications-blog/everything-you-need-to-know-about-data-transmission/
+[세영직업전문학교]: https://m.blog.naver.com/seyeong5119/221538905387
+[하이라인닷넷 블로그]: https://m.blog.naver.com/hilineisp/10169694570
+[하늘의펭귄 블로그]: https://m.blog.naver.com/jeffms1/221458759220
+[kjrok 블로그]: https://blog.naver.com/PostView.nhn?blogId=gmjroc&logNo=40111044092
+[멍멍이발기록]: https://nuri-story.tistory.com/166
+[sail 브로그]: https://m.blog.naver.com/PostList.naver?blogId=hello_sail&tab=1
+[wikipedia-스타 네트워크]: https://ko.wikipedia.org/wiki/%EC%8A%A4%ED%83%80_%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC
+[wikipedia-버스 네트워크]: https://ko.wikipedia.org/wiki/%EB%B2%84%EC%8A%A4_%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC
