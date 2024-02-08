@@ -1,0 +1,102 @@
+---
+title: WSL에서 개발할 때 다른기기
+date: 2024-02-08
+description: WSL에서 개발할 때 다른기기에서 접속이 안 될 때
+img: /postImg/defaultImg.png
+tag: study
+note: cs
+copyright: https://pixabay.com/ko/users/abdulstudio-16007621/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5048215
+---
+
+---
+
+# 먼저 상황 설명
+
+1. 나는 wsl의 개발 환경에서 웹 프로젝트를 만드는 중임
+2. 데스크탑 pc에서 개발 중이고, 핸드폰 혹은 태블릿에서 프로젝트 결과물을 보고 싶었음
+3. 기존 windows에서 개발 할 때나, 맥북에서 사용할 때는 별다른 이슈 없이 모바일에서 볼 수 있었는데, wsl로 하면 이상하게 안 됐음
+4. 많은 시간을 써서 알게 됐는데, wsl을 사용 중이라면 wsl이 자신만의 가상 네트워크 어댑터를 가지고 있기 때문이라고 함, 따라서 wsl의 IP 주소와 포트를 외부에서 접근할 수 있도록 설정해줘야 한다고 함
+5. 한마디로 아주 귀찮아졌음
+
+아마 기본적으로 windows 환경(wsl 같은거 안 쓰는 걍 기본 환경)이나 맥에서 개발한다면 
+별 다른 문제가 없을거임, 아래의 해결 방안은 wsl 환경에서 개발 중일 때, 나와 같은 문제가 
+생긴 사람 혹은 나중에 또 나에게 문제가 생기거나 windows 재설치 해서 다시 설정 해야할 경우를 
+대비해서 작성함.
+
+하나씩 해보고도 안 돼면 나도 모름
+
+생각해보니 기타 버그 사항을 적을때 구분할 카테고리를 나누지 않아서 새 카테고리를 만들까..했지만!,<br/>
+귀찮아서 그냥 cs 카테고리에 적기로 함, 뭐 근데 괜찮을듯 함
+
+---
+
+# pc 방화벽에서 Live Server가 사용하는 포트 허용하기
+
+5번에도 적었지만 자신의 포트 번호를 적어야 함
+
+1. Window 보안을 열고, 방화벽 및 네트워크 보호 클릭
+2. 고급 설정을 클릭하고, 고급 보안이 포함된 Windows Defender 방화벽 창을 열기
+3. 왼쪽 탐색 창에서 인바운드 규칙을 선택하고, 오른쪽 창에서 새 규칙 클릭
+4. 새 인바운드 규칙 마법사에서 포트를 선택하고, 다음 누르기
+5. TCP 또는 UDP를 선택하고(나는 TCP 선택), live server가 사용하는 특정 로컬 포트 번호를 입력
+나의 경우 5500번 포트를 사용하기 때문에, 5500 입력 후 다음
+6. 연결 허용을 선택하고, 다음 누르기
+7. 도메인, 개인, 공용을 모두 체크하고, 다음 누르기
+8. 해당 포트를 구분할 이름(나의 경우 VSCodeLiveServer라고 나중에 알기 쉽게 설정)과 설명을 입력(난 공백으로 놔둠)하고, 마침 누르기
+
+
+---
+
+# pc 방화벽에서 VSCode 앱 허용하기
+
+1. 방화벽 및 네트워크 보호 클릭
+2. 방화벽에서 앱 허용 누르기
+3. Visual Studio Code 찾아서 개인, 공용 체크해주기
+4. 체크 하기 위해서 우측 상단의 설정 변경을 먼저 누르고 Visual Studio Code의 체크 박스 클릭
+나의 경우 공용만 체크 돼어 있고 개인은 체크 안 돼있어서 개인까지 체크 해줌
+
+---
+
+# wsl의 ip 주소와 포트를 pc의 ip 주소와 포트에 연결
+
+포트포워딩임
+
+1. 관리자 권한으로 명령 프롬프트를 실행
+2. 다음과 같이 명령어 입력, 아래는 대략적인 설명이고 귀찮으면 안 읽어도 됌, 포트랑 IP만 잘 채워넣기
+
+```powershell
+netsh interface portproxy add v4tov4 listenport=5500 listenaddress=0.0.0.0 connectport=5500 connectaddress=자신의 IP
+```
+
+3. 저기서 listenport는 자신의 live server가 사용하는 포트 번호를 입력하면 됨, 나는 5500이라 5500 적음, 수신 대기할 로컬 포트 번호를 지정하는거라 하는데, 우리는 live server가 사용하는
+포트 번호를 일치 시켜줘야 하기 때문에 live server가 사용하는 포트 번호를 listenport와 connectport 양쪽에 쓰면 됨
+4. listenaddress는 수신 대기할 IPv4 주소를 지정하는 매개 변수를 뜻함, 0.0.0.0은 모든 IPv4 주소에서 수신 대기하겠다는 뜻으로, 외부에서 들어오는 모든 연결을 허용하겠다는 뜻임,
+반대로 특정 IP 주소나 컴퓨터 이름으로 지정하면, 그 주소나 이름에서만 수신 대기하고 다른 주소나 이름에서는 거부할 수 있음, listenaddress를 지정하지 않으면 기본 값은 로컬 컴퓨터 즉,
+localhost 또는 127.0.0.1에서만 수신 대기하겠다는 뜻임
+때문에 우리는 여기서 0.0.0.0을 입력해서 모든 수신을 받을 준비를 해줌
+5. connectport도 마찬가지로 자신이 사용하는 포트 번호
+6. connectaddress는 자신의 IP 주소를 적으면 되는데, wsl의 경우 가상 네트워크 어댑터를 가지고 있기 때문에 wsl의 IP를 적어야함, wsl 환경의 터미널에서 ifconfig 명령어를 입력하면 나오는 IPv4 번호를 connectaddress에 입력하면 됨 근데,
+7. ifconfig 명령어 치면 eth0과 lo, 이 두가지로 나뉘어 번호가 나올텐데 eth0는 외부 네트워크와 연결되는 인터페이스이고, Io는 내부 네트워크(localhost)와 연결되는 인터페이스임, 따라서 우리는 외부와 연결되는 eth0의 IPv4를 보면 되고, eth0의 inet x.x.x.x를 찾아서 connectaddress입력
+8. IP주소랑 포트 번호 잘 채워서 명령어 입력하고 에러 안 뜨면 잘 된것
+
+이렇게 하니까 나는 됐음, 안 되면 몰?루
+
+---
+
+
+이 포스팅을 만들며 참조한 사이트 목록
+
+- [stackoverflow][stackoverflow]
+- [이것저것 블로그][이것저것 블로그]
+- [microsoft][microsoft]
+- [재태크와 S/W개발 이야기 블로그][재태크와 S/W개발 이야기 블로그]
+- [아무거나 ok! 블로그][아무거나 ok! 블로그]
+- [thewindowsclub 블로그][thewindowsclub 블로그]
+
+
+[stackoverflow]: https://stackoverflow.com/questions/76493646/problem-with-live-server-on-wsl-i-cant-connect-to-the-server-from-my-phone
+[이것저것 블로그]: https://m.blog.naver.com/nortul/220898423903
+[microsoft]: https://learn.microsoft.com/ko-kr/windows/wsl/networking
+[재태크와 S/W개발 이야기 블로그]: https://m.blog.naver.com/sgs11022/221727650629
+[아무거나 ok! 블로그]: https://blog.naver.com/PostView.naver?blogId=kangyh5&logNo=222829598502
+[thewindowsclub 블로그]: https://thewindowsclub.blog/ko/how-to-set-up-port-forwarding-in-windows/
