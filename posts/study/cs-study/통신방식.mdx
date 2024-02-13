@@ -1,0 +1,65 @@
+---
+title: 유니캐스트, 멀티캐스트, 브로드캐스트
+date: 2024-02-13
+description: 네트워크 통신 방식을 알려보자
+img: /postImg/defaultImg.png
+tag: study
+note: cs
+copyright: https://pixabay.com/ko/users/abdulstudio-16007621/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5048215
+---
+
+---
+
+네트워크 통신에는 몇 가지 방식이 있다. 각각의 개념을 알아보자
+
+# 1.유니캐스트(Unicast)
+
+- 유니캐스트는 **1:1 통신**이다.
+즉, **출발지와 목적지가 1:1 관계를 가진다**.
+
+- 유니캐스트는 단일 대상에게 데이터를 보내는 방식이다.
+
+- IPv4 주소에서는 A, B, C 클래만 유니캐스트 형태를 지원한다.
+멀티캐스트 형태는 클래스 D 주소를 사용한다.
+
+- 예를 들어 **개별 컴퓨터 간의 통신**을 할 때 사용된다.
+
+---
+
+# 2.멀티캐스트(Multicast)
+
+- **1:다수 그룹 통신**이다. 특정 그룹에 속한 시스템에게만 정보를 전송한다.
+
+- IPv4 주소에서는 클래스 D 주소 범위(224.0.0.0 ~ 239.255.255.255)를 사용한다.
+
+- 멀티캐스트는 IP 멀티캐스트 라우터를 통해 여러 네트워크 집합을 넘나드는 경우에 사용된다.
+
+- 예를 들어 **영상회의, IP TV, 인터렉티브 게임**
+
+---
+
+# 3.브로드캐스트(Broadcast)
+
+- **로컬 LAN**에 연결된 **모든 시스템에게 프레임**을 보내는 방식
+
+- 브로드캐스트 주소로는 255.255.255.255 (리미티드 브로드캐스트 주소) 또는 IP 주소의
+호스트부를 1로 만든 주소(디렉티드 브로드캐스트 주소)를 사용한다.
+
+- 주로 **ARP나 DHCP**와 같은 프로토콜에서 사용된다.
+
+---
+
+이 포스팅을 만들며 참조한 사이트 목록
+
+- [장구리 Lifelog][장구리 Lifelog]
+- [너는 어느 사막 위를 걷고 있는가][너는 어느 사막 위를 걷고 있는가]
+- [고래의 코딩 일지][고래의 코딩 일지]
+- [개발자를 꿈꾸는 프로그래머][개발자를 꿈꾸는 프로그래머]
+- [별의 수다][별의 수다]
+
+
+[장구리 Lifelog]: https://m.blog.naver.com/hai0416/221599908497
+[너는 어느 사막 위를 걷고 있는가]: https://chanelcocolover.tistory.com/entry/UDP%EC%99%80-%EC%9C%A0%EB%8B%88%EC%BA%90%EC%8A%A4%ED%8A%B8-%EB%A9%80%ED%8B%B0%EC%BA%90%EC%8A%A4%ED%8A%B8-%EB%B8%8C%EB%A1%9C%EB%93%9C%EC%BA%90%EC%8A%A4%ED%8A%B8-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0
+[고래의 코딩 일지]: https://rooftoproom-whale.tistory.com/14
+[개발자를 꿈꾸는 프로그래머]: https://jwprogramming.tistory.com/29
+[별의 수다]: https://m.blog.naver.com/wnrjsxo/221250742423
