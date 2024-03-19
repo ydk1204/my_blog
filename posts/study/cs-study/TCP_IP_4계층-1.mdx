@@ -1,0 +1,101 @@
+---
+title: TCP/IP 4계층 챕터1
+date: 2024-03-19
+description: TCP/IP 4계층의 개념, 캡슐화, 비캡슐화, PDU
+img: /postImg/defaultImg.png
+tag: study
+note: cs
+copyright: https://pixabay.com/ko/users/abdulstudio-16007621/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5048215
+---
+
+---
+
+# TCP/IP 4계층
+
+## 개념
+
+TCP/IP 프로토콜 스택은 네트워크 통신을 위한 4계층 구조로 되어있다. 각 계층은 다음과 같은 역할을 한다.
+
+## 1.Network Access Layer
+
+네트워크 엑세스 계층(Network Access Layer)
+
+이 계층은 데이터 링크와 물리적인 네트워크 하드웨어를 관리한다.
+여기에는 LAN, WAN 등의 기술이 포함된다.
+
+## 2.Internet Layer
+
+인터넷 계층(Internet Layer)
+
+이 계층은 패킷을 송신지에서 목적지까지 전달하는 역할을 한다.
+대표적인 프로토콜로는 IP(Internet Protocol)가 있다.
+
+## 3.Transport Layer
+
+전송 계층(Transport Layer)
+
+이 계층은 통신 세션을 관리하고, 데이터 전송의 신뢰성을 보장한다.
+TCP(Transmission Control Protocol)와 UDP(User Datagram Protocol)가 이 계층에 속한다.
+
+## 4.Application Layer
+
+응용 계층(Application Layer)
+
+사용자가 네트워크에 접근할 수 있게 하는 인터페이스를 제공한다.
+HTTP,FTP,SMTP 등의 프로토콜이 이 계층에서 작동한다.
+
+각 계층은 독립적으로 작동하며, 상위 계층은 하위 계층의 서비스를 이용하여 더 복잡한 가능을 수행한다.
+
+---
+
+# 캡슐화 비캡슐화
+
+## 여기서 말하는 캡슐화란
+
+TCP/IP 계층 모델과 관련된 캡슐화 및 비캡슐화에 대해 설명하고자 한다.
+여기서 캡슐화는 데이터가 네트워크를 통해 전송될 때 각 계층에서 필요한 헤더 정보를 추가하는 과정을 말한다. 반대로, 비캡슐화는 데이터가 수신 층에서 각 계층을 거치며 헤더 정보를 제거하는 과정을 의미한다.
+
+## 캡슐화
+
+- 응용 계층: 사용자 데이터에 TCP/UDP 헤더를 추가한다.
+- 전송 계층: IP 헤더를 추가하여 IP 패킷을 생성한다.
+- 인터넷 계층: 네트워크 엑세스 헤더를 추가한다.
+- 네트워크 인터페이스 계층: 데이터를 프레임으로 변환하여 전송한다.
+
+## 비캡슐화:
+
+- 네트워크 인터페이스 계층: 프레임에서 헤더를 제거한다.
+- 인터넷 계층: IP헤더를 제거한다.
+- 전송 계층: TCP/UDP 헤더를 제거한다.
+- 응용 계층: 최종 사용자 데이터를 응용 프로그램에 전달한다.
+
+이 과정은 데이터가 송신자로부터 수신자에게 안전하고 효율적으로 전달될 수 있도록 한다.
+각 계층은 특정 기능과 책임을 가지며, 이를 통해 네트워크 통신의 복잡성을 관리하고 있다.
+
+---
+
+# PDU
+
+PDU(Protocol Data Unit)의 약자로, OSI 모델에서 데이터를 패키징하는 방법을 설명하는 용어이다. 각 OSI 계층은 데이터를 다르게 패키징하고, 다음과 같은 PDU로 부른다.
+
+- 비트(Bit): 데이터의 가장 기본적인 단위이다.
+- 프레임(Frame): 네트워크 계층에서 데이터 링크 계층으로 전송되는 데이터의 단위이다, MAC주소 헤더와 CRC/체크섬 트레일러가 포함된다.
+- 패킷(Packet): 인터넷 계층에서 전송되는 데이터 단위로, 세그먼트에 SP와 DP가 포함된 IP헤더가 포함된다.
+- 세그먼트(Segment) 또는 데이터그램(Datagram): 전송 계층에서 사용되는 데이터 단위로, TCP 또는 UDP헤더가 포함된다.
+
+이러한 PDU는 네트워크 통신에서 데이터를 효율적으로 전송하고 관리하기 위해 사용된다.
+각 계층은 데이터를 적절한 PDU로 변환하고, 이를 다음 계층으로 전달하여 통신을 수행한다.
+
+---
+
+이 포스팅을 만들며 참조한 사이트 목록
+
+- [dyunge_100][dyunge_100]
+- [킥킥박사][킥킥박사]
+- [정리블로그][정리블로그]
+- [wikipedia][wikipedia]
+
+[dyunge_100]: https://velog.io/@dyunge_100/Network-TCPIP-4%EA%B3%84%EC%B8%B5%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC
+[킥킥박사]: https://m.blog.naver.com/doctor-kick/221950485931
+[정리블로그]: https://m.blog.naver.com/yeopil-yoon/221315395527
+[wikipedia]: https://ko.wikipedia.org/wiki/%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C_%EB%8D%B0%EC%9D%B4%ED%84%B0_%EB%8B%A8%EC%9C%84
