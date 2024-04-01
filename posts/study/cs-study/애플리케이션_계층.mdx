@@ -1,0 +1,137 @@
+---
+title: 애플리케이션 계층
+date: 2024-04-01
+description: 애플리케이션 계층은 무엇을 의미하는지 알아보자.
+img: /postImg/defaultImg.png
+tag: study
+note: cs
+copyright: https://pixabay.com/ko/users/abdulstudio-16007621/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5048215
+---
+
+---
+
+
+# 애플리케이션 계층
+
+TCP/IP 모델에서 애플리케이션 계층은 사용자에게 필요한 인터페이스와 프로토콜을 제공하는  최상위 추상 계층이다. 이 계층은 OSI 모델의 세션 계층, 표현 계층, 그리고 애플리케이션 계층의 기능을 결합한다.
+
+이 계층은 직접 사용자와 상호 작용하며 응용 프로그램별 프로토콜을 처리한다.
+HTTP, HTTPS, FTP, SMTP, POP3, DNS 등의 프로토콜이 이 계층에서 동작한다.
+
+간단하게 애플리케이션 계층에서 동작하는 프로토콜에 대해 알아보자.
+
+---
+
+# 애플리케이션 계층 프로토콜
+
+## HTTP
+
+**HTTP(Hypertext Transfer Protocol)**
+
+- 웹 브라우저와 웹 서버 간의 통신을 담당한다.
+- 웹 페이지를 요청하고 응답하는데 사용된다.
+- HTTP는 무상태(stateless) 특성을 갖는다.
+- 기본 포트는 80이다.
+
+### stateless
+
+HTTP는 stateless하다고 한다.<br/>
+**무상태(stateless)**란 무엇을 의미할까?<br/>
+
+**무상태(stateless)**란 HTTP 요청이 완전히 독립적으로 발생한다는 의미이다.
+클라이언트가 HTTP 요청을 보낼 때, 서버가 해당 요청을 처리하는데 필요한 정보를 포함한다. 서버는 이전 요청에서의 정보를 의존하지 않는다.
+
+간단히 말하자면, 각 HTTP 메시지는 이전 메시지와 상관없이 독립적으로 처리된다는 것이다.
+이러한 특성을 무상태(stateless) 프로토콜이라 부른다.
+
+간단한 예시를 통해 좀 더 쉽게 알아보자.
+
+#### 상태(stateful) 예시
+
+- 사람 A: "안녕하세요, 여기로 가는 길을 아시나요?"
+- 사람 B: "네, 이 길을 쭉 가다가 카페에서 오른쪽으로 꺽으세요"
+- 사람 A: "감사합니다, 친절하시네요."
+- 사람 B: "좋은 하루 보내세요."
+
+위와 같이 각 메시지는 이전 메시지에 의존한다.
+사람 B의 답변은 사람 A가 물어본 내용에 따라 달라진다. 그러나 메시지 순서를 바꾸면 대화가 의미 없어진다.
+이번엔 반대의 경우를 보자.
+
+#### 상태(stateless) 예시
+
+- 사람 A: "안녕하세요, 여기로 가는 길을 아시나요?"
+- 사람 B: "좋은 하루 보내세요."
+- 사람 A: "감사합니다, 친절하시네요."
+- 사람 B: "네, 이 길을 쭉 가다가 카페에서 오른쪽으로 꺽으세요"
+
+위와 같이 무상태 프로토콜은 이전 메시지에 의존하지 않는다.
+메시지 간의 순서를 변경해도 대화가 의미가 있어 보인다.
+
+#### 왜 무상태일까?
+
+HTTP가 무상태(stateless)로 설계된 이유는 다음과 같다.
+
+- **단순성**: 무상태 프로토콜은 정보를 저장하거나 관리할 필요가 없기 때문에 구현 및 유지 관리가 쉽다.
+- **확장성**: 무상태 프로토콜은 동기화나 클라이언트와 서버 간의 조정이 필요하지 않기 때문에 확장성이 더 높다. 또한 서버에서 자원이나 메모리를 소비하지 않기 때문에 동시 요청 및 응답을 처리할 수있다.
+- **신뢰성**: 무상태 프로토콜은 이전 또는 다음 메시지에 의존하지 않기 때문에 더 신뢰성이 있다.
+
+## SSH
+
+**SSH(Secure Shell)**
+
+- 원격 컴퓨터에 안전하게 접속하기 위한 프로토콜이다.
+- 암호화된 터미널 세션을 제공하여 보안을 강화한다.
+- 기본 포트는 22이다.
+
+## FTP
+
+**FTP(File Transfer Protocol)**
+
+- 파일 전송을 위한 프로토콜이다.
+- 파일 업로드 및 다운로드를 지원한다.
+- 기본 포트는 21이다.
+
+## SMTP
+
+**SMTP(Simple Mail Transfer Protocol)**
+
+- 이메일을 보내는데 사용되는 표준 전자 메일 프로토콜이다.
+- 메일을 보내는 SMTP 서버와 받는 SMTP 서버 간의 통신을 처리한다.
+- 기본 포트는 25이다.
+
+## DNS
+
+**DNS(Domain Name System)**
+
+- 도메인 이름을 IP 주소로 변환하는 시스템이다.
+- 웹 브라우징 및 네트워크 통신에서 필수적이다.
+- 기본 포트는 53이다.
+
+
+---
+
+이 포스팅을 만들며 참조한 사이트 목록
+
+- [tutorialspoint][tutorialspoint]
+- [geeksforgeeksf-lab][geeksforgeeksf-lab]
+- [이노어의 공부방][이노어의 공부방]
+- [osi-model][osi-model]
+- [computernetworkingnotes][computernetworkingnotes]
+- [softwaretestinghelp][softwaretestinghelp]
+- [rfwireless-world][rfwireless-world]
+- [Subham][Subham]
+- [restfulapi][restfulapi]
+- [stackoverflow][stackoverflow]
+- [kyeo.log][kyeo.log]
+
+[tutorialspoint]: https://www.tutorialspoint.com/The-Application-Layer-in-TCP-IP-Model
+[geeksforgeeksf-lab]: https://www.geeksforgeeks.org/application-layer-protocols-in-tcp-ip/
+[이노어의 공부방]: https://m.blog.naver.com/finderway/223195203842
+[osi-model]: https://osi-model.com/application-layer/
+[computernetworkingnotes]: https://www.computernetworkingnotes.com/networking-tutorials/types-of-network-protocols-explained-with-functions.html
+[softwaretestinghelp]: https://www.softwaretestinghelp.com/dns-ftp-smtp-mime-protocols/
+[rfwireless-world]: https://www.rfwireless-world.com/Terminology/port-numbers-of-FTP-TELNET-HTTP-SMTP-POP3-IMAP-BIOS-SSH-DHCP.html
+[Subham]: https://dev.to/codexam/why-is-http-stateless-2m3p
+[restfulapi]: https://restfulapi.net/statelessness/
+[stackoverflow]: https://stackoverflow.com/questions/4913763/what-does-it-mean-when-they-say-http-is-stateless
+[kyeo.log]: https://velog.io/@duarufp06/HTTP-Stateless-Connectionless-HTTP-%EB%A9%94%EC%8B%9C%EC%A7%80-%EA%B0%9C%EB%85%90
