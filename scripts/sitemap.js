@@ -6,30 +6,30 @@ const getDate = new Date().toISOString();
 const MY_BLOG_DOMAIN = "https://ydkblog.vercel.app";
 
 const WINDOW_PATHS = "/home/ydk1204/blog/my_blog/";
-const MAC_PATHS = "/Users/ydk1204/Desktop/blog/";
+const MAC_PATHS = "/Users/ydk/Desktop/Projects/my_blog/";
 
 const WINDOW_SITE_MAP = "/home/ydk1204/blog/my_blog/public/sitemap.xml";
-const MAC_SITE_MAP = "/Users/ydk1204/Desktop/blog/public/sitemap.xml";
+const MAC_SITE_MAP = "/Users/ydk/Desktop/Projects/my_blog/public/sitemap.xml";
 
 const formatted = sitemap => prettier.format(sitemap, { parser: "html" });
 
 (async () => {
   const paths = await globby([
-    `${WINDOW_PATHS}posts/**/*.mdx`,
-    `${WINDOW_PATHS}posts/*.mdx`,
+    `${MAC_PATHS}posts/**/*.mdx`,
+    `${MAC_PATHS}posts/*.mdx`,
   ]);
 
   const pages = await globby([
-    `${WINDOW_PATHS}pages/**/*.jsx`,
-    `${WINDOW_PATHS}pages/*.jsx`,
-    `!${WINDOW_PATHS}pages/_*.jsx`
+    `${MAC_PATHS}pages/**/*.jsx`,
+    `${MAC_PATHS}pages/*.jsx`,
+    `!${MAC_PATHS}pages/_*.jsx`
   ]);
 
   const pageSitemap = `
   ${pages
       .map(p => {
         const page = p
-          .replace(`${WINDOW_PATHS}pages/`, "")
+          .replace(`${MAC_PATHS}pages/`, "")
           .replace(".jsx", "");
         if (page.endsWith(`/[slug]`) || page === "index") return;
         return `
@@ -45,7 +45,7 @@ const formatted = sitemap => prettier.format(sitemap, { parser: "html" });
     ${paths
       .map(p => {
         const path = p
-          .replace(`${WINDOW_PATHS}posts/`, "")
+          .replace(`${MAC_PATHS}posts/`, "")
           .replace(".mdx", "");
         const routePath = path === "index" ? "" : path;
         return `
@@ -75,7 +75,7 @@ const formatted = sitemap => prettier.format(sitemap, { parser: "html" });
 
   const formattedSitemap = await formatted(generatedSitemap);
 
-  fs.writeFileSync(WINDOW_SITE_MAP, formattedSitemap, "utf8");
+  fs.writeFileSync(MAC_SITE_MAP, formattedSitemap, "utf8");
 })();
 
 
@@ -89,10 +89,10 @@ const formatted = sitemap => prettier.format(sitemap, { parser: "html" });
 
 // const MY_BLOG_DOMAIN = "https://ydkblog.vercel.app";
 
-// const WINDOW_PATHS = "/home/ydk/blog_proejct/my_blog/";
+// const MAC_PATHS = "/home/ydk/blog_proejct/my_blog/";
 // const MAC_PATHS = "/Users/ydk1204/Desktop/blog/";
 
-// const WINDOW_SITE_MAP = "/home/ydk/blog_proejct/my_blog/public/sitemap.xml";
+// const MAC_SITE_MAP = "/home/ydk/blog_proejct/my_blog/public/sitemap.xml";
 // const MAC_SITE_MAP = "/Users/ydk1204/Desktop/blog/public/sitemap.xml";
 
 // const formatted = sitemap => prettier.format(sitemap, { parser: "html" });
@@ -102,19 +102,19 @@ const formatted = sitemap => prettier.format(sitemap, { parser: "html" });
 //     // include
 //     "/Users/ydk1204/Desktop/blog/posts/**/*.mdx",
 //     "/Users/ydk1204/Desktop/blog/posts/*.mdx",
-//     `${WINDOW_PATHS}posts/**/*.mdx`,
-//     `${WINDOW_PATHS}posts/*.mdx`,
+//     `${MAC_PATHS}posts/**/*.mdx`,
+//     `${MAC_PATHS}posts/*.mdx`,
 //   ]);
 
 //   const pages = await globby([
 //     // include
 //     "/Users/ydk1204/Desktop/blog/pages/**/*.jsx",
 //     "/Users/ydk1204/Desktop/blog/pages/*.jsx",
-//     `${WINDOW_PATHS}pages/**/*.jsx`,
-//     `${WINDOW_PATHS}pages/*.jsx`,
+//     `${MAC_PATHS}pages/**/*.jsx`,
+//     `${MAC_PATHS}pages/*.jsx`,
 //     // exclude
 //     "!/Users/ydk1204/Desktop/blog/pages/_*.jsx"
-//     `!${WINDOW_PATHS}pages/_*.jsx`
+//     `!${MAC_PATHS}pages/_*.jsx`
 //   ]);
 
 //   const pageSitemap = `
@@ -122,7 +122,7 @@ const formatted = sitemap => prettier.format(sitemap, { parser: "html" });
 //       .map(p => {
 //         const page = p
 //           .replace("/Users/ydk1204/Desktop/blog/pages/", "")
-//           .replace(`${WINDOW_PATHS}pages/`, "")
+//           .replace(`${MAC_PATHS}pages/`, "")
 //           .replace(".jsx", "");
 //         if (page.endsWith(`/[slug]`) || page === "index") return;
 //         return `
@@ -139,7 +139,7 @@ const formatted = sitemap => prettier.format(sitemap, { parser: "html" });
 //       .map(p => {
 //         const path = p
 //           .replace("/Users/ydk1204/Desktop/blog/posts/", "")
-//           .replace(`${WINDOW_PATHS}posts/`, "")
+//           .replace(`${MAC_PATHS}posts/`, "")
 //           .replace(".mdx", "");
 //         const routePath = path === "index" ? "" : path;
 //         return `
@@ -170,5 +170,5 @@ const formatted = sitemap => prettier.format(sitemap, { parser: "html" });
 //   const formattedSitemap = await formatted(generatedSitemap);
 
 //   fs.writeFileSync("/Users/ydk1204/Desktop/blog/public/sitemap.xml", formattedSitemap, "utf8");
-//   fs.writeFileSync(WINDOW_SITE_MAP, formattedSitemap, "utf8");
+//   fs.writeFileSync(MAC_SITE_MAP, formattedSitemap, "utf8");
 // })();
