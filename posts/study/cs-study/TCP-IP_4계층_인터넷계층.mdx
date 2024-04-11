@@ -1,0 +1,71 @@
+---
+title: TCP/IP 4계층 인터넷 계층
+date: 2024-04-11
+description: 인터넷 계층에 대해 알아보자
+img: /postImg/defaultImg.png
+tag: study
+note: cs
+copyright: https://pixabay.com/ko/users/abdulstudio-16007621/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5048215
+---
+
+---
+
+# 간단 개념
+
+TCP/IP 4계층 모델에서 인터넷 계층은 주로 IP(인터넷 프로토콜)을 다루는 계층이다.
+이 계층은 데이터를 패킷(Packet)이라는 통신 단위로 최대한 빨리 목적지로 보내는 역할을 한다.
+
+패킷들의 순서가 뒤바뀌거나 일부 누락되더라도 크게 상관하지 않고 보내데 집중한다.
+
+따라서 IP 프로토콜은 패킷의 순서 보장도 할 수 없고 패킷이 중간에 유실되도 이에 대한 방안이 없다.
+
+---
+
+# TCP/IP 방식
+
+TCP(전송 제어 프로토콜)은 패킷 데이터의 전달을 보증하고 보낸 순서대로 받게 해준다. 도착한 조각을 점검하여 줄을 세우고 망가졌거나 빠진 조각을 다시 요청하는 식으로 순서를 보증한다. TCP는 데이터를 상대방에게 확실하게 보내기 위해 3-way-handshaking 방법을 사용하고 있다. 이 방법은 패킷을 보내고 잘 보내졌는지 여부를 상대에게 확인하러 간다. 여기에서 고유의 'SYN'와 'ACK'라는 TCP 플래그를 사용한다. 한 마디로 TCP는 IP의 문제를 보완해주는 역할을 한다.
+
+## TCP
+
+TCP(전송 제어 프로토콜): 패킷 데이터의 전달을 보증하고 보낸 순서대로 받게 해준다.
+도착한 조각을 점검하여 줄을 세우고 망가졌거나 빠진 조각을 다시 요청하는 식으로 순서를 보증한다. TCP는 데이터를 상대방에게 확실하게 보내기 위해 3-way-handshaking 방법을 사용한다.
+
+## IP
+
+IP(인터넷 프로토콜): 지정한 IP 주소에 데이터의 조각들을 패킷(Packet)이라는 통신 단위로 최대한 빨리 목적지로 보내는 역할을 한다.
+조각들의 순서가 뒤바뀌거나 일부가 누락되더라도 크게 상관하지 않고 보내는데 집중한다.
+
+---
+
+# ICMP
+
+ICMP(인터넷 제어 메시지 프로토콜)은 네트워크 내 장치가 데이터 전송과 관련된 문제를 전달하기 위해 사용하는 프로토콜이다. 이 프로토콜을 주로 IP 주소의 유효성 검사, 라우팅 가능성 확인, 네트워크 성능 평가 등에 활용된다.
+
+아래는 몇 가지 중요한 ICMP의 기능이다.
+
+1. 오류 보고: 데이터가 예상대로 도달하지 않은 경우 수신 장치에서 전송 장치로 오류를 보고한다.
+2. 트레이스 라우트: 데이터 패킷이 대상에 도달하기 위해 통과한 장치를 보고서에 표시하며, 데이터 이동 시간을 측정한다.
+3. 핑(Ping): 두 지점 간 데이터 이동 시간을 측정하여 네트워크 성능 평가한다.
+
+ICMP는 네트워크 통신에서 작동하는 방식을 이해하면, 데이터 전송과 관련된 문제를 진단하고 해결하는데 도움이 된다. 그러나 주의해야 할 점은 ICMP가 조직을 위협할 수 있는 DDOS 공격에도 사용될 수 있다는 점이다.
+
+---
+
+이 포스팅을 만들며 참조한 사이트 목록
+
+- [킥킥박사][킥킥박사]
+- [fortinet][fortinet]
+- [cloudflare][cloudflare]
+- [huawei][huawei]
+- [fortinet ICMP][fortinet ICMP]
+- [윌리의 Technical Reference][윌리의 Technical Reference]
+- [wikipedia][wikipedia]
+
+
+[킥킥박사]: https://m.blog.naver.com/doctor-kick/221950485931
+[fortinet]: https://www.fortinet.com/kr/resources/cyberglossary/internet-control-message-protocol-icmp
+[cloudflare]: https://www.cloudflare.com/learning/ddos/glossary/internet-control-message-protocol-icmp/
+[huawei]: https://info.support.huawei.com/info-finder/encyclopedia/zh/ICMP.html
+[fortinet ICMP]: https://www.fortinet.com/resources/cyberglossary/internet-control-message-protocol-icmp
+[윌리의 Technical Reference]: https://blog.naver.com/PostView.nhn?blogId=techref&logNo=223146680861
+[wikipedia]: https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol
