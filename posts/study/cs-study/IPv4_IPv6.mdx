@@ -1,0 +1,89 @@
+---
+title: IPv4와 IPv6의 차이점
+date: 2024-04-18
+description: IPv4와 IPv6는 무엇이 다를까?
+img: /postImg/defaultImg.png
+tag: study
+note: cs
+copyright: https://pixabay.com/ko/users/abdulstudio-16007621/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5048215
+---
+
+---
+
+IPv4와 IPv6는 인터넷 프로토콜 주소 체계의 두 가지 주요 버전이다. 이들 간의 주요 차이점은 다음과 같다.
+
+# 1. 주소 길이:
+
+- IPv4: 32비트 주소를 사용하며, 약 43억 개의 고유 IP 주소를 생성할 수 있다.
+- IPv6: 128비트 주소를 사용하며, 거의 무한대의 고유한 주소를 지원한다.
+
+---
+
+# 2. 주소 표현 방식:
+
+- IPv4: 10진수 형식으로 표시되며, 예를 들어 192.168.0.1과 같다.
+- IPv6: 16진수로 표현되어 더 복잡한 구조를 반영한다. 예를 들어 2001:0db8:85a3:0000:0000:8a2e:0370:7334 와 같다.
+
+---
+
+# 3. 헤더 형식:
+
+- IPv4: 가변적이며, 필요에 따라 길이가 변한다. 기본 헤더 크기는 20바이트이며, 옵션을 추가하면 최대 60바이트까지 확장된다.
+- IPv6: IPv6의 헤더는 고정 크기로 40바이트이다. 이로 인해 처리 속도가 향상되며, 라우터에서 헤더 체크섬을 변경할 필요가 없어진다.
+
+---
+
+# 4. 주소 공간:
+
+- IPv4: 약 43억 개의 주소로 한계가 있으며, 현재 IP 주소 부족 문제가 있다.
+- IPv6: 주소 공간을 크게 확장하여 거의 무한한 주소를 제공한다.
+
+---
+
+# 5. 기타 차이점:
+
+- IPv6는 더 많은 헤더 형식, IPsec과 같은 기본 제공 보안 기능, 모바일 장치에 대한 향상된 지원 등을 포함하여 IPv4에 비해 다양한 이점을 가지고 있다.
+
+IPv6는 미래를 위해 준비된 프로토콜이며, 주소 부족 문제를 해결하고 더 많은 기능을 제공한다. 하지만 현재까지는 IPv4와 IPv6가 함께 사용되고 있으며, 전환 과정에서 일시적인 호환성 문제가 발생할 수 있다.
+
+## IPsec이란?
+
+IPsec(Internet Protocol Security)
+- IPv6는 기본적으로, IPsec을 지원한다. IPsec는 네트워크 통신의 보안을 강화하는 프로토콜로, 데이터의 기밀성, 무결성, 인증을 제공한다.
+- IPsec는 암호화와 인증 기능을 내장하여 데이터가 안전하게 전송할 수 있도록 한다.
+
+## 그럼 반대로 IPv4에만 있는건?
+
+### 체크섬(Checksum):
+
+- IPv4는 헤더에 체크섬 필드를 포함한다. 이 체크섬은 데이터 무결성을 확인하는데 사용된다. 즉, 데이터가 전송되는 동안 변경되지 않았는지 확힌한다.
+
+- IPv6에는 헤더 체크섬 필드가 제거 되었다. 대신, 상위 계층(TCP, UDP)에서 데이터 무결성을 보장(체크섬 필드가 존재)하는 기능을 사용한다.
+
+---
+
+이 포스팅을 만들며 참조한 사이트 목록
+
+- [juniper][juniper]
+- [GuideAct][GuideAct]
+- [장구리, Lifelog][장구리, Lifelog]
+- [DAILY-STORY][DAILY-STORY]
+- [NetworkGuy Engineering Note][NetworkGuy Engineering Note]
+- [정보시스템감리사, 정보관리기술사][정보시스템감리사, 정보관리기술사]
+- [HowToGeek][HowToGeek]
+- [geeksforgeeks][geeksforgeeks]
+- [kinsta][kinsta]
+- [phoenixNap][phoenixNap]
+- [wikipedia][wikipedia]
+
+[juniper]: https://www.juniper.net/kr/ko/research-topics/what-is-ipv4-vs-ipv6.html
+[GuideAct]: https://yjshin.tistory.com/274
+[장구리, Lifelog]: https://m.blog.naver.com/hai0416/221566797342
+[DAILY-STORY]: https://dailyonly.tistory.com/entry/IPv4-IPv6-%EC%B0%A8%EC%9D%B4%EC%A0%90%EA%B3%BC-%EC%9E%A5%EB%8B%A8%EC%A0%90-%EC%A0%95%EB%A6%AC
+[NetworkGuy Engineering Note]: https://m.blog.naver.com/happy_jhyo/220844812673
+[정보시스템감리사, 정보관리기술사]: https://swingswing.tistory.com/232
+[HowToGeek]: https://www.howtogeek.com/901201/ipv4-vs-ipv6/
+[geeksforgeeks]: https://www.geeksforgeeks.org/differences-between-ipv4-and-ipv6/
+[kinsta]: https://kinsta.com/blog/ipv4-vs-ipv6/
+[phoenixNap]: https://phoenixnap.com/blog/ipv4-vs-ipv6
+[wikipedia]: https://ko.wikipedia.org/wiki/IPv6
