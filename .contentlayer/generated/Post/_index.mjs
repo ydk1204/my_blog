@@ -30,12 +30,13 @@ import Post26 from './study__cs-study__옵저버패턴.mdx.json' assert { type: 
 import Post27 from './study__cs-study__이터레이터패턴.mdx.json' assert { type: 'json' }
 import Post28 from './study__cs-study__전략패턴.mdx.json' assert { type: 'json' }
 import Post29 from './study__cs-study__컨텍스트.mdx.json' assert { type: 'json' }
-import Post30 from './study__cs-study__클래스풀.mdx.json' assert { type: 'json' }
-import Post31 from './study__cs-study__통신방식.mdx.json' assert { type: 'json' }
+import Post30 from './study__cs-study__클래스리스-서브넷마스크-서브네팅.mdx.json' assert { type: 'json' }
+import Post31 from './study__cs-study__클래스풀.mdx.json' assert { type: 'json' }
+import Post32 from './study__cs-study__통신방식.mdx.json' assert { type: 'json' }
 import study__csStudy__RttMdx from './study__cs-study__트래픽-처리량-대역폭-RTT.mdx.json' assert { type: 'json' }
-import Post33 from './study__cs-study__팩토리패턴.mdx.json' assert { type: 'json' }
-import Post34 from './study__cs-study__프레임워크와-라이브러리.mdx.json' assert { type: 'json' }
-import Post35 from './study__cs-study__프록시패턴.mdx.json' assert { type: 'json' }
+import Post34 from './study__cs-study__팩토리패턴.mdx.json' assert { type: 'json' }
+import Post35 from './study__cs-study__프레임워크와-라이브러리.mdx.json' assert { type: 'json' }
+import Post36 from './study__cs-study__프록시패턴.mdx.json' assert { type: 'json' }
 import study__htmlStudy__seoMdx from './study__html-study__SEO란.mdx.json' assert { type: 'json' }
 import study__htmlStudy__htmlMdx from './study__html-study__html초기화.mdx.json' assert { type: 'json' }
 import study__jsStudy__jsMdx from './study__js-study__js초기화.mdx.json' assert { type: 'json' }
@@ -43,4 +44,4 @@ import study__reactStudy__reactJsxMdx from './study__react-study__React와JSX.md
 import study__reactStudy__Mdx from './study__react-study__리액트와사이드이펙트.mdx.json' assert { type: 'json' }
 import projects__projectsMdx from './projects__projects포스팅.mdx.json' assert { type: 'json' }
 
-export const allPosts = [game__gameMdx, study__algorithmStudy__JavaScript_11724Mdx, study__algorithmStudy__JavaScript_1260Mdx, study__algorithmStudy__JavaScript_2579Mdx, study__cssStudy__cssMdx, study__cssStudy__JsxCssMdx, study__csStudy__3WayHandshakeMdx, study__csStudy__fluxMdx, study__csStudy__iocDipDiMdx, study__csStudy__iPv4_iPv6Mdx, study__csStudy__ip_mac_arp_rarpMdx, study__csStudy__mtu_mss_pmtudMdx, study__csStudy__mvcMdx, study__csStudy__osi_7Mdx, study__csStudy__tcpIp_4_Mdx, study__csStudy__tcp_ip_4_1Mdx, study__csStudy__tcp_udp_Mdx, study__csStudy__wsl_Mdx, study__csStudy__Mdx, study__csStudy___Mdx, Post20, Post21, Post22, Post23, Post24, Post25, Post26, Post27, Post28, Post29, Post30, Post31, study__csStudy__RttMdx, Post33, Post34, Post35, study__htmlStudy__seoMdx, study__htmlStudy__htmlMdx, study__jsStudy__jsMdx, study__reactStudy__reactJsxMdx, study__reactStudy__Mdx, projects__projectsMdx]
+export const allPosts = [game__gameMdx, study__algorithmStudy__JavaScript_11724Mdx, study__algorithmStudy__JavaScript_1260Mdx, study__algorithmStudy__JavaScript_2579Mdx, study__cssStudy__cssMdx, study__cssStudy__JsxCssMdx, study__csStudy__3WayHandshakeMdx, study__csStudy__fluxMdx, study__csStudy__iocDipDiMdx, study__csStudy__iPv4_iPv6Mdx, study__csStudy__ip_mac_arp_rarpMdx, study__csStudy__mtu_mss_pmtudMdx, study__csStudy__mvcMdx, study__csStudy__osi_7Mdx, study__csStudy__tcpIp_4_Mdx, study__csStudy__tcp_ip_4_1Mdx, study__csStudy__tcp_udp_Mdx, study__csStudy__wsl_Mdx, study__csStudy__Mdx, study__csStudy___Mdx, Post20, Post21, Post22, Post23, Post24, Post25, Post26, Post27, Post28, Post29, Post30, Post31, Post32, study__csStudy__RttMdx, Post34, Post35, Post36, study__htmlStudy__seoMdx, study__htmlStudy__htmlMdx, study__jsStudy__jsMdx, study__reactStudy__reactJsxMdx, study__reactStudy__Mdx, projects__projectsMdx]
