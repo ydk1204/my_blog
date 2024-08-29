@@ -1,0 +1,109 @@
+---
+title: 공인IP, 사설IP, NAT에 대해
+date: 2024-08-29
+description: 네트워크 보안과 효율성을 높이는 방법에는 뭐가 있을까?
+img: /postImg/defaultImg.png
+tag: study
+note: cs
+copyright: https://pixabay.com/ko/users/abdulstudio-16007621/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5048215
+---
+
+---
+
+# 1.공인 IP (Public IP)
+
+## 공인IP 정의 및 특징
+
+- 공인 IP 주소는 인터넷에 연결된 각 컴퓨터에 할당되는 고유한 IP 주소이다. 전 세계적으로 중복되지 않으며, 인터넷 서비스 제공자(ISP)에 의해 할당된다.
+
+- 공인 IP 주소는 인터넷 상에서 컴퓨터가 서로를 찾고 정보를 교환할 수 있게 한다. 따라서 공인 IP를 통해 외부 네트워크와 직접 통신할 수 있다.
+
+## 사용 예시
+
+- 웹 서버, 이메일 서버 등 외부에서 접근이 필요한 장치에 사용된다.
+- 인터넷에 직접 연결되는 장치에 할당된다.
+
+---
+
+# 2.사설 IP (Private IP)
+
+## 사설IP 정의 및 특징
+
+- 사설 IP 주소는 로컬 네트워크(예: 가정, 학교, 회사의 LAN) 내에서 사용되는 IP 주소이다.
+IANA(Internet Assigned Numbers Authority)에 의해 사설 네트워크용으로 예약된 IP 주소 범위가 있다.
+
+- 사설 IP 주소는 외부 인터넷과 직접 연결되지 않으며, 동일한 네트워크 내에서만 통신이 가능하다.
+
+## 사설 IP 주소 범위
+
+- 클래스 A: 10.0.0.0 ~ 10.255.255.255
+- 클래스 B: 172.16.0.0 ~ 172.31.255.255
+- 클래스 C: 192.168.0.0 ~ 192.168.255.255
+
+## 사용 예시
+
+- 가정, 회사 등의 내부 네트워크에서 사용된다.
+- 공유기를 통해 여러 기기가 하나의 공인 IP를 공유할 때 사용한다.
+
+---
+
+# 3.NAT (Network Address Translation)
+
+## NAT 정의 및 기능
+
+- NAT는 사설 IP 주소를 공인 IP 주소로 변환하는 기술이다. 이를 통해 사설 네트워크의 장치들이 인터넷에 접근할 수 있게 된다.
+
+- NAT는 보안을 강화하고, 조직이 필요로 하는 공인 IP 주소의 수를 줄이는 데 도움을 준다. NAT를 통해 내부 네트워크의 IP 주소는 외부에 노출되지 않으며, 외부에서는 NAT 장치의 공인 IP 주소만 보인다.
+
+## 작동 원리
+
+1. 내부 네트워크의 장치가 외부로 통신을 시도할 때, NAT 장비(예: 공유기)가 해당 장치의 사설 IP를 자신의 공인 IP로 변환한다.
+2. 이 과정에서 NAT는 변환 테이블을 생성하여 어떤 내부 장치가 어떤 연결을 사용하고 있는지 기록한다.
+3. 외부에서 응답이 돌아오면, NAT는 변환 테이블을 참조하여 해당 응답을 올바른 내부 장치로 전달한다.
+
+## NAT의 장점
+
+- 보안 강화: 내부 네트워크의 IP 주소가 외부에 노출되지 않음으로써 보안이 강화된다.
+- IP 주소 절약: 여러 사설 IP 주소를 하나의 공인 IP 주소로 매핑하여 IP 주소 자원을 효율적으로 사용한다.
+
+## NAT의 단점
+
+- 복잡성 증가: 네트워크 구성이 복잡해지고 문제 해결이 어려워질 수 있다.
+- 일부 애플리케이션 호환성 문제: 특정 프로토콜이나 애플리케이션에서 NAT로 인한 문제가 발생할 수 있다.
+
+---
+
+## 쉽게 보기
+
+### 공인/사설 IP 부여
+
+1. 모뎀(ISP를 통해 공인 IP 부여 받음)
+2. 공유기(모뎀에게 공인 IP 받음)
+3. 공유기 - 데스크탑연결(공유기를 통해 데스크탑은 사설 IP를 부여받음, 192.168.x.x)
+4. 공유기 - 맥북연결(공유기를 통해 데스크탑은 사설 IP를 부여받음, 192.168.x.x)
+
+### 인터넷 이용
+
+1. 사설 IP를 받은 맥북에서 인터넷을 통한 정보 통신 요청
+2. 공유기를 통해 맥북의 사설 IP를 받아 기록하고 모뎀이 열심히 일함
+3. 모뎀이 공인 IP를 통해 요청한 정보를 가져오면 공유기가 받아서 누가 요청했는지 기록 문서를 보고 맥북에게 전달해줌
+
+---
+
+이 포스팅을 만들며 참조한 사이트 목록
+
+- [spiceworks][spiceworks]
+- [cloudflare][cloudflare]
+- [tetcos][tetcos]
+- [aws][aws]
+- [amazon][amazon]
+- [inpa][inpa]
+- [cisco][cisco]
+
+[spiceworks]: https://www.spiceworks.com/tech/networking/articles/what-is-network-address-translation/
+[cloudflare]: https://blog.cloudflare.com/magic-nat/
+[tetcos]: https://www.tetcos.com/pdf/v13/Experiments/Understanding-Public-IP-Address-and-NAT.pdf
+[aws]: https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html
+[amazon]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-instance-addressing.html
+[inpa]: https://inpa.tistory.com/entry/WEB-🌐-IP-기초-사설IP-공인IP-NAT-개념-정말-쉽게-정리
+[cisco]: https://www.cisco.com/c/ko_kr/support/docs/ip/network-address-translation-nat/218012-troubleshoot-network-address-translation.html
