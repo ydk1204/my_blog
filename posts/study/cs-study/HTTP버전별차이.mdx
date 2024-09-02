@@ -1,0 +1,80 @@
+---
+title: HTTP/1.0과 HTTP/1.1의 차이
+date: 2024-08-29
+description: HTTP 프로토콜의 발전 과정을 알아보자.
+img: /postImg/defaultImg.png
+tag: study
+note: cs
+copyright: https://pixabay.com/ko/users/abdulstudio-16007621/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5048215
+---
+
+---
+
+
+
+# HTTP/1.0 vs HTTP/1.1
+
+HTTP/1.0은 1996년에 도입된 초기의 HTTP 프로토콜 버전이다. 이 버전은 각각의 요청마다 새로운 TCP 연결을 설정해야 했기 때문에, 웹 페이지를 로드할 때 성능 저하가 발생했다.
+
+HTTP/1.1은 1997년에 표준화된 버전으로, HTTP/1.0의 여러 문제점을 개선했다. 주요 개선 사항은 다음과 같다.
+
+## 개선점
+
+- 지속 연결(Persistent Connections): HTTP/1.1에서는 기본적으로 연결을 재사용할 수 있어, 여러 요청을 동일한 TCP 연결에서 처리할 수 있다. 이는 성능을 크게 향상시킨다.
+
+- 파이프라이닝(Pipelining): 클라이언트가 첫 번째 요청의 응답을 기다리지 않고 여러 요청을 연속으로 보낼 수 있어, 지연 시간을 줄일 수 있다.
+
+- 청크 전송 인코딩(Chunked Transfer Encoding): 서버가 데이터를 청크 단위로 전송할 수 있어, 대용량 데이터를 보다 효율적으로 전송할 수 있다.
+
+- 캐시 제어(Cache Control): 향상된 캐시 제어 메커니즘이 도입되어, 클라이언트와 서버 간의 데이터 전송을 최적화할 수 있다.
+
+---
+
+# HTTP Keep-Alive
+
+HTTP Keep-Alive는 HTTP/1.1에서 기본적으로 활성화된 기능으로, 여러 HTTP 요청과 응답을 하나의 TCP 연결에서 처리할 수 있도록 한다.이는 TCP 연결을 설정하고 해제하는 데 드는 오버헤드를 줄여 성능을 향상시킨다. Keep-Alive는 네트워크 트래픽을 줄이고, 웹 애플리케이션의 반응성을 높이이는 데 기여한다.
+
+## HTTP Keep-Alive의 오버헤드
+
+오버헤드란 컴퓨터 시스템에서 작업을 수행하기 위해 추가적으로 필요한 시간이나 자원을 의미한다.
+HTTP Keep-Alive에서 오버헤드를 줄인다는 것은 다음과 같이 볼 수 있다.
+
+- TCP 연결 설정 및 해제 비용: HTTP/1.0에서는 각 HTTP 요청마다 새로운 TCP 연결을 설정하고 해제해야 했다. 이 과정은 시간이 걸리고, 네트워크 자원을 소모한다. HTTP Keep-Alive는 이러한 연결 설정과 해제 과정을 줄여줌으로써 오버헤드를 감소시킨다.
+
+- 네트워크 트래픽 감소: 지속 연결을 통해 여러 요청을 하나의 연결에서 처리함으로써, 불필요한 네트워크 트래픽을 줄일 수 있다. 이는 서버와 클라이언트 간의 통신 효율성을 높인다.
+
+# HOL(Head-of-Line) 블로킹
+
+HOL 블로킹은 네트워크에서 패킷이 큐에 쌓여 앞선 패킷의 지연으로 인해 뒤따르는 패킷의 처리가 지연되는 현상을 의미한다. HTTP/1.1에서는 각 요청이 순차적으로 처리되기 때문에, 하나의 요청이 지연되면 뒤따르는 요청들도 지연될 수 있다. 이는 HTTP/1.1의 단점 중 하나로, HTTP/2에서는 멀티플렉싱을 통해 이 문제를 해결하고 있다.
+
+## 잠깐 HTTP/1.0은 이런 문제가 없을까?
+
+HOL 블로킹을 다시 말하자면, 요청이 순차적으로 처리되기 때문에 앞의 요청이 지연되면 뒤따르는 요청도 지연될 수 있는 현상이다.
+
+따라서 HTTP/1.0에서도 유사한 문제가 발생할 수 있지만, HTTP/1.0은 기본적으로 각 요청마다 새로운 연결을 설정하므로, 각 요청이 독립적으로 처리된다. 따라서, HOL 블로킹의 문제는 HTTP/1.1에서 지속 연결과 파이프라이닝을 사용할 때 더 두드러진다.
+
+---
+
+이 포스팅을 만들며 참조한 사이트 목록
+
+- [cloudflare1][cloudflare1]
+- [amazon][amazon]
+- [cloudflare2][cloudflare2]
+- [mdn][mdn]
+- [amazon2][amazon2]
+- [stackoverflow1][stackoverflow1]
+- [techtarget][techtarget]
+- [stormforge][stormforge]
+- [imperva][imperva]
+- [stackoverflow2][stackoverflow2]
+
+[cloudflare1]: https://www.cloudflare.com/ko-kr/learning/performance/http2-vs-http1.1/
+[amazon]: https://aws.amazon.com/ko/blogs/developer/http-keep-alive-is-on-by-default-in-modular-aws-sdk-for-javascript/
+[cloudflare2]: https://developers.cloudflare.com/fundamentals/reference/tcp-connections/
+[mdn]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP
+[amazon2]: https://aws.amazon.com/ko/blogs/networking-and-content-delivery/implementing-long-running-tcp-connections-within-vpc-networking/
+[stackoverflow1]: https://stackoverflow.com/questions/20763999/explain-http-keep-alive-mechanism
+[techtarget]: https://www.techtarget.com/whatis/definition/persistent-connection-HTTP-persistent-connection
+[stormforge]: https://stormforge.io/blog/dont-give-up-yet-keep-alive/
+[imperva]: https://www.imperva.com/learn/performance/http-keep-alive/
+[stackoverflow2]: https://stackoverflow.com/questions/67351016/https-connection-keep-alive-performance
